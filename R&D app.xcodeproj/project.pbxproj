@@ -16,6 +16,12 @@
 		FA3A38A51D59F23C00DA056A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA3A38A31D59F23C00DA056A /* LaunchScreen.storyboard */; };
 		FA3A38B01D59F23C00DA056A /* R_D_appTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FA3A38AF1D59F23C00DA056A /* R_D_appTests.m */; };
 		FA3A38BB1D59F23C00DA056A /* R_D_appUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = FA3A38BA1D59F23C00DA056A /* R_D_appUITests.m */; };
+		FA3A38CB1D59F8E400DA056A /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA3A38CA1D59F8E400DA056A /* LoginViewController.m */; };
+		FA3A38D31D59FF5300DA056A /* RobotoSlab-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FA3A38CF1D59FF5300DA056A /* RobotoSlab-Bold.ttf */; };
+		FA3A38D41D59FF5300DA056A /* RobotoSlab-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FA3A38D01D59FF5300DA056A /* RobotoSlab-Light.ttf */; };
+		FA3A38D51D59FF5300DA056A /* RobotoSlab-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FA3A38D11D59FF5300DA056A /* RobotoSlab-Regular.ttf */; };
+		FA3A38D61D59FF5300DA056A /* RobotoSlab-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FA3A38D21D59FF5300DA056A /* RobotoSlab-Thin.ttf */; };
+		FA71F8A51D5A5F2D001AAF77 /* MuseoSansCyrl_2.otf in Resources */ = {isa = PBXBuildFile; fileRef = FA71F8A41D5A5F2D001AAF77 /* MuseoSansCyrl_2.otf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +59,13 @@
 		FA3A38B61D59F23C00DA056A /* R&D appUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "R&D appUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA3A38BA1D59F23C00DA056A /* R_D_appUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = R_D_appUITests.m; sourceTree = "<group>"; };
 		FA3A38BC1D59F23C00DA056A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FA3A38C91D59F8E400DA056A /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginViewController.h; path = UI/LoginViewController.h; sourceTree = "<group>"; };
+		FA3A38CA1D59F8E400DA056A /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginViewController.m; path = UI/LoginViewController.m; sourceTree = "<group>"; };
+		FA3A38CF1D59FF5300DA056A /* RobotoSlab-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoSlab-Bold.ttf"; sourceTree = "<group>"; };
+		FA3A38D01D59FF5300DA056A /* RobotoSlab-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoSlab-Light.ttf"; sourceTree = "<group>"; };
+		FA3A38D11D59FF5300DA056A /* RobotoSlab-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoSlab-Regular.ttf"; sourceTree = "<group>"; };
+		FA3A38D21D59FF5300DA056A /* RobotoSlab-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoSlab-Thin.ttf"; sourceTree = "<group>"; };
+		FA71F8A41D5A5F2D001AAF77 /* MuseoSansCyrl_2.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MuseoSansCyrl_2.otf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +116,8 @@
 		FA3A38911D59F23C00DA056A /* R&D app */ = {
 			isa = PBXGroup;
 			children = (
+				FA3A38CC1D59FEF600DA056A /* Resources */,
+				FA3A38C81D59F85700DA056A /* UI */,
 				FA3A38951D59F23C00DA056A /* AppDelegate.h */,
 				FA3A38961D59F23C00DA056A /* AppDelegate.m */,
 				FA3A38981D59F23C00DA056A /* ViewController.h */,
@@ -141,6 +156,43 @@
 				FA3A38BC1D59F23C00DA056A /* Info.plist */,
 			);
 			path = "R&D appUITests";
+			sourceTree = "<group>";
+		};
+		FA3A38C81D59F85700DA056A /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				FA3A38C91D59F8E400DA056A /* LoginViewController.h */,
+				FA3A38CA1D59F8E400DA056A /* LoginViewController.m */,
+			);
+			name = UI;
+			sourceTree = "<group>";
+		};
+		FA3A38CC1D59FEF600DA056A /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				FA3A38CD1D59FF1200DA056A /* Fonts */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		FA3A38CD1D59FF1200DA056A /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				FA3A38CE1D59FF1D00DA056A /* RoboSlab */,
+			);
+			name = Fonts;
+			sourceTree = "<group>";
+		};
+		FA3A38CE1D59FF1D00DA056A /* RoboSlab */ = {
+			isa = PBXGroup;
+			children = (
+				FA71F8A41D5A5F2D001AAF77 /* MuseoSansCyrl_2.otf */,
+				FA3A38CF1D59FF5300DA056A /* RobotoSlab-Bold.ttf */,
+				FA3A38D01D59FF5300DA056A /* RobotoSlab-Light.ttf */,
+				FA3A38D11D59FF5300DA056A /* RobotoSlab-Regular.ttf */,
+				FA3A38D21D59FF5300DA056A /* RobotoSlab-Thin.ttf */,
+			);
+			name = RoboSlab;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -246,6 +298,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA3A38D51D59FF5300DA056A /* RobotoSlab-Regular.ttf in Resources */,
+				FA3A38D31D59FF5300DA056A /* RobotoSlab-Bold.ttf in Resources */,
+				FA3A38D61D59FF5300DA056A /* RobotoSlab-Thin.ttf in Resources */,
+				FA71F8A51D5A5F2D001AAF77 /* MuseoSansCyrl_2.otf in Resources */,
+				FA3A38D41D59FF5300DA056A /* RobotoSlab-Light.ttf in Resources */,
 				FA3A38A51D59F23C00DA056A /* LaunchScreen.storyboard in Resources */,
 				FA3A38A21D59F23C00DA056A /* Assets.xcassets in Resources */,
 				FA3A389D1D59F23C00DA056A /* Main.storyboard in Resources */,
@@ -277,6 +334,7 @@
 				FA3A38A01D59F23C00DA056A /* R_D_app.xcdatamodeld in Sources */,
 				FA3A38971D59F23C00DA056A /* AppDelegate.m in Sources */,
 				FA3A38941D59F23C00DA056A /* main.m in Sources */,
+				FA3A38CB1D59F8E400DA056A /* LoginViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -502,6 +560,7 @@
 				FA3A38C11D59F23C00DA056A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		FA3A38C21D59F23C00DA056A /* Build configuration list for PBXNativeTarget "R&D appTests" */ = {
 			isa = XCConfigurationList;
@@ -510,6 +569,7 @@
 				FA3A38C41D59F23C00DA056A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		FA3A38C51D59F23C00DA056A /* Build configuration list for PBXNativeTarget "R&D appUITests" */ = {
 			isa = XCConfigurationList;
@@ -518,6 +578,7 @@
 				FA3A38C71D59F23C00DA056A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
