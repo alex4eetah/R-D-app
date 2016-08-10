@@ -22,6 +22,7 @@
 		FA3A38D51D59FF5300DA056A /* RobotoSlab-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FA3A38D11D59FF5300DA056A /* RobotoSlab-Regular.ttf */; };
 		FA3A38D61D59FF5300DA056A /* RobotoSlab-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FA3A38D21D59FF5300DA056A /* RobotoSlab-Thin.ttf */; };
 		FA71F8A51D5A5F2D001AAF77 /* MuseoSansCyrl_2.otf in Resources */ = {isa = PBXBuildFile; fileRef = FA71F8A41D5A5F2D001AAF77 /* MuseoSansCyrl_2.otf */; };
+		FAC7DA9E1D5B2C340043B4DF /* RotationUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC7DA9D1D5B2C340043B4DF /* RotationUtil.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +67,9 @@
 		FA3A38D11D59FF5300DA056A /* RobotoSlab-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoSlab-Regular.ttf"; sourceTree = "<group>"; };
 		FA3A38D21D59FF5300DA056A /* RobotoSlab-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoSlab-Thin.ttf"; sourceTree = "<group>"; };
 		FA71F8A41D5A5F2D001AAF77 /* MuseoSansCyrl_2.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MuseoSansCyrl_2.otf; sourceTree = "<group>"; };
+		FAC7DA9C1D5B2C340043B4DF /* RotationUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RotationUtil.h; path = UI/RotationUtil.h; sourceTree = "<group>"; };
+		FAC7DA9D1D5B2C340043B4DF /* RotationUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RotationUtil.m; path = UI/RotationUtil.m; sourceTree = "<group>"; };
+		FAC7DA9F1D5B2D990043B4DF /* Protocols.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Protocols.h; path = UI/Protocols.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,6 +167,9 @@
 			children = (
 				FA3A38C91D59F8E400DA056A /* LoginViewController.h */,
 				FA3A38CA1D59F8E400DA056A /* LoginViewController.m */,
+				FAC7DA9C1D5B2C340043B4DF /* RotationUtil.h */,
+				FAC7DA9D1D5B2C340043B4DF /* RotationUtil.m */,
+				FAC7DA9F1D5B2D990043B4DF /* Protocols.h */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -331,6 +338,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA3A389A1D59F23C00DA056A /* ViewController.m in Sources */,
+				FAC7DA9E1D5B2C340043B4DF /* RotationUtil.m in Sources */,
 				FA3A38A01D59F23C00DA056A /* R_D_app.xcdatamodeld in Sources */,
 				FA3A38971D59F23C00DA056A /* AppDelegate.m in Sources */,
 				FA3A38941D59F23C00DA056A /* main.m in Sources */,

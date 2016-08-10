@@ -6,20 +6,18 @@
 //  Copyright © 2016 softserve. All rights reserved.
 //
 
+#import "RotationUtil.h"
 #import "LoginViewController.h"
 
-typedef enum {
-    Portrait,
-    Landscape
-}Orientation;
-
-#define CONSTRAINT_VALID_PRIORITY 999
-#define CONSTRAINT_INVALID_PRIORITY 1
-
 @interface LoginViewController ()
+
 @property (strong, nonatomic) IBOutletCollection(NSLayoutConstraint) NSArray *potraitConstraints;
 
 @property (strong, nonatomic) IBOutletCollection(NSLayoutConstraint) NSArray *landscapeConstraints;
+
+@property (strong, nonatomic) RotationUtil *rotator;
+
+@property (assign, nonatomic) BOOL isInLandscape;
 
 @end
 
@@ -27,14 +25,17 @@ typedef enum {
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    self.rotator = [RotationUtil sharedUtil];
+    self.isInLandscape = (self.view.frame.size.width > self.view.frame.size.height);;
+    [self.rotator animateConstraintsChangingToOrientation: self.isInLandscape? Landscape: Portrait
+                                        ForViewController:self];
 }
 
 - (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator
 {
     [super viewWillTransitionToSize:size withTransitionCoordinator:coordinator];
     
-    BOOL isInLandscape = (size.width > size.height);
+    self.isInLandscape = (size.width > size.height);
     
     // Code here will execute before the rotation begins.
     // Equivalent to placing it in the deprecated method -[willRotateToInterfaceOrientation:duration:]
@@ -49,39 +50,13 @@ typedef enum {
         // Code here will execute after the rotation has finished.
         // Equivalent to placing it in the deprecated method -[didRotateFromInterfaceOrientation:]
         
-        [self animateConstraintsChangingToOrientation: isInLandscape? Landscape: Portrait];
+        [self.rotator animateConstraintsChangingToOrientation: self.isInLandscape? Landscape: Portrait
+                                       ForViewController:self];
         
     }];
 }
 
-- (void)animateConstraintsChangingToOrientation:(Orientation) orientation
-{
-    __weak LoginViewController *weakSelf = self;
-    [UIView animateWithDuration:0.3 animations:^{
-        if (orientation == Portrait) {
-            [weakSelf dropConstraintsInArray:weakSelf.landscapeConstraints];
-            [weakSelf setConstraintsInArray:weakSelf.potraitConstraints];
-        } else {
-            [weakSelf dropConstraintsInArray:weakSelf.potraitConstraints];
-            [weakSelf setConstraintsInArray:weakSelf.landscapeConstraints];
-        }
-        [weakSelf.view layoutIfNeeded];
-    }];
-}
 
-- (void)dropConstraintsInArray:(NSArray *)array
-{
-    for (NSLayoutConstraint *constraint in array) {
-        constraint.priority = CONSTRAINT_INVALID_PRIORITY;
-    }
-}
-
-- (void)setConstraintsInArray:(NSArray *)array
-{
-    for (NSLayoutConstraint *constraint in array) {
-        constraint.priority = CONSTRAINT_VALID_PRIORITY;
-    }
-}
 
 /*
 #pragma mark - Navigation

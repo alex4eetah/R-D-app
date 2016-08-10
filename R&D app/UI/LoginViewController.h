@@ -6,8 +6,9 @@
 //  Copyright © 2016 softserve. All rights reserved.
 //
 
+#import "Protocols.h"
 #import "ViewController.h"
 
-@interface LoginViewController : ViewController
+@interface LoginViewController : ViewController <Rotatable>
 
 @end
