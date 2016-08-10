@@ -31,8 +31,8 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="zuT-hW-lMz">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </imageView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CTd-GC-kHV">
-                                <rect key="frame" x="180" y="422" width="255" height="19"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CTd-GC-kHV">
+                                <rect key="frame" x="179" y="418" width="255" height="19"/>
                                 <constraints>
                                     <constraint firstAttribute="width" priority="999" constant="255.40000000000001" id="0gn-1o-HVi"/>
                                     <constraint firstAttribute="height" priority="999" constant="19" id="kFe-I6-Ev9"/>
@@ -58,8 +58,8 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gEU-V6-ste">
-                                <rect key="frame" x="180" y="371" width="255" height="19"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gEU-V6-ste">
+                                <rect key="frame" x="180" y="367" width="255" height="19"/>
                                 <constraints>
                                     <constraint firstAttribute="width" priority="999" constant="255.40000000000001" id="ecT-ch-4Yo"/>
                                     <constraint firstAttribute="height" priority="999" constant="19" id="xmn-fp-NwH"/>
@@ -171,6 +171,25 @@
                                     </mask>
                                 </variation>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="welcomeLoginWord" translatesAutoresizingMaskIntoConstraints="NO" id="hnK-go-Fhh">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="24" id="8bJ-kS-Id1"/>
+                                    <constraint firstAttribute="width" constant="93" id="K47-fh-DjS"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="8bJ-kS-Id1"/>
+                                        <exclude reference="K47-fh-DjS"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=regular">
+                                    <mask key="constraints">
+                                        <include reference="8bJ-kS-Id1"/>
+                                        <include reference="K47-fh-DjS"/>
+                                    </mask>
+                                </variation>
+                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FdF-g5-Cni">
                                 <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                                 <constraints>
@@ -186,34 +205,13 @@
                                         <exclude reference="lhq-9b-pUA"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular-widthClass=regular" misplaced="YES">
-                                    <rect key="frame" x="615" y="65" width="36" height="21"/>
+                                <variation key="heightClass=regular-widthClass=regular">
                                     <mask key="constraints">
                                         <include reference="Ojb-Hs-ZPP"/>
                                         <include reference="lhq-9b-pUA"/>
                                     </mask>
                                 </variation>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="welcomeLoginWord" translatesAutoresizingMaskIntoConstraints="NO" id="hnK-go-Fhh">
-                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="24" id="8bJ-kS-Id1"/>
-                                    <constraint firstAttribute="width" constant="93" id="K47-fh-DjS"/>
-                                </constraints>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="8bJ-kS-Id1"/>
-                                        <exclude reference="K47-fh-DjS"/>
-                                    </mask>
-                                </variation>
-                                <variation key="heightClass=regular-widthClass=regular" misplaced="YES">
-                                    <rect key="frame" x="587" y="179" width="93" height="24"/>
-                                    <mask key="constraints">
-                                        <include reference="8bJ-kS-Id1"/>
-                                        <include reference="K47-fh-DjS"/>
-                                    </mask>
-                                </variation>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -273,8 +271,8 @@
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="uRn-AP-SI3"/>
-                                <exclude reference="FdF-g5-Cni"/>
                                 <exclude reference="hnK-go-Fhh"/>
+                                <exclude reference="FdF-g5-Cni"/>
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="8fp-Bp-ddB"/>
@@ -308,8 +306,8 @@
                         <variation key="heightClass=regular-widthClass=regular">
                             <mask key="subviews">
                                 <include reference="uRn-AP-SI3"/>
-                                <include reference="FdF-g5-Cni"/>
                                 <include reference="hnK-go-Fhh"/>
+                                <include reference="FdF-g5-Cni"/>
                             </mask>
                             <mask key="constraints">
                                 <include reference="8fp-Bp-ddB"/>
@@ -416,7 +414,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9ZP-LA-da5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1283" y="334"/>
+            <point key="canvasLocation" x="1029" y="216.75"/>
         </scene>
     </scenes>
     <resources>

@@ -7,29 +7,32 @@
 //
 
 #import "Protocols.h"
-#import <UIKit/UIKit.h>
-#import "RotationUtil.h"
+#import "UiUtil.h"
 
 #define CONSTRAINT_VALID_PRIORITY 999
 #define CONSTRAINT_INVALID_PRIORITY 1
 
-@implementation RotationUtil
+@implementation UiUtil
 
-+ (RotationUtil *)sharedUtil
++ (UiUtil *)sharedUtil
 {
-    static RotationUtil *instance = nil;
+    static UiUtil *instance = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        instance = [[RotationUtil alloc] init];
+        instance = [[UiUtil alloc] init];
     });
     return instance;
 }
+
+/*
+**** Rotating stuff
+*/
 
 - (void)animateConstraintsChangingToOrientation:(Orientation) orientation
                               ForViewController:(id <Rotatable>) VC
 {
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ) {
-        __weak RotationUtil *weakSelf = self;
+        __weak UiUtil *weakSelf = self;
         [UIView animateWithDuration:0.25 animations:^{
             if (orientation == Portrait) {
                 [weakSelf dropConstraintsInArray:VC.landscapeConstraints];
@@ -55,6 +58,38 @@
     for (NSLayoutConstraint *constraint in array) {
         constraint.priority = CONSTRAINT_VALID_PRIORITY;
     }
+}
+
+/*
+**** Constraint stuff
+*/
+
+- (void)animateChangingOfConstraint:(NSLayoutConstraint *)constraint
+                            ToValue:(CGFloat)value
+                       WithDuration:(double)duration
+                            ForView:(UIView *) view
+{
+    constraint.constant = value;
+    [view setNeedsUpdateConstraints];
+    
+    [UIView animateWithDuration:duration animations:^
+     {
+         [view layoutIfNeeded];
+     }];
+}
+
+/*
+**** Value stuff
+*/
+
+- (void)animateChangingOfFrameForView:(UIView *)view
+                              ToValue:(CGRect)value
+                         WithDuration:(double)duration
+{
+    [UIView animateWithDuration:duration animations:^
+     {
+         view.frame = value;
+     }];
 }
 
 @end
