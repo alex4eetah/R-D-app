@@ -21,8 +21,25 @@
 		FA3A38D41D59FF5300DA056A /* RobotoSlab-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FA3A38D01D59FF5300DA056A /* RobotoSlab-Light.ttf */; };
 		FA3A38D51D59FF5300DA056A /* RobotoSlab-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FA3A38D11D59FF5300DA056A /* RobotoSlab-Regular.ttf */; };
 		FA3A38D61D59FF5300DA056A /* RobotoSlab-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FA3A38D21D59FF5300DA056A /* RobotoSlab-Thin.ttf */; };
+		FA4293321D5C6DA500AAADBC /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FA4293281D5C6DA500AAADBC /* OpenSans-Bold.ttf */; };
+		FA4293331D5C6DA500AAADBC /* OpenSans-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FA4293291D5C6DA500AAADBC /* OpenSans-BoldItalic.ttf */; };
+		FA4293341D5C6DA500AAADBC /* OpenSans-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FA42932A1D5C6DA500AAADBC /* OpenSans-ExtraBold.ttf */; };
+		FA4293351D5C6DA500AAADBC /* OpenSans-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FA42932B1D5C6DA500AAADBC /* OpenSans-ExtraBoldItalic.ttf */; };
+		FA4293361D5C6DA500AAADBC /* OpenSans-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FA42932C1D5C6DA500AAADBC /* OpenSans-Italic.ttf */; };
+		FA4293371D5C6DA500AAADBC /* OpenSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FA42932D1D5C6DA500AAADBC /* OpenSans-Light.ttf */; };
+		FA4293381D5C6DA500AAADBC /* OpenSans-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FA42932E1D5C6DA500AAADBC /* OpenSans-LightItalic.ttf */; };
+		FA4293391D5C6DA500AAADBC /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FA42932F1D5C6DA500AAADBC /* OpenSans-Regular.ttf */; };
+		FA42933A1D5C6DA500AAADBC /* OpenSans-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FA4293301D5C6DA500AAADBC /* OpenSans-Semibold.ttf */; };
+		FA42933B1D5C6DA500AAADBC /* OpenSans-SemiboldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FA4293311D5C6DA500AAADBC /* OpenSans-SemiboldItalic.ttf */; };
+		FA42933E1D5C7B6100AAADBC /* group7.png in Resources */ = {isa = PBXBuildFile; fileRef = FA42933D1D5C7B6100AAADBC /* group7.png */; };
+		FA4293401D5C7B6C00AAADBC /* 2016072854009.png in Resources */ = {isa = PBXBuildFile; fileRef = FA42933F1D5C7B6C00AAADBC /* 2016072854009.png */; };
+		FA4293421D5C7B7500AAADBC /* 2016072852631.png in Resources */ = {isa = PBXBuildFile; fileRef = FA4293411D5C7B7500AAADBC /* 2016072852631.png */; };
+		FA42934B1D5CAA9300AAADBC /* UINavigationBar+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = FA42934A1D5CAA9300AAADBC /* UINavigationBar+Helper.m */; };
+		FA42934E1D5CC6AE00AAADBC /* CaseStudiesFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = FA42934D1D5CC6AE00AAADBC /* CaseStudiesFlowLayout.m */; };
 		FA71F8A51D5A5F2D001AAF77 /* MuseoSansCyrl_2.otf in Resources */ = {isa = PBXBuildFile; fileRef = FA71F8A41D5A5F2D001AAF77 /* MuseoSansCyrl_2.otf */; };
 		FAC7DA9E1D5B2C340043B4DF /* UiUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC7DA9D1D5B2C340043B4DF /* UiUtil.m */; };
+		FAC7DAA31D5B66250043B4DF /* CaseStudiesCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC7DAA21D5B66250043B4DF /* CaseStudiesCell.m */; };
+		FAC7DAA61D5B667B0043B4DF /* CaseStudiesCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC7DAA51D5B667B0043B4DF /* CaseStudiesCollectionViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,10 +83,31 @@
 		FA3A38D01D59FF5300DA056A /* RobotoSlab-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoSlab-Light.ttf"; sourceTree = "<group>"; };
 		FA3A38D11D59FF5300DA056A /* RobotoSlab-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoSlab-Regular.ttf"; sourceTree = "<group>"; };
 		FA3A38D21D59FF5300DA056A /* RobotoSlab-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoSlab-Thin.ttf"; sourceTree = "<group>"; };
+		FA4293281D5C6DA500AAADBC /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Bold.ttf"; sourceTree = "<group>"; };
+		FA4293291D5C6DA500AAADBC /* OpenSans-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-BoldItalic.ttf"; sourceTree = "<group>"; };
+		FA42932A1D5C6DA500AAADBC /* OpenSans-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-ExtraBold.ttf"; sourceTree = "<group>"; };
+		FA42932B1D5C6DA500AAADBC /* OpenSans-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
+		FA42932C1D5C6DA500AAADBC /* OpenSans-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Italic.ttf"; sourceTree = "<group>"; };
+		FA42932D1D5C6DA500AAADBC /* OpenSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Light.ttf"; sourceTree = "<group>"; };
+		FA42932E1D5C6DA500AAADBC /* OpenSans-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-LightItalic.ttf"; sourceTree = "<group>"; };
+		FA42932F1D5C6DA500AAADBC /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Regular.ttf"; sourceTree = "<group>"; };
+		FA4293301D5C6DA500AAADBC /* OpenSans-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Semibold.ttf"; sourceTree = "<group>"; };
+		FA4293311D5C6DA500AAADBC /* OpenSans-SemiboldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-SemiboldItalic.ttf"; sourceTree = "<group>"; };
+		FA42933D1D5C7B6100AAADBC /* group7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = group7.png; sourceTree = "<group>"; };
+		FA42933F1D5C7B6C00AAADBC /* 2016072854009.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2016072854009.png; sourceTree = "<group>"; };
+		FA4293411D5C7B7500AAADBC /* 2016072852631.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2016072852631.png; sourceTree = "<group>"; };
+		FA4293491D5CAA9300AAADBC /* UINavigationBar+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UINavigationBar+Helper.h"; path = "UI/UINavigationBar+Helper.h"; sourceTree = "<group>"; };
+		FA42934A1D5CAA9300AAADBC /* UINavigationBar+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UINavigationBar+Helper.m"; path = "UI/UINavigationBar+Helper.m"; sourceTree = "<group>"; };
+		FA42934C1D5CC6AE00AAADBC /* CaseStudiesFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CaseStudiesFlowLayout.h; path = UI/CollectionView/CaseStudiesFlowLayout.h; sourceTree = "<group>"; };
+		FA42934D1D5CC6AE00AAADBC /* CaseStudiesFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CaseStudiesFlowLayout.m; path = UI/CollectionView/CaseStudiesFlowLayout.m; sourceTree = "<group>"; };
 		FA71F8A41D5A5F2D001AAF77 /* MuseoSansCyrl_2.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MuseoSansCyrl_2.otf; sourceTree = "<group>"; };
 		FAC7DA9C1D5B2C340043B4DF /* UiUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UiUtil.h; path = UI/UiUtil.h; sourceTree = "<group>"; };
 		FAC7DA9D1D5B2C340043B4DF /* UiUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UiUtil.m; path = UI/UiUtil.m; sourceTree = "<group>"; };
 		FAC7DA9F1D5B2D990043B4DF /* Protocols.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Protocols.h; path = UI/Protocols.h; sourceTree = "<group>"; };
+		FAC7DAA11D5B66250043B4DF /* CaseStudiesCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CaseStudiesCell.h; path = UI/CollectionView/CaseStudiesCell.h; sourceTree = "<group>"; };
+		FAC7DAA21D5B66250043B4DF /* CaseStudiesCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CaseStudiesCell.m; path = UI/CollectionView/CaseStudiesCell.m; sourceTree = "<group>"; };
+		FAC7DAA41D5B667B0043B4DF /* CaseStudiesCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CaseStudiesCollectionViewController.h; path = UI/CollectionView/CaseStudiesCollectionViewController.h; sourceTree = "<group>"; };
+		FAC7DAA51D5B667B0043B4DF /* CaseStudiesCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CaseStudiesCollectionViewController.m; path = UI/CollectionView/CaseStudiesCollectionViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,17 +158,11 @@
 		FA3A38911D59F23C00DA056A /* R&D app */ = {
 			isa = PBXGroup;
 			children = (
+				FA42933C1D5C79B300AAADBC /* Model */,
 				FA3A38CC1D59FEF600DA056A /* Resources */,
 				FA3A38C81D59F85700DA056A /* UI */,
-				FA3A38951D59F23C00DA056A /* AppDelegate.h */,
-				FA3A38961D59F23C00DA056A /* AppDelegate.m */,
 				FA3A38981D59F23C00DA056A /* ViewController.h */,
 				FA3A38991D59F23C00DA056A /* ViewController.m */,
-				FA3A389B1D59F23C00DA056A /* Main.storyboard */,
-				FA3A38A11D59F23C00DA056A /* Assets.xcassets */,
-				FA3A38A31D59F23C00DA056A /* LaunchScreen.storyboard */,
-				FA3A38A61D59F23C00DA056A /* Info.plist */,
-				FA3A389E1D59F23C00DA056A /* R_D_app.xcdatamodeld */,
 				FA3A38921D59F23C00DA056A /* Supporting Files */,
 			);
 			path = "R&D app";
@@ -139,6 +171,10 @@
 		FA3A38921D59F23C00DA056A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				FA42933D1D5C7B6100AAADBC /* group7.png */,
+				FA4293411D5C7B7500AAADBC /* 2016072852631.png */,
+				FA42933F1D5C7B6C00AAADBC /* 2016072854009.png */,
+				FA3A38A61D59F23C00DA056A /* Info.plist */,
 				FA3A38931D59F23C00DA056A /* main.m */,
 			);
 			name = "Supporting Files";
@@ -165,11 +201,17 @@
 		FA3A38C81D59F85700DA056A /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				FA3A389B1D59F23C00DA056A /* Main.storyboard */,
+				FA3A38A11D59F23C00DA056A /* Assets.xcassets */,
+				FA3A38A31D59F23C00DA056A /* LaunchScreen.storyboard */,
+				FAC7DAA01D5B649D0043B4DF /* CollectionView */,
 				FA3A38C91D59F8E400DA056A /* LoginViewController.h */,
 				FA3A38CA1D59F8E400DA056A /* LoginViewController.m */,
 				FAC7DA9C1D5B2C340043B4DF /* UiUtil.h */,
 				FAC7DA9D1D5B2C340043B4DF /* UiUtil.m */,
 				FAC7DA9F1D5B2D990043B4DF /* Protocols.h */,
+				FA4293491D5CAA9300AAADBC /* UINavigationBar+Helper.h */,
+				FA42934A1D5CAA9300AAADBC /* UINavigationBar+Helper.m */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -185,6 +227,8 @@
 		FA3A38CD1D59FF1200DA056A /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				FA4293271D5C6D8900AAADBC /* OpenSans */,
+				FA71F8A41D5A5F2D001AAF77 /* MuseoSansCyrl_2.otf */,
 				FA3A38CE1D59FF1D00DA056A /* RoboSlab */,
 			);
 			name = Fonts;
@@ -193,13 +237,52 @@
 		FA3A38CE1D59FF1D00DA056A /* RoboSlab */ = {
 			isa = PBXGroup;
 			children = (
-				FA71F8A41D5A5F2D001AAF77 /* MuseoSansCyrl_2.otf */,
 				FA3A38CF1D59FF5300DA056A /* RobotoSlab-Bold.ttf */,
 				FA3A38D01D59FF5300DA056A /* RobotoSlab-Light.ttf */,
 				FA3A38D11D59FF5300DA056A /* RobotoSlab-Regular.ttf */,
 				FA3A38D21D59FF5300DA056A /* RobotoSlab-Thin.ttf */,
 			);
 			name = RoboSlab;
+			sourceTree = "<group>";
+		};
+		FA4293271D5C6D8900AAADBC /* OpenSans */ = {
+			isa = PBXGroup;
+			children = (
+				FA4293281D5C6DA500AAADBC /* OpenSans-Bold.ttf */,
+				FA4293291D5C6DA500AAADBC /* OpenSans-BoldItalic.ttf */,
+				FA42932A1D5C6DA500AAADBC /* OpenSans-ExtraBold.ttf */,
+				FA42932B1D5C6DA500AAADBC /* OpenSans-ExtraBoldItalic.ttf */,
+				FA42932C1D5C6DA500AAADBC /* OpenSans-Italic.ttf */,
+				FA42932D1D5C6DA500AAADBC /* OpenSans-Light.ttf */,
+				FA42932E1D5C6DA500AAADBC /* OpenSans-LightItalic.ttf */,
+				FA42932F1D5C6DA500AAADBC /* OpenSans-Regular.ttf */,
+				FA4293301D5C6DA500AAADBC /* OpenSans-Semibold.ttf */,
+				FA4293311D5C6DA500AAADBC /* OpenSans-SemiboldItalic.ttf */,
+			);
+			name = OpenSans;
+			sourceTree = "<group>";
+		};
+		FA42933C1D5C79B300AAADBC /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				FA3A38951D59F23C00DA056A /* AppDelegate.h */,
+				FA3A38961D59F23C00DA056A /* AppDelegate.m */,
+				FA3A389E1D59F23C00DA056A /* R_D_app.xcdatamodeld */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		FAC7DAA01D5B649D0043B4DF /* CollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				FAC7DAA11D5B66250043B4DF /* CaseStudiesCell.h */,
+				FAC7DAA21D5B66250043B4DF /* CaseStudiesCell.m */,
+				FAC7DAA41D5B667B0043B4DF /* CaseStudiesCollectionViewController.h */,
+				FAC7DAA51D5B667B0043B4DF /* CaseStudiesCollectionViewController.m */,
+				FA42934C1D5CC6AE00AAADBC /* CaseStudiesFlowLayout.h */,
+				FA42934D1D5CC6AE00AAADBC /* CaseStudiesFlowLayout.m */,
+			);
+			name = CollectionView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -306,13 +389,26 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA3A38D51D59FF5300DA056A /* RobotoSlab-Regular.ttf in Resources */,
+				FA4293341D5C6DA500AAADBC /* OpenSans-ExtraBold.ttf in Resources */,
+				FA4293371D5C6DA500AAADBC /* OpenSans-Light.ttf in Resources */,
 				FA3A38D31D59FF5300DA056A /* RobotoSlab-Bold.ttf in Resources */,
 				FA3A38D61D59FF5300DA056A /* RobotoSlab-Thin.ttf in Resources */,
+				FA4293361D5C6DA500AAADBC /* OpenSans-Italic.ttf in Resources */,
+				FA4293391D5C6DA500AAADBC /* OpenSans-Regular.ttf in Resources */,
 				FA71F8A51D5A5F2D001AAF77 /* MuseoSansCyrl_2.otf in Resources */,
+				FA42933E1D5C7B6100AAADBC /* group7.png in Resources */,
+				FA4293331D5C6DA500AAADBC /* OpenSans-BoldItalic.ttf in Resources */,
 				FA3A38D41D59FF5300DA056A /* RobotoSlab-Light.ttf in Resources */,
+				FA4293421D5C7B7500AAADBC /* 2016072852631.png in Resources */,
+				FA42933B1D5C6DA500AAADBC /* OpenSans-SemiboldItalic.ttf in Resources */,
+				FA4293351D5C6DA500AAADBC /* OpenSans-ExtraBoldItalic.ttf in Resources */,
+				FA4293321D5C6DA500AAADBC /* OpenSans-Bold.ttf in Resources */,
 				FA3A38A51D59F23C00DA056A /* LaunchScreen.storyboard in Resources */,
 				FA3A38A21D59F23C00DA056A /* Assets.xcassets in Resources */,
+				FA4293401D5C7B6C00AAADBC /* 2016072854009.png in Resources */,
 				FA3A389D1D59F23C00DA056A /* Main.storyboard in Resources */,
+				FA4293381D5C6DA500AAADBC /* OpenSans-LightItalic.ttf in Resources */,
+				FA42933A1D5C6DA500AAADBC /* OpenSans-Semibold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -337,12 +433,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FAC7DAA61D5B667B0043B4DF /* CaseStudiesCollectionViewController.m in Sources */,
+				FA42934B1D5CAA9300AAADBC /* UINavigationBar+Helper.m in Sources */,
 				FA3A389A1D59F23C00DA056A /* ViewController.m in Sources */,
 				FAC7DA9E1D5B2C340043B4DF /* UiUtil.m in Sources */,
 				FA3A38A01D59F23C00DA056A /* R_D_app.xcdatamodeld in Sources */,
 				FA3A38971D59F23C00DA056A /* AppDelegate.m in Sources */,
 				FA3A38941D59F23C00DA056A /* main.m in Sources */,
 				FA3A38CB1D59F8E400DA056A /* LoginViewController.m in Sources */,
+				FAC7DAA31D5B66250043B4DF /* CaseStudiesCell.m in Sources */,
+				FA42934E1D5CC6AE00AAADBC /* CaseStudiesFlowLayout.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

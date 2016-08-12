@@ -45,6 +45,10 @@
     [self.view addGestureRecognizer:tap];
 }
 
+/*
+**** Visual configuration
+*/
+
 - (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator
 {
     [super viewWillTransitionToSize:size withTransitionCoordinator:coordinator];
@@ -93,6 +97,16 @@
 {
     [self.view endEditing:YES];
 }
+
+/*
+**** action implementation
+*/
+
+- (IBAction)SignInButtonBeenPressed:(UIButton *)sender
+{
+    [self performSegueWithIdentifier:@"LoggedInSegue" sender:self];
+}
+
 
 
 /*
