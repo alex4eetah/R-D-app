@@ -82,12 +82,12 @@
                                   Size:CGSizeMake(18, 18)
                                   Left:YES];
     [self addNavigationButtonForTarget:self
-                              Selector:@selector(more)
+                              Selector:@selector(changeView)
                          ImageWithName:@"changeVIewNavBarIcon"
                                   Size:CGSizeMake(28, 20)
                                   Left:NO];
     [self addNavigationButtonForTarget:self
-                              Selector:@selector(changeView)
+                              Selector:@selector(more)
                          ImageWithName:@"moreNavBarIcon"
                                   Size:CGSizeMake(5, 17)
                                   Left:NO];
@@ -140,7 +140,10 @@
 
 -(void)changeView
 {
-    
+    NSString * storyboardName = @"Main";
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:storyboardName bundle: nil];
+    UIViewController * vc = [storyboard instantiateViewControllerWithIdentifier:@"PagedScrollCaseStudies"];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator
