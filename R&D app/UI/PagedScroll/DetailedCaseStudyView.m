@@ -14,12 +14,15 @@
 @property (strong, nonatomic) UILabel *name;
 @property (strong, nonatomic) UILabel *fullDescription;
 @property (strong, nonatomic) UIButton *viewPageButton;
+@property (assign, nonatomic) BOOL hasSetupConstraints;
 
 @end
 
 @implementation DetailedCaseStudyView
 
 - (id)initWithFrame:(CGRect)frame {
+    
+    self.hasSetupConstraints = NO;
     
     self = [super initWithFrame:frame];
     if (self) {
@@ -57,7 +60,10 @@
 
 - (void)updateConstraints {
 
-    [self setupConstraints];
+    if (!self.hasSetupConstraints) {
+        [self setupConstraints];
+        self.hasSetupConstraints = YES;
+    }
     [super updateConstraints];
     
 }

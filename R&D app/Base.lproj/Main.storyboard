@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="9H1-I8-aeL">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -33,6 +33,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="zuT-hW-lMz">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CTd-GC-kHV">
                                 <rect key="frame" x="179" y="418" width="255" height="19"/>
                                 <constraints>
@@ -217,9 +220,6 @@
                                     </mask>
                                 </variation>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="zuT-hW-lMz">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -928,7 +928,7 @@
         <!--Detailed Case Studies-->
         <scene sceneID="L2H-uW-yeg">
             <objects>
-                <viewController id="9H1-I8-aeL" customClass="DetailedCaseStudies" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PagedScrollCaseStudies" id="9H1-I8-aeL" customClass="DetailedCaseStudies" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="pMy-hX-b54"/>
                         <viewControllerLayoutGuide type="bottom" id="vQu-uc-f2K"/>
@@ -940,8 +940,21 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="detailedCaseStudyBG" translatesAutoresizingMaskIntoConstraints="NO" id="B0m-kO-O2D">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                             </imageView>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ykW-90-GqP">
+                            <scrollView autoresizesSubviews="NO" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ykW-90-GqP">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="392" id="NlD-tG-aFR"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="NlD-tG-aFR"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=regular">
+                                    <mask key="constraints">
+                                        <include reference="NlD-tG-aFR"/>
+                                    </mask>
+                                </variation>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -950,7 +963,9 @@
                             <constraint firstAttribute="trailing" secondItem="ykW-90-GqP" secondAttribute="trailing" id="Ldd-A8-rjS"/>
                             <constraint firstItem="vQu-uc-f2K" firstAttribute="top" secondItem="B0m-kO-O2D" secondAttribute="bottom" id="SaY-L6-t7Z"/>
                             <constraint firstItem="B0m-kO-O2D" firstAttribute="top" secondItem="pMy-hX-b54" secondAttribute="bottom" id="TB5-4N-n1J"/>
-                            <constraint firstItem="ykW-90-GqP" firstAttribute="top" secondItem="pMy-hX-b54" secondAttribute="bottom" constant="77" id="eTz-SX-Sme"/>
+                            <constraint firstItem="ykW-90-GqP" firstAttribute="top" secondItem="pMy-hX-b54" secondAttribute="bottom" constant="77" id="eTz-SX-Sme">
+                                <variation key="heightClass=regular-widthClass=regular" constant="109"/>
+                            </constraint>
                             <constraint firstItem="ykW-90-GqP" firstAttribute="leading" secondItem="UAx-U6-uk6" secondAttribute="leading" id="fPC-9a-Odw"/>
                             <constraint firstAttribute="bottom" secondItem="ykW-90-GqP" secondAttribute="bottom" constant="459" id="gBb-dI-PaL"/>
                             <constraint firstAttribute="trailing" secondItem="B0m-kO-O2D" secondAttribute="trailing" id="yOb-mq-1Pm"/>
@@ -984,7 +999,7 @@
                                 <include reference="Ldd-A8-rjS"/>
                                 <include reference="eTz-SX-Sme"/>
                                 <include reference="fPC-9a-Odw"/>
-                                <include reference="gBb-dI-PaL"/>
+                                <exclude reference="gBb-dI-PaL"/>
                             </mask>
                         </variation>
                     </view>
