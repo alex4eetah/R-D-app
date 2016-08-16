@@ -16,6 +16,8 @@
 @property (strong, nonatomic) UILabel *name;
 @property (strong, nonatomic) UILabel *fullDescription;
 @property (strong, nonatomic) UIButton *viewPageButton;
+@property (strong, nonatomic) UIImageView *rightArrow;
+@property (strong, nonatomic) UIImageView *leftArrow;
 @property (assign, nonatomic) BOOL hasSetupConstraints;
 
 @end
@@ -60,8 +62,6 @@
     self.fullDescription.lineBreakMode = NSLineBreakByWordWrapping;
     self.fullDescription.numberOfLines = 0;
     self.fullDescription.textAlignment = NSTextAlignmentLeft;
-//    [self.fullDescription setContentHuggingPriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisVertical];
-//    [self.fullDescription setContentCompressionResistancePriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisVertical];
     [self.fullDescription sizeToFit];
     self.fullDescription.translatesAutoresizingMaskIntoConstraints = NO;
     [self addSubview:self.fullDescription];
@@ -71,10 +71,19 @@
     [self.viewPageButton.titleLabel setFont:[UIFont fontWithName:@"MuseoSansCyrl-700" size:16]];
     [self.viewPageButton.titleLabel setTextColor:[UIColor whiteColor]];
     self.viewPageButton.layer.cornerRadius = 3;
-    
     self.viewPageButton.backgroundColor = [UIColor colorWithRed:248/255.0 green:84/255.0 blue:81/255.0 alpha:1];
     self.viewPageButton.translatesAutoresizingMaskIntoConstraints = NO;
     [self addSubview:self.viewPageButton];
+    
+    self.rightArrow = [[UIImageView alloc] initWithFrame:CGRectZero];
+    self.rightArrow.image = [UIImage imageNamed:@"rightArrow"];
+    self.rightArrow.translatesAutoresizingMaskIntoConstraints = NO;
+    [self addSubview:self.rightArrow];
+    
+    self.leftArrow = [[UIImageView alloc] initWithFrame:CGRectZero];
+    self.leftArrow.image = [UIImage imageNamed:@"leftArrow"];
+    self.leftArrow.translatesAutoresizingMaskIntoConstraints = NO;
+    [self addSubview:self.leftArrow];
     
 }
 
@@ -219,7 +228,7 @@
                                                         toItem:self
                                                      attribute:NSLayoutAttributeTrailing
                                                     multiplier:1.0
-                                                      constant:0.0]];
+                                                      constant:-70]];
     
     // viewPageButton
     [self addConstraint:[NSLayoutConstraint constraintWithItem:self.viewPageButton
@@ -253,5 +262,71 @@
                                                      attribute:NSLayoutAttributeBottom
                                                     multiplier:1.0
                                                       constant:28]];
+    
+    // rightArrow
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.rightArrow
+                                                     attribute:NSLayoutAttributeWidth
+                                                     relatedBy:NSLayoutRelationEqual
+                                                        toItem:nil
+                                                     attribute:NSLayoutAttributeNotAnAttribute
+                                                    multiplier:1.0
+                                                      constant:45]];
+    
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.rightArrow
+                                                     attribute:NSLayoutAttributeHeight
+                                                     relatedBy:NSLayoutRelationEqual
+                                                        toItem:nil
+                                                     attribute:NSLayoutAttributeNotAnAttribute
+                                                    multiplier:1.0
+                                                      constant:50]];
+    
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.rightArrow
+                                                     attribute:NSLayoutAttributeLeading
+                                                     relatedBy:NSLayoutRelationEqual
+                                                        toItem:self
+                                                     attribute:NSLayoutAttributeTrailing
+                                                    multiplier:1.0
+                                                      constant:-28]];
+    
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.rightArrow
+                                                     attribute:NSLayoutAttributeCenterY
+                                                     relatedBy:NSLayoutRelationEqual
+                                                        toItem:self
+                                                     attribute:NSLayoutAttributeCenterY
+                                                    multiplier:1.0
+                                                      constant:0.0]];
+    
+    // leftArrow
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.leftArrow
+                                                     attribute:NSLayoutAttributeWidth
+                                                     relatedBy:NSLayoutRelationEqual
+                                                        toItem:nil
+                                                     attribute:NSLayoutAttributeNotAnAttribute
+                                                    multiplier:1.0
+                                                      constant:45]];
+    
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.leftArrow
+                                                     attribute:NSLayoutAttributeHeight
+                                                     relatedBy:NSLayoutRelationEqual
+                                                        toItem:nil
+                                                     attribute:NSLayoutAttributeNotAnAttribute
+                                                    multiplier:1.0
+                                                      constant:50]];
+    
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.leftArrow
+                                                     attribute:NSLayoutAttributeTrailing
+                                                     relatedBy:NSLayoutRelationEqual
+                                                        toItem:self
+                                                     attribute:NSLayoutAttributeLeading
+                                                    multiplier:1.0
+                                                      constant:28]];
+    
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.leftArrow
+                                                     attribute:NSLayoutAttributeCenterY
+                                                     relatedBy:NSLayoutRelationEqual
+                                                        toItem:self
+                                                     attribute:NSLayoutAttributeCenterY
+                                                    multiplier:1.0
+                                                      constant:0.0]];
 }
 @end

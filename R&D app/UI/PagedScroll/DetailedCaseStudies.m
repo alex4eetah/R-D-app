@@ -17,6 +17,7 @@
 @property (strong, nonatomic) CoreDataManager *manager;
 @property (strong, nonatomic) IBOutlet UIScrollView *scroll;
 @property (weak, nonatomic) IBOutlet UIPageControl *pageIndicator;
+@property(assign, nonatomic) BOOL isInLandscape;
 
 @end
 
@@ -28,7 +29,6 @@
     [self configureSelf];
     
     [self createScrollViewLayoutFromArray:self.caseStudies];
-    
 }
 
 - (void)configureSelf
@@ -41,6 +41,7 @@
     
     self.scroll.pagingEnabled = YES;
     self.pageIndicator.numberOfPages = self.caseStudies.count;
+    [self.pageIndicator addTarget:self action:@selector(PageControllDidChangePage:) forControlEvents:UIControlEventValueChanged];
 }
 
 - (void)createScrollViewLayoutFromArray:(NSArray *)arr
@@ -169,11 +170,6 @@
                                                              constant:0]];
 }
 
--(void)viewDidLayoutSubviews
-{
-
-}
-
 #pragma mark - ScrollView
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
@@ -185,6 +181,22 @@
         self.pageIndicator.currentPage = page;
         previousPage = page;
     }
+}
+
+- (void)PageControllDidChangePage:(UIPageControl *)sender {
+    CGFloat x = sender.currentPage * self.scroll.frame.size.width;
+    [self.scroll setContentOffset:CGPointMake(x, 0) animated:YES];
+}
+
+#pragma mark - Ipad rotating
+
+- (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator
+{
+    [super viewWillTransitionToSize:size withTransitionCoordinator:coordinator];
+    
+    self.isInLandscape = (size.width > size.height);
+    
+    
 }
 
 /*
