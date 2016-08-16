@@ -8,11 +8,14 @@
 
 #import "DetailedCaseStudies.h"
 #import "DetailedCaseStudyView.h"
+#import "CoreDataManager.h"
+#import "CaseStudy.h"
 
 @interface DetailedCaseStudies () <UIScrollViewDelegate>
 
+@property(strong, nonatomic) NSArray *caseStudies;
+@property (strong, nonatomic) CoreDataManager *manager;
 @property (strong, nonatomic) IBOutlet UIScrollView *scroll;
-@property (strong, nonatomic) UIView *containerView;
 
 @end
 
@@ -21,7 +24,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    NSArray *pics = [NSArray arrayWithObjects:
+    self.manager = [CoreDataManager sharedManager];
+    
+    self.caseStudies = [self.manager getArrayOfCaseStudies];
+   /* NSArray *pics = [NSArray arrayWithObjects:
                  @{
                    @"name":@"BioLock",
                    @"img":[UIImage imageNamed:@"group7.png"],
@@ -42,32 +48,28 @@
                    @"name":@"AlexaAAA",
                    @"img":[UIImage imageNamed:@"2016072854009.png"],
                    @"desc":@"VoiceMyBot"}, nil];
-    
-    
+    */
     self.scroll.delegate = self;
     self.scroll.scrollEnabled = YES;
     
-    self.containerView = [[UIView alloc] initWithFrame:CGRectZero];
+    [self createScrollViewLayoutFromArray:self.caseStudies];
     
+}
+
+-(void)createScrollViewLayoutFromArray:(NSArray *)arr
+{
+    if (!arr) {
+        return;
+    }
     
     NSMutableArray *viewsArr = [[NSMutableArray alloc] init];
     
-    DetailedCaseStudyView *viewToAdd = [[DetailedCaseStudyView alloc] initWithFrame:CGRectZero];
-    viewToAdd.translatesAutoresizingMaskIntoConstraints = NO;
-    [self.scroll addSubview:viewToAdd];
-    [viewsArr addObject:viewToAdd];
-    
-    DetailedCaseStudyView *viewToAdd1 = [[DetailedCaseStudyView alloc] initWithFrame:CGRectZero];
-    viewToAdd1.backgroundColor = [UIColor blackColor];
-    viewToAdd1.translatesAutoresizingMaskIntoConstraints = NO;
-    [self.scroll addSubview:viewToAdd1];
-    [viewsArr addObject:viewToAdd1];
-    
-    DetailedCaseStudyView *viewToAdd2 = [[DetailedCaseStudyView alloc] initWithFrame:CGRectZero];
-    viewToAdd2.backgroundColor = [UIColor redColor];
-    viewToAdd2.translatesAutoresizingMaskIntoConstraints = NO;
-    [self.scroll addSubview:viewToAdd2];
-    [viewsArr addObject:viewToAdd2];
+    for (CaseStudy *obj in arr) {
+        DetailedCaseStudyView *viewToAdd = [[DetailedCaseStudyView alloc] initWithCaseStudy:obj];
+        viewToAdd.translatesAutoresizingMaskIntoConstraints = NO;
+        [self.scroll addSubview:viewToAdd];
+        [viewsArr addObject:viewToAdd];
+    }
     
     [self.scroll addConstraint:[NSLayoutConstraint constraintWithItem:viewsArr.firstObject
                                                             attribute:NSLayoutAttributeWidth
@@ -103,6 +105,7 @@
     
     
     for (int i = 1; i < viewsArr.count - 1; i ++) {
+        
         [self.scroll addConstraint:[NSLayoutConstraint constraintWithItem:viewsArr[i]
                                                                 attribute:NSLayoutAttributeWidth
                                                                 relatedBy:NSLayoutRelationEqual
@@ -177,16 +180,11 @@
                                                             attribute:NSLayoutAttributeTop
                                                            multiplier:1.0
                                                              constant:0]];
-    
-    
-    
-    //self.scroll.contentSize = CGSizeMake(self.scroll.frame.size.width * 3, self.scroll.frame.size.height);
-    
 }
 
 -(void)viewDidLayoutSubviews
 {
-    self.scroll.contentSize = CGSizeMake(self.scroll.frame.size.width * 3, self.scroll.frame.size.height);
+
 }
 
 

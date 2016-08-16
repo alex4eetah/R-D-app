@@ -7,7 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E708391A1D62FD1C00E39743 /* SmartIdentityVerifImage.png in Resources */ = {isa = PBXBuildFile; fileRef = E70839191D62FD1C00E39743 /* SmartIdentityVerifImage.png */; };
+		E708391C1D62FD3B00E39743 /* VoiceMyBotImage.png in Resources */ = {isa = PBXBuildFile; fileRef = E708391B1D62FD3B00E39743 /* VoiceMyBotImage.png */; };
+		E708391E1D62FD5E00E39743 /* BaristaImage.png in Resources */ = {isa = PBXBuildFile; fileRef = E708391D1D62FD5E00E39743 /* BaristaImage.png */; };
 		E7D813611D5E005900A240D9 /* DetailedCaseStudies.m in Sources */ = {isa = PBXBuildFile; fileRef = E7D813601D5E005900A240D9 /* DetailedCaseStudies.m */; };
+		E7F48D351D61F964008F08C9 /* CaseStudy+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = E7F48D321D61F964008F08C9 /* CaseStudy+CoreDataProperties.m */; };
+		E7F48D361D61F964008F08C9 /* CaseStudy.m in Sources */ = {isa = PBXBuildFile; fileRef = E7F48D341D61F964008F08C9 /* CaseStudy.m */; };
+		E7F48D3A1D61FD47008F08C9 /* CoreDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E7F48D391D61FD47008F08C9 /* CoreDataManager.m */; };
 		FA3A38941D59F23C00DA056A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FA3A38931D59F23C00DA056A /* main.m */; };
 		FA3A38971D59F23C00DA056A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FA3A38961D59F23C00DA056A /* AppDelegate.m */; };
 		FA3A389A1D59F23C00DA056A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA3A38991D59F23C00DA056A /* ViewController.m */; };
@@ -32,9 +38,6 @@
 		FA4293391D5C6DA500AAADBC /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FA42932F1D5C6DA500AAADBC /* OpenSans-Regular.ttf */; };
 		FA42933A1D5C6DA500AAADBC /* OpenSans-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FA4293301D5C6DA500AAADBC /* OpenSans-Semibold.ttf */; };
 		FA42933B1D5C6DA500AAADBC /* OpenSans-SemiboldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FA4293311D5C6DA500AAADBC /* OpenSans-SemiboldItalic.ttf */; };
-		FA42933E1D5C7B6100AAADBC /* group7.png in Resources */ = {isa = PBXBuildFile; fileRef = FA42933D1D5C7B6100AAADBC /* group7.png */; };
-		FA4293401D5C7B6C00AAADBC /* 2016072854009.png in Resources */ = {isa = PBXBuildFile; fileRef = FA42933F1D5C7B6C00AAADBC /* 2016072854009.png */; };
-		FA4293421D5C7B7500AAADBC /* 2016072852631.png in Resources */ = {isa = PBXBuildFile; fileRef = FA4293411D5C7B7500AAADBC /* 2016072852631.png */; };
 		FA42934B1D5CAA9300AAADBC /* UINavigationBar+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = FA42934A1D5CAA9300AAADBC /* UINavigationBar+Helper.m */; };
 		FA42934E1D5CC6AE00AAADBC /* CaseStudiesFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = FA42934D1D5CC6AE00AAADBC /* CaseStudiesFlowLayout.m */; };
 		FA71F8A51D5A5F2D001AAF77 /* MuseoSansCyrl_2.otf in Resources */ = {isa = PBXBuildFile; fileRef = FA71F8A41D5A5F2D001AAF77 /* MuseoSansCyrl_2.otf */; };
@@ -62,8 +65,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E70839191D62FD1C00E39743 /* SmartIdentityVerifImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SmartIdentityVerifImage.png; sourceTree = "<group>"; };
+		E708391B1D62FD3B00E39743 /* VoiceMyBotImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = VoiceMyBotImage.png; sourceTree = "<group>"; };
+		E708391D1D62FD5E00E39743 /* BaristaImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BaristaImage.png; sourceTree = "<group>"; };
 		E7D8135F1D5E005900A240D9 /* DetailedCaseStudies.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DetailedCaseStudies.h; path = UI/PagedScroll/DetailedCaseStudies.h; sourceTree = "<group>"; };
 		E7D813601D5E005900A240D9 /* DetailedCaseStudies.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DetailedCaseStudies.m; path = UI/PagedScroll/DetailedCaseStudies.m; sourceTree = "<group>"; };
+		E7F48D311D61F964008F08C9 /* CaseStudy+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "CaseStudy+CoreDataProperties.h"; path = "Model/CaseStudy+CoreDataProperties.h"; sourceTree = "<group>"; };
+		E7F48D321D61F964008F08C9 /* CaseStudy+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "CaseStudy+CoreDataProperties.m"; path = "Model/CaseStudy+CoreDataProperties.m"; sourceTree = "<group>"; };
+		E7F48D331D61F964008F08C9 /* CaseStudy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CaseStudy.h; path = Model/CaseStudy.h; sourceTree = "<group>"; };
+		E7F48D341D61F964008F08C9 /* CaseStudy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CaseStudy.m; path = Model/CaseStudy.m; sourceTree = "<group>"; };
+		E7F48D381D61FD47008F08C9 /* CoreDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CoreDataManager.h; path = Model/CoreDataManager.h; sourceTree = "<group>"; };
+		E7F48D391D61FD47008F08C9 /* CoreDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CoreDataManager.m; path = Model/CoreDataManager.m; sourceTree = "<group>"; };
 		FA3A388F1D59F23C00DA056A /* R&D app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "R&D app.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA3A38931D59F23C00DA056A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		FA3A38951D59F23C00DA056A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -97,9 +109,6 @@
 		FA42932F1D5C6DA500AAADBC /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Regular.ttf"; sourceTree = "<group>"; };
 		FA4293301D5C6DA500AAADBC /* OpenSans-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Semibold.ttf"; sourceTree = "<group>"; };
 		FA4293311D5C6DA500AAADBC /* OpenSans-SemiboldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-SemiboldItalic.ttf"; sourceTree = "<group>"; };
-		FA42933D1D5C7B6100AAADBC /* group7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = group7.png; sourceTree = "<group>"; };
-		FA42933F1D5C7B6C00AAADBC /* 2016072854009.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2016072854009.png; sourceTree = "<group>"; };
-		FA4293411D5C7B7500AAADBC /* 2016072852631.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2016072852631.png; sourceTree = "<group>"; };
 		FA4293491D5CAA9300AAADBC /* UINavigationBar+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UINavigationBar+Helper.h"; path = "UI/UINavigationBar+Helper.h"; sourceTree = "<group>"; };
 		FA42934A1D5CAA9300AAADBC /* UINavigationBar+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UINavigationBar+Helper.m"; path = "UI/UINavigationBar+Helper.m"; sourceTree = "<group>"; };
 		FA42934C1D5CC6AE00AAADBC /* CaseStudiesFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CaseStudiesFlowLayout.h; path = UI/CollectionView/CaseStudiesFlowLayout.h; sourceTree = "<group>"; };
@@ -152,6 +161,20 @@
 			name = PagedScrollDetailedCaseStudy;
 			sourceTree = "<group>";
 		};
+		E7F48D371D61FD0F008F08C9 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				E7F48D311D61F964008F08C9 /* CaseStudy+CoreDataProperties.h */,
+				E7F48D321D61F964008F08C9 /* CaseStudy+CoreDataProperties.m */,
+				E7F48D331D61F964008F08C9 /* CaseStudy.h */,
+				E7F48D341D61F964008F08C9 /* CaseStudy.m */,
+				FA3A389E1D59F23C00DA056A /* R_D_app.xcdatamodeld */,
+				E7F48D381D61FD47008F08C9 /* CoreDataManager.h */,
+				E7F48D391D61FD47008F08C9 /* CoreDataManager.m */,
+			);
+			name = CoreData;
+			sourceTree = "<group>";
+		};
 		FA3A38861D59F23B00DA056A = {
 			isa = PBXGroup;
 			children = (
@@ -188,9 +211,9 @@
 		FA3A38921D59F23C00DA056A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				FA42933D1D5C7B6100AAADBC /* group7.png */,
-				FA4293411D5C7B7500AAADBC /* 2016072852631.png */,
-				FA42933F1D5C7B6C00AAADBC /* 2016072854009.png */,
+				E70839191D62FD1C00E39743 /* SmartIdentityVerifImage.png */,
+				E708391B1D62FD3B00E39743 /* VoiceMyBotImage.png */,
+				E708391D1D62FD5E00E39743 /* BaristaImage.png */,
 				FA3A38A61D59F23C00DA056A /* Info.plist */,
 				FA3A38931D59F23C00DA056A /* main.m */,
 			);
@@ -283,9 +306,9 @@
 		FA42933C1D5C79B300AAADBC /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				E7F48D371D61FD0F008F08C9 /* CoreData */,
 				FA3A38951D59F23C00DA056A /* AppDelegate.h */,
 				FA3A38961D59F23C00DA056A /* AppDelegate.m */,
-				FA3A389E1D59F23C00DA056A /* R_D_app.xcdatamodeld */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -409,23 +432,23 @@
 				FA3A38D51D59FF5300DA056A /* RobotoSlab-Regular.ttf in Resources */,
 				FA4293341D5C6DA500AAADBC /* OpenSans-ExtraBold.ttf in Resources */,
 				FA4293371D5C6DA500AAADBC /* OpenSans-Light.ttf in Resources */,
+				E708391A1D62FD1C00E39743 /* SmartIdentityVerifImage.png in Resources */,
 				FA3A38D31D59FF5300DA056A /* RobotoSlab-Bold.ttf in Resources */,
 				FA3A38D61D59FF5300DA056A /* RobotoSlab-Thin.ttf in Resources */,
 				FA4293361D5C6DA500AAADBC /* OpenSans-Italic.ttf in Resources */,
 				FA4293391D5C6DA500AAADBC /* OpenSans-Regular.ttf in Resources */,
 				FA71F8A51D5A5F2D001AAF77 /* MuseoSansCyrl_2.otf in Resources */,
-				FA42933E1D5C7B6100AAADBC /* group7.png in Resources */,
 				FA4293331D5C6DA500AAADBC /* OpenSans-BoldItalic.ttf in Resources */,
+				E708391E1D62FD5E00E39743 /* BaristaImage.png in Resources */,
 				FA3A38D41D59FF5300DA056A /* RobotoSlab-Light.ttf in Resources */,
-				FA4293421D5C7B7500AAADBC /* 2016072852631.png in Resources */,
 				FA42933B1D5C6DA500AAADBC /* OpenSans-SemiboldItalic.ttf in Resources */,
 				FA4293351D5C6DA500AAADBC /* OpenSans-ExtraBoldItalic.ttf in Resources */,
 				FA4293321D5C6DA500AAADBC /* OpenSans-Bold.ttf in Resources */,
 				FA3A38A51D59F23C00DA056A /* LaunchScreen.storyboard in Resources */,
 				FA3A38A21D59F23C00DA056A /* Assets.xcassets in Resources */,
-				FA4293401D5C7B6C00AAADBC /* 2016072854009.png in Resources */,
 				FA3A389D1D59F23C00DA056A /* Main.storyboard in Resources */,
 				FA4293381D5C6DA500AAADBC /* OpenSans-LightItalic.ttf in Resources */,
+				E708391C1D62FD3B00E39743 /* VoiceMyBotImage.png in Resources */,
 				FA42933A1D5C6DA500AAADBC /* OpenSans-Semibold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -452,15 +475,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				FAC7DAA61D5B667B0043B4DF /* CaseStudiesCollectionViewController.m in Sources */,
+				E7F48D361D61F964008F08C9 /* CaseStudy.m in Sources */,
 				FA42934B1D5CAA9300AAADBC /* UINavigationBar+Helper.m in Sources */,
 				FA3A389A1D59F23C00DA056A /* ViewController.m in Sources */,
 				FAC7DA9E1D5B2C340043B4DF /* UiUtil.m in Sources */,
 				FA3A38A01D59F23C00DA056A /* R_D_app.xcdatamodeld in Sources */,
 				FA3A38971D59F23C00DA056A /* AppDelegate.m in Sources */,
 				FA3A38941D59F23C00DA056A /* main.m in Sources */,
+				E7F48D351D61F964008F08C9 /* CaseStudy+CoreDataProperties.m in Sources */,
 				FA3A38CB1D59F8E400DA056A /* LoginViewController.m in Sources */,
 				E7D813611D5E005900A240D9 /* DetailedCaseStudies.m in Sources */,
 				FAC7DAA31D5B66250043B4DF /* CaseStudiesCell.m in Sources */,
+				E7F48D3A1D61FD47008F08C9 /* CoreDataManager.m in Sources */,
 				FABE10B01D5F33810096F965 /* DetailedCaseStudyView.m in Sources */,
 				FA42934E1D5CC6AE00AAADBC /* CaseStudiesFlowLayout.m in Sources */,
 			);

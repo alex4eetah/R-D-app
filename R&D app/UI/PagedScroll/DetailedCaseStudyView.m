@@ -7,6 +7,7 @@
 //
 
 #import "DetailedCaseStudyView.h"
+#import "CaseStudy.h"
 
 @interface DetailedCaseStudyView ()
 
@@ -20,33 +21,33 @@
 
 @implementation DetailedCaseStudyView
 
-- (id)initWithFrame:(CGRect)frame {
+- (id)initWithCaseStudy:(CaseStudy *)caseStudy {
     
     self.hasSetupConstraints = NO;
     
-    self = [super initWithFrame:frame];
+    self = [super initWithFrame:CGRectZero];
     if (self) {
         self.backgroundColor = [UIColor greenColor];
-        [self addSubviews];
+        [self addSubviewsFromCS:caseStudy];
         
         [self setNeedsUpdateConstraints];
     }
     return self;
 }
 
-- (void)addSubviews {
+- (void)addSubviewsFromCS:(CaseStudy *) caseStudy {
     self.photoImageView = [[UIImageView alloc] initWithFrame:CGRectZero];
-    self.photoImageView.image = [UIImage imageNamed:@"group7"];
+    self.photoImageView.image = [UIImage imageWithData:caseStudy.image];
     self.photoImageView.translatesAutoresizingMaskIntoConstraints = NO;
     [self addSubview:self.photoImageView];
     
     self.name = [[UILabel alloc] initWithFrame:CGRectZero];
-    self.name.text = @"NAME";
+    self.name.text = caseStudy.name;
     self.name.translatesAutoresizingMaskIntoConstraints = NO;
     [self addSubview:self.name];
     
     self.fullDescription = [[UILabel alloc] initWithFrame:CGRectZero];
-    self.fullDescription.text = @"alalalalalalalalalallalalalalalalalalalalalalalalalalaahhahahahahahahahaaalla";
+    self.fullDescription.text = caseStudy.fullDesc;
     self.fullDescription.translatesAutoresizingMaskIntoConstraints = NO;
     [self addSubview:self.fullDescription];
     

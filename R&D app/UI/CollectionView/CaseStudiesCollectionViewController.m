@@ -9,11 +9,13 @@
 #import "CaseStudiesCollectionViewController.h"
 #import "CaseStudiesCell.h"
 #import "UINavigationBar+Helper.h"
+#import "CoreDataManager.h"
+#import "CaseStudy.h"
 
 @interface CaseStudiesCollectionViewController()
 
-@property(strong, nonatomic) NSArray *pics;
-
+@property (strong, nonatomic) CoreDataManager *manager;
+@property(strong, nonatomic) NSArray *caseStudies;
 @property (weak, nonatomic) IBOutlet UIImageView *backGroundImageView;
 @property(assign, nonatomic) BOOL isInLandscape;
 
@@ -24,33 +26,55 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.manager = [CoreDataManager sharedManager];
+    
+    //TEST DATA
+    /*[self.manager fakeFromArray:[NSArray arrayWithObjects:
+                                 @{
+                                   @"name":@"BioLock",
+                                   @"image":[UIImage imageNamed:@"SmartIdentityVerifImage.png"],
+                                   @"shortDesc":@"Smart Identity Verification",
+                                   @"fullDesc":@"Smart Identity VerificationSmart Identity VerificationSmart Identity VerificationSmart Identity VerificationSmart Identity VerificationSmart Identity VerificationSmart Identity Verification",
+                                   @"link":@"google.com"},
+                                 @{
+                                   @"name":@"Barista",
+                                   @"img":[UIImage imageNamed:@"BaristaImage.png"],
+                                   @"shortDesc":@"Smart Coffee Machine",
+                                   @"fullDesc":@"Smart Coffee MachineSmart Coffee MachineSmart Coffee MachineSmart Coffee MachineSmart Coffee MachineSmart Coffee MachineSmart Coffee MachineSmart Coffee Machine",
+                                   @"link":@"google.com"},
+                                 @{
+                                   @"name":@"Alexa",
+                                   @"img":[UIImage imageNamed:@"VoiceMyBotImage.png"],
+                                   @"shortDesc":@"VoiceMyBot",
+                                   @"fullDesc":@"SVoiceMyBotVoiceMyBotVoiceMyBotVoiceMyBotVoiceMyBot",
+                                   @"link":@"google.com"},
+                                 @{
+                                   @"name":@"LAalaLA",
+                                   @"img":[UIImage imageNamed:@"VoiceMyBotImage.png"],
+                                   @"shortDesc":@"VoiceLALA",
+                                   @"fullDesc":@"SLALALALALLAMyBotVoiceMyBotVoiceMyBot",
+                                   @"link":@"google.com"},
+                                 @{
+                                   @"name":@"BaristaLALA",
+                                   @"img":[UIImage imageNamed:@"BaristaImage.png"],
+                                   @"shortDesc":@"Smart Coffee Machine",
+                                   @"fullDesc":@"Smart Coffee MachineSmart Coffee MachineSmart Coffee MachineSmart Coffee MachineSmart Coffee MachineSmart Coffee MachineSmart Coffee MachineSmart Coffee Machine",
+                                   @"link":@"google.com"},
+                                 @{
+                                   @"name":@"BioLockALAL",
+                                   @"image":[UIImage imageNamed:@"SmartIdentityVerifImage.png"],
+                                   @"shortDesc":@"Smart Identity Verification",
+                                   @"fullDesc":@"Smart Identity VerificationSmart Identity VerificationSmart Identity VerificationSmart Identity VerificationSmart Identity VerificationSmart Identity VerificationSmart Identity Verification",
+                                   @"link":@"google.com"}, nil]];
+    */
+ 
+    self.caseStudies = [self.manager getArrayOfCaseStudies];
+    
     self.isInLandscape = (self.view.frame.size.width > self.view.frame.size.height);
     
     [self configureBGImage];
 
     [self configureNavigationBar];
-
-    self.pics = [NSArray arrayWithObjects:
-  @{
-    @"name":@"BioLock",
-    @"img":[UIImage imageNamed:@"group7.png"],
-    @"desc":@"Smart Identity Verification"},
-  @{
-    @"name":@"Barista",
-    @"img":[UIImage imageNamed:@"2016072852631.png"],
-    @"desc":@"Smart Coffee Machine"},
-  @{
-    @"name":@"Alexa",
-    @"img":[UIImage imageNamed:@"2016072854009.png"],
-    @"desc":@"VoiceMyBot"},
-                 @{
-                   @"name":@"Batista",
-                   @"img":[UIImage imageNamed:@"2016072852631.png"],
-                   @"desc":@"Smart Coffee Machine"},
-                 @{
-                   @"name":@"AlexaAAA",
-                   @"img":[UIImage imageNamed:@"2016072854009.png"],
-                   @"desc":@"VoiceMyBot"}, nil];
 }
 
 - (void)configureBGImage
@@ -169,16 +193,17 @@
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return 5;
+    return self.caseStudies.count;
 }
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     CaseStudiesCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"CaseStudyCell"
                                                                       forIndexPath:indexPath];
-    cell.image.image = (self.pics[indexPath.row])[@"img"];
-    cell.name.text = (self.pics[indexPath.row])[@"name"];
-    cell.shortDescription.text = (self.pics[indexPath.row])[@"desc"];
+    CaseStudy *object = (CaseStudy *)self.caseStudies[indexPath.row];
+    cell.image.image = [UIImage imageWithData:object.image];
+    cell.name.text = object.name;
+    cell.shortDescription.text = object.shortDesc;
     
     return cell;
 }
@@ -224,6 +249,10 @@
 {
         return CGSizeMake(self.view.frame.size.width, 65);
 }
+
+#pragma mark - Fetched results controller
+
+
 
 /*- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionView *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
 {

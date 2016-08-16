@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+@class CaseStudy;
 
 @interface DetailedCaseStudyView : UIView
+
+- (id)initWithCaseStudy:(CaseStudy *)caseStudy;
 
 @end
