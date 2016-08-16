@@ -11,6 +11,7 @@
 
 @interface DetailedCaseStudyView ()
 
+@property (strong, nonatomic) UIView *border;
 @property (strong, nonatomic) UIImageView *photoImageView;
 @property (strong, nonatomic) UILabel *name;
 @property (strong, nonatomic) UILabel *fullDescription;
@@ -27,15 +28,19 @@
     
     self = [super initWithFrame:CGRectZero];
     if (self) {
-        self.backgroundColor = [UIColor greenColor];
         [self addSubviewsFromCS:caseStudy];
-        
         [self setNeedsUpdateConstraints];
     }
     return self;
 }
 
 - (void)addSubviewsFromCS:(CaseStudy *) caseStudy {
+    self.backgroundColor = [UIColor colorWithRed:46/255.0 green:75/255.0 blue:217/255.0 alpha:1];
+    self.border = [[UIView alloc] initWithFrame:CGRectZero];
+    self.border.translatesAutoresizingMaskIntoConstraints = NO;
+    self.border.backgroundColor = [UIColor colorWithRed:23/255.0 green:52/255.0 blue:193/255.0 alpha:1];
+    [self addSubview:self.border];
+    
     self.photoImageView = [[UIImageView alloc] initWithFrame:CGRectZero];
     self.photoImageView.image = [UIImage imageWithData:caseStudy.image];
     self.photoImageView.translatesAutoresizingMaskIntoConstraints = NO;
@@ -43,17 +48,31 @@
     
     self.name = [[UILabel alloc] initWithFrame:CGRectZero];
     self.name.text = caseStudy.name;
+    [self.name setFont:[UIFont fontWithName:@"RobotoSlab-Bold" size:32]];
+    [self.name setTextColor:[UIColor whiteColor]];
     self.name.translatesAutoresizingMaskIntoConstraints = NO;
     [self addSubview:self.name];
     
     self.fullDescription = [[UILabel alloc] initWithFrame:CGRectZero];
     self.fullDescription.text = caseStudy.fullDesc;
+    [self.fullDescription setFont:[UIFont fontWithName:@"OpenSans-Regular" size:14]];
+    [self.fullDescription setTextColor:[UIColor whiteColor]];
+    self.fullDescription.lineBreakMode = NSLineBreakByWordWrapping;
+    self.fullDescription.numberOfLines = 0;
+    self.fullDescription.textAlignment = NSTextAlignmentLeft;
+//    [self.fullDescription setContentHuggingPriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisVertical];
+//    [self.fullDescription setContentCompressionResistancePriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisVertical];
+    [self.fullDescription sizeToFit];
     self.fullDescription.translatesAutoresizingMaskIntoConstraints = NO;
     [self addSubview:self.fullDescription];
     
     self.viewPageButton = [[UIButton alloc] initWithFrame:CGRectZero];
-    self.viewPageButton.titleLabel.text = @"GO";
-    self.viewPageButton.backgroundColor = [UIColor redColor];
+    [self.viewPageButton setTitle:@"View" forState:UIControlStateNormal];
+    [self.viewPageButton.titleLabel setFont:[UIFont fontWithName:@"MuseoSansCyrl-700" size:16]];
+    [self.viewPageButton.titleLabel setTextColor:[UIColor whiteColor]];
+    self.viewPageButton.layer.cornerRadius = 3;
+    
+    self.viewPageButton.backgroundColor = [UIColor colorWithRed:248/255.0 green:84/255.0 blue:81/255.0 alpha:1];
     self.viewPageButton.translatesAutoresizingMaskIntoConstraints = NO;
     [self addSubview:self.viewPageButton];
     
@@ -70,6 +89,39 @@
 }
 
 - (void)setupConstraints {
+    
+    // border
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.border
+                                                     attribute:NSLayoutAttributeWidth
+                                                     relatedBy:NSLayoutRelationEqual
+                                                        toItem:nil
+                                                     attribute:NSLayoutAttributeNotAnAttribute
+                                                    multiplier:1.0
+                                                      constant:656]];
+    
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.border
+                                                     attribute:NSLayoutAttributeHeight
+                                                     relatedBy:NSLayoutRelationEqual
+                                                        toItem:nil
+                                                     attribute:NSLayoutAttributeNotAnAttribute
+                                                    multiplier:1.0
+                                                      constant:388]];
+    
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.border
+                                                     attribute:NSLayoutAttributeLeading
+                                                     relatedBy:NSLayoutRelationEqual
+                                                        toItem:self
+                                                     attribute:NSLayoutAttributeLeading
+                                                    multiplier:1.0
+                                                      constant:2]];
+    
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.border
+                                                     attribute:NSLayoutAttributeTop
+                                                     relatedBy:NSLayoutRelationEqual
+                                                        toItem:self
+                                                     attribute:NSLayoutAttributeTop
+                                                    multiplier:1.0
+                                                      constant:2]];
     
     // photoImageView
     [self addConstraint:[NSLayoutConstraint constraintWithItem:self.photoImageView
@@ -157,7 +209,7 @@
                                                      attribute:NSLayoutAttributeTop
                                                      relatedBy:NSLayoutRelationEqual
                                                         toItem:self.name
-                                                     attribute:NSLayoutAttributeTop
+                                                     attribute:NSLayoutAttributeBottom
                                                     multiplier:1.0
                                                       constant:11]];
     

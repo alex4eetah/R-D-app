@@ -26,7 +26,7 @@
 {
     for (NSDictionary *dict in arr) {
         [self saveCaseStudyWithName:dict[@"name"]
-                               Link:dict[@"name"]
+                               Link:dict[@"link"]
                    ShortDeskription:dict[@"shortDesc"]
                         Description:dict[@"fullDesc"]
                               Image:dict[@"image"]
@@ -59,7 +59,7 @@
     coreDataInstance.link = link;
     coreDataInstance.shortDesc = shortDesc;
     coreDataInstance.fullDesc = fullDesc;
-    coreDataInstance.image = UIImagePNGRepresentation(image);
+    coreDataInstance.image = UIImageJPEGRepresentation(image,1);
     coreDataInstance.cache = cache;
     if (save) {
         [self.context save:nil];

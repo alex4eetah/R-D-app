@@ -3,12 +3,12 @@
     <entity name="CaseStudy" representedClassName="CaseStudy" syncable="YES">
         <attribute name="cache" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="fullDesc" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="image" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="image" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
         <attribute name="link" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="shortDesc" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="CaseStudy" positionX="-63" positionY="-18" width="128" height="133"/>
+        <element name="CaseStudy" positionX="-63" positionY="-18" width="128" height="135"/>
     </elements>
 </model>

@@ -16,6 +16,7 @@
 @property(strong, nonatomic) NSArray *caseStudies;
 @property (strong, nonatomic) CoreDataManager *manager;
 @property (strong, nonatomic) IBOutlet UIScrollView *scroll;
+@property (weak, nonatomic) IBOutlet UIPageControl *pageIndicator;
 
 @end
 
@@ -24,39 +25,25 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.manager = [CoreDataManager sharedManager];
-    
-    self.caseStudies = [self.manager getArrayOfCaseStudies];
-   /* NSArray *pics = [NSArray arrayWithObjects:
-                 @{
-                   @"name":@"BioLock",
-                   @"img":[UIImage imageNamed:@"group7.png"],
-                   @"desc":@"Smart Identity Verification"},
-                 @{
-                   @"name":@"Barista",
-                   @"img":[UIImage imageNamed:@"2016072852631.png"],
-                   @"desc":@"Smart Coffee Machine"},
-                 @{
-                   @"name":@"Alexa",
-                   @"img":[UIImage imageNamed:@"2016072854009.png"],
-                   @"desc":@"VoiceMyBot"},
-                 @{
-                   @"name":@"Batista",
-                   @"img":[UIImage imageNamed:@"2016072852631.png"],
-                   @"desc":@"Smart Coffee Machine"},
-                 @{
-                   @"name":@"AlexaAAA",
-                   @"img":[UIImage imageNamed:@"2016072854009.png"],
-                   @"desc":@"VoiceMyBot"}, nil];
-    */
-    self.scroll.delegate = self;
-    self.scroll.scrollEnabled = YES;
+    [self configureSelf];
     
     [self createScrollViewLayoutFromArray:self.caseStudies];
     
 }
 
--(void)createScrollViewLayoutFromArray:(NSArray *)arr
+- (void)configureSelf
+{
+    self.manager = [CoreDataManager sharedManager];
+    self.caseStudies = [self.manager getArrayOfCaseStudies];
+    
+    self.scroll.delegate = self;
+    self.scroll.scrollEnabled = YES;
+    
+    self.scroll.pagingEnabled = YES;
+    self.pageIndicator.numberOfPages = self.caseStudies.count;
+}
+
+- (void)createScrollViewLayoutFromArray:(NSArray *)arr
 {
     if (!arr) {
         return;
@@ -187,6 +174,18 @@
 
 }
 
+#pragma mark - ScrollView
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    static NSInteger previousPage = 0;
+    CGFloat pageWidth = scrollView.frame.size.width;
+    float fractionalPage = scrollView.contentOffset.x / pageWidth;
+    NSInteger page = lround(fractionalPage);
+    if (previousPage != page) {
+        self.pageIndicator.currentPage = page;
+        previousPage = page;
+    }
+}
 
 /*
 #pragma mark - Navigation
