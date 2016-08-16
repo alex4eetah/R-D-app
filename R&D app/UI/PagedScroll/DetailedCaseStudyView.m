@@ -270,7 +270,7 @@
                                                         toItem:nil
                                                      attribute:NSLayoutAttributeNotAnAttribute
                                                     multiplier:1.0
-                                                      constant:45]];
+                                                      constant:47]];
     
     [self addConstraint:[NSLayoutConstraint constraintWithItem:self.rightArrow
                                                      attribute:NSLayoutAttributeHeight
@@ -303,7 +303,7 @@
                                                         toItem:nil
                                                      attribute:NSLayoutAttributeNotAnAttribute
                                                     multiplier:1.0
-                                                      constant:45]];
+                                                      constant:47]];
     
     [self addConstraint:[NSLayoutConstraint constraintWithItem:self.leftArrow
                                                      attribute:NSLayoutAttributeHeight

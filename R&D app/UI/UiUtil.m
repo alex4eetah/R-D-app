@@ -9,8 +9,7 @@
 #import "Protocols.h"
 #import "UiUtil.h"
 
-#define CONSTRAINT_VALID_PRIORITY 999
-#define CONSTRAINT_INVALID_PRIORITY 1
+
 
 @implementation UiUtil
 

@@ -9,6 +9,9 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
+#define CONSTRAINT_VALID_PRIORITY 999
+#define CONSTRAINT_INVALID_PRIORITY 1
+
 typedef enum {
     Portrait,
     Landscape

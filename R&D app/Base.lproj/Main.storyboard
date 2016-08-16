@@ -183,8 +183,7 @@
                                         <exclude reference="U2a-le-rSc"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular-widthClass=regular" misplaced="YES">
-                                    <rect key="frame" x="125" y="601" width="564" height="94"/>
+                                <variation key="heightClass=regular-widthClass=regular">
                                     <mask key="constraints">
                                         <include reference="Hrf-Qz-h87"/>
                                         <include reference="LgQ-9p-6lL"/>
@@ -941,19 +940,29 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="detailedCaseStudyBG" translatesAutoresizingMaskIntoConstraints="NO" id="B0m-kO-O2D">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                             </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="softserveLogo" translatesAutoresizingMaskIntoConstraints="NO" id="5L0-fw-WVa">
+                                <rect key="frame" x="256" y="536" width="103" height="18"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" priority="999" constant="18" id="3KA-el-6hr"/>
+                                    <constraint firstAttribute="width" priority="999" constant="103" id="6mf-bt-Xej"/>
+                                </constraints>
+                            </imageView>
                             <scrollView autoresizesSubviews="NO" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ykW-90-GqP">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="392" id="NlD-tG-aFR"/>
+                                    <constraint firstAttribute="height" priority="999" constant="392" id="NlD-tG-aFR"/>
+                                    <constraint firstAttribute="height" priority="1" constant="370" id="sGq-uU-rc7"/>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="NlD-tG-aFR"/>
+                                        <exclude reference="sGq-uU-rc7"/>
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=regular">
                                     <mask key="constraints">
                                         <include reference="NlD-tG-aFR"/>
+                                        <include reference="sGq-uU-rc7"/>
                                     </mask>
                                 </variation>
                             </scrollView>
@@ -961,44 +970,32 @@
                                 <rect key="frame" x="-19" y="-18" width="39" height="37"/>
                                 <color key="pageIndicatorTintColor" red="0.035294117647058823" green="0.11372549019607843" blue="0.37647058823529411" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="currentPageIndicatorTintColor" red="0.25882352939999997" green="0.3803921569" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
-                                <variation key="heightClass=regular-widthClass=regular" misplaced="YES">
-                                    <rect key="frame" x="381" y="538" width="39" height="37"/>
-                                </variation>
                             </pageControl>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="softserveLogo" translatesAutoresizingMaskIntoConstraints="NO" id="5L0-fw-WVa">
-                                <rect key="frame" x="256" y="536" width="103" height="18"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" priority="999" constant="18" id="3KA-el-6hr"/>
-                                    <constraint firstAttribute="width" priority="999" constant="103" id="6mf-bt-Xej"/>
-                                </constraints>
-                                <variation key="heightClass=regular-widthClass=regular" misplaced="YES">
-                                    <rect key="frame" x="349" y="717" width="103" height="18"/>
-                                </variation>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="bottom" secondItem="5L0-fw-WVa" secondAttribute="bottom" priority="1" constant="30" id="BWd-J6-ch0"/>
                             <constraint firstItem="B0m-kO-O2D" firstAttribute="leading" secondItem="UAx-U6-uk6" secondAttribute="leading" id="Io1-Hi-GbV"/>
                             <constraint firstAttribute="trailing" secondItem="ykW-90-GqP" secondAttribute="trailing" id="Ldd-A8-rjS"/>
                             <constraint firstItem="5L0-fw-WVa" firstAttribute="centerX" secondItem="UAx-U6-uk6" secondAttribute="centerX" id="SO4-ub-CcK"/>
                             <constraint firstItem="vQu-uc-f2K" firstAttribute="top" secondItem="B0m-kO-O2D" secondAttribute="bottom" id="SaY-L6-t7Z"/>
                             <constraint firstItem="B0m-kO-O2D" firstAttribute="top" secondItem="pMy-hX-b54" secondAttribute="bottom" id="TB5-4N-n1J"/>
-                            <constraint firstAttribute="bottom" secondItem="5L0-fw-WVa" secondAttribute="bottom" constant="41" id="XVr-c4-4tU"/>
+                            <constraint firstAttribute="bottom" secondItem="5L0-fw-WVa" secondAttribute="bottom" priority="999" constant="41" id="XVr-c4-4tU"/>
+                            <constraint firstItem="rHg-Fy-ulb" firstAttribute="top" secondItem="ykW-90-GqP" secondAttribute="bottom" priority="1" constant="36" id="b41-xY-B30"/>
                             <constraint firstItem="ykW-90-GqP" firstAttribute="top" secondItem="pMy-hX-b54" secondAttribute="bottom" constant="77" id="eTz-SX-Sme">
                                 <variation key="heightClass=regular-widthClass=regular" constant="109"/>
                             </constraint>
                             <constraint firstItem="ykW-90-GqP" firstAttribute="leading" secondItem="UAx-U6-uk6" secondAttribute="leading" id="fPC-9a-Odw"/>
-                            <constraint firstAttribute="bottom" secondItem="ykW-90-GqP" secondAttribute="bottom" constant="459" id="gBb-dI-PaL"/>
-                            <constraint firstItem="rHg-Fy-ulb" firstAttribute="top" secondItem="ykW-90-GqP" secondAttribute="bottom" constant="48" id="gYg-qa-Ex6"/>
+                            <constraint firstItem="rHg-Fy-ulb" firstAttribute="top" secondItem="ykW-90-GqP" secondAttribute="bottom" priority="999" constant="48" id="gYg-qa-Ex6"/>
                             <constraint firstItem="rHg-Fy-ulb" firstAttribute="centerX" secondItem="UAx-U6-uk6" secondAttribute="centerX" id="s4M-vc-59v"/>
                             <constraint firstAttribute="trailing" secondItem="B0m-kO-O2D" secondAttribute="trailing" id="yOb-mq-1Pm"/>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="B0m-kO-O2D"/>
+                                <exclude reference="5L0-fw-WVa"/>
                                 <exclude reference="ykW-90-GqP"/>
                                 <exclude reference="rHg-Fy-ulb"/>
-                                <exclude reference="5L0-fw-WVa"/>
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="Io1-Hi-GbV"/>
@@ -1007,9 +1004,10 @@
                                 <exclude reference="Ldd-A8-rjS"/>
                                 <exclude reference="eTz-SX-Sme"/>
                                 <exclude reference="fPC-9a-Odw"/>
-                                <exclude reference="gBb-dI-PaL"/>
+                                <exclude reference="b41-xY-B30"/>
                                 <exclude reference="gYg-qa-Ex6"/>
                                 <exclude reference="s4M-vc-59v"/>
+                                <exclude reference="BWd-J6-ch0"/>
                                 <exclude reference="SO4-ub-CcK"/>
                                 <exclude reference="XVr-c4-4tU"/>
                                 <exclude reference="SaY-L6-t7Z"/>
@@ -1018,9 +1016,9 @@
                         <variation key="heightClass=regular-widthClass=regular">
                             <mask key="subviews">
                                 <include reference="B0m-kO-O2D"/>
+                                <include reference="5L0-fw-WVa"/>
                                 <include reference="ykW-90-GqP"/>
                                 <include reference="rHg-Fy-ulb"/>
-                                <include reference="5L0-fw-WVa"/>
                             </mask>
                             <mask key="constraints">
                                 <include reference="Io1-Hi-GbV"/>
@@ -1029,9 +1027,10 @@
                                 <include reference="Ldd-A8-rjS"/>
                                 <include reference="eTz-SX-Sme"/>
                                 <include reference="fPC-9a-Odw"/>
-                                <exclude reference="gBb-dI-PaL"/>
+                                <include reference="b41-xY-B30"/>
                                 <include reference="gYg-qa-Ex6"/>
                                 <include reference="s4M-vc-59v"/>
+                                <include reference="BWd-J6-ch0"/>
                                 <include reference="SO4-ub-CcK"/>
                                 <include reference="XVr-c4-4tU"/>
                                 <include reference="SaY-L6-t7Z"/>
@@ -1039,8 +1038,15 @@
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="backgroundImageView" destination="B0m-kO-O2D" id="vdE-Oz-0Bi"/>
                         <outlet property="pageIndicator" destination="rHg-Fy-ulb" id="gnm-VL-qQt"/>
                         <outlet property="scroll" destination="ykW-90-GqP" id="Jou-DE-bYI"/>
+                        <outletCollection property="landscapeIBConstraints" destination="b41-xY-B30" id="y2Z-5X-qzh"/>
+                        <outletCollection property="portraitIBConstraints" destination="gYg-qa-Ex6" id="FAP-5T-t8Y"/>
+                        <outletCollection property="portraitIBConstraints" destination="NlD-tG-aFR" id="cNp-p3-qmc"/>
+                        <outletCollection property="landscapeIBConstraints" destination="sGq-uU-rc7" id="vYc-q0-ZEN"/>
+                        <outletCollection property="portraitIBConstraints" destination="XVr-c4-4tU" id="VR4-hz-2O2"/>
+                        <outletCollection property="landscapeIBConstraints" destination="BWd-J6-ch0" id="KS8-IL-zro"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mxj-fr-MeQ" userLabel="First Responder" sceneMemberID="firstResponder"/>

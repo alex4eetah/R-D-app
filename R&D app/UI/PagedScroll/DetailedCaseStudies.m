@@ -10,14 +10,23 @@
 #import "DetailedCaseStudyView.h"
 #import "CoreDataManager.h"
 #import "CaseStudy.h"
+#import "UiUtil.h"
 
 @interface DetailedCaseStudies () <UIScrollViewDelegate>
 
+@property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
 @property(strong, nonatomic) NSArray *caseStudies;
 @property (strong, nonatomic) CoreDataManager *manager;
 @property (strong, nonatomic) IBOutlet UIScrollView *scroll;
 @property (weak, nonatomic) IBOutlet UIPageControl *pageIndicator;
-@property(assign, nonatomic) BOOL isInLandscape;
+
+@property (strong, nonatomic) IBOutletCollection(NSLayoutConstraint) NSArray *portraitIBConstraints;
+@property (strong, nonatomic) IBOutletCollection(NSLayoutConstraint) NSArray *landscapeIBConstraints;
+
+@property (assign, nonatomic) BOOL isInLandscape;
+@property (strong, nonatomic) UiUtil *animator;
+@property (strong, nonatomic) NSMutableArray *potraitConstraints;
+@property (strong, nonatomic) NSMutableArray *landscapeConstraints;
 
 @end
 
@@ -28,7 +37,7 @@
     
     [self configureSelf];
     
-    [self createScrollViewLayoutFromArray:self.caseStudies];
+    [self configureBGImage];
 }
 
 - (void)configureSelf
@@ -42,6 +51,14 @@
     self.scroll.pagingEnabled = YES;
     self.pageIndicator.numberOfPages = self.caseStudies.count;
     [self.pageIndicator addTarget:self action:@selector(PageControllDidChangePage:) forControlEvents:UIControlEventValueChanged];
+    
+    self.potraitConstraints = [[NSMutableArray alloc] init];
+    self.landscapeConstraints = [[NSMutableArray alloc] init];
+    
+    self.animator = [UiUtil sharedUtil];
+    self.isInLandscape = (self.view.frame.size.width > self.view.frame.size.height);
+    
+    [self createScrollViewLayoutFromArray:self.caseStudies];
 }
 
 - (void)createScrollViewLayoutFromArray:(NSArray *)arr
@@ -59,7 +76,14 @@
         [viewsArr addObject:viewToAdd];
     }
     
-    [self.scroll addConstraint:[NSLayoutConstraint constraintWithItem:viewsArr.firstObject
+/*
+ *      Constraints:
+ *               Portrait ---
+ *           Landscape ---
+ *               Portrait ---
+ *           landscape ---
+ */
+    [self.potraitConstraints addObject:[NSLayoutConstraint constraintWithItem:viewsArr.firstObject
                                                             attribute:NSLayoutAttributeWidth
                                                             relatedBy:NSLayoutRelationEqual
                                                                toItem:nil
@@ -67,7 +91,15 @@
                                                            multiplier:1.0
                                                              constant:660]];
     
-    [self.scroll addConstraint:[NSLayoutConstraint constraintWithItem:viewsArr.firstObject
+    [self.landscapeConstraints addObject:[NSLayoutConstraint constraintWithItem:viewsArr.firstObject
+                                                                    attribute:NSLayoutAttributeWidth
+                                                                    relatedBy:NSLayoutRelationEqual
+                                                                       toItem:nil
+                                                                    attribute:NSLayoutAttributeNotAnAttribute
+                                                                   multiplier:1.0
+                                                                     constant:769]];
+    
+    [self.potraitConstraints addObject:[NSLayoutConstraint constraintWithItem:viewsArr.firstObject
                                                             attribute:NSLayoutAttributeHeight
                                                             relatedBy:NSLayoutRelationEqual
                                                                toItem:nil
@@ -75,7 +107,15 @@
                                                            multiplier:1.0
                                                              constant:392]];
     
-    [self.scroll addConstraint:[NSLayoutConstraint constraintWithItem:viewsArr.firstObject
+    [self.landscapeConstraints addObject:[NSLayoutConstraint constraintWithItem:viewsArr.firstObject
+                                                                    attribute:NSLayoutAttributeHeight
+                                                                    relatedBy:NSLayoutRelationEqual
+                                                                       toItem:nil
+                                                                    attribute:NSLayoutAttributeNotAnAttribute
+                                                                   multiplier:1.0
+                                                                     constant:370]];
+    
+    [self.potraitConstraints addObject:[NSLayoutConstraint constraintWithItem:viewsArr.firstObject
                                                             attribute:NSLayoutAttributeLeft
                                                             relatedBy:NSLayoutRelationEqual
                                                                toItem:self.scroll
@@ -83,7 +123,15 @@
                                                            multiplier:1.0
                                                              constant:53]];
     
-    [self.scroll addConstraint:[NSLayoutConstraint constraintWithItem:viewsArr.firstObject
+    [self.landscapeConstraints addObject:[NSLayoutConstraint constraintWithItem:viewsArr.firstObject
+                                                                    attribute:NSLayoutAttributeLeft
+                                                                    relatedBy:NSLayoutRelationEqual
+                                                                       toItem:self.scroll
+                                                                    attribute:NSLayoutAttributeLeft
+                                                                   multiplier:1.0
+                                                                     constant:127]];
+    
+    [self.potraitConstraints addObject:[NSLayoutConstraint constraintWithItem:viewsArr.firstObject
                                                             attribute:NSLayoutAttributeTop
                                                             relatedBy:NSLayoutRelationEqual
                                                                toItem:self.scroll
@@ -91,10 +139,18 @@
                                                            multiplier:1.0
                                                              constant:0]];
     
+    [self.landscapeConstraints addObject:[NSLayoutConstraint constraintWithItem:viewsArr.firstObject
+                                                                    attribute:NSLayoutAttributeTop
+                                                                    relatedBy:NSLayoutRelationEqual
+                                                                       toItem:self.scroll
+                                                                    attribute:NSLayoutAttributeTop
+                                                                   multiplier:1.0
+                                                                     constant:0]];
+    
     
     for (int i = 1; i < viewsArr.count - 1; i ++) {
         
-        [self.scroll addConstraint:[NSLayoutConstraint constraintWithItem:viewsArr[i]
+        [self.potraitConstraints addObject:[NSLayoutConstraint constraintWithItem:viewsArr[i]
                                                                 attribute:NSLayoutAttributeWidth
                                                                 relatedBy:NSLayoutRelationEqual
                                                                    toItem:nil
@@ -102,7 +158,15 @@
                                                                multiplier:1.0
                                                                  constant:660]];
         
-        [self.scroll addConstraint:[NSLayoutConstraint constraintWithItem:viewsArr[i]
+        [self.landscapeConstraints addObject:[NSLayoutConstraint constraintWithItem:viewsArr[i]
+                                                                          attribute:NSLayoutAttributeWidth
+                                                                          relatedBy:NSLayoutRelationEqual
+                                                                             toItem:nil
+                                                                          attribute:NSLayoutAttributeNotAnAttribute
+                                                                         multiplier:1.0
+                                                                           constant:769]];
+        
+        [self.potraitConstraints addObject:[NSLayoutConstraint constraintWithItem:viewsArr[i]
                                                                 attribute:NSLayoutAttributeHeight
                                                                 relatedBy:NSLayoutRelationEqual
                                                                    toItem:nil
@@ -110,7 +174,16 @@
                                                                multiplier:1.0
                                                                  constant:392]];
         
-        [self.scroll addConstraint:[NSLayoutConstraint constraintWithItem:viewsArr[i]
+        [self.landscapeConstraints addObject:[NSLayoutConstraint constraintWithItem:viewsArr[i]
+                                                                        attribute:NSLayoutAttributeHeight
+                                                                        relatedBy:NSLayoutRelationEqual
+                                                                           toItem:nil
+                                                                        attribute:NSLayoutAttributeNotAnAttribute
+                                                                       multiplier:1.0
+                                                                         constant:370]];
+        
+        
+        [self.potraitConstraints addObject:[NSLayoutConstraint constraintWithItem:viewsArr[i]
                                                                 attribute:NSLayoutAttributeTop
                                                                 relatedBy:NSLayoutRelationEqual
                                                                    toItem:self.scroll
@@ -118,7 +191,15 @@
                                                                multiplier:1.0
                                                                  constant:0]];
         
-        [self.scroll addConstraint:[NSLayoutConstraint constraintWithItem:viewsArr[i]
+        [self.landscapeConstraints addObject:[NSLayoutConstraint constraintWithItem:viewsArr[i]
+                                                                        attribute:NSLayoutAttributeTop
+                                                                        relatedBy:NSLayoutRelationEqual
+                                                                           toItem:self.scroll
+                                                                        attribute:NSLayoutAttributeTop
+                                                                       multiplier:1.0
+                                                                         constant:0]];
+        
+        [self.potraitConstraints addObject:[NSLayoutConstraint constraintWithItem:viewsArr[i]
                                                                 attribute:NSLayoutAttributeLeft
                                                                 relatedBy:NSLayoutRelationEqual
                                                                    toItem:viewsArr[i-1]
@@ -126,9 +207,17 @@
                                                                multiplier:1.0
                                                                  constant:106]];
         
+        [self.landscapeConstraints addObject:[NSLayoutConstraint constraintWithItem:viewsArr[i]
+                                                                        attribute:NSLayoutAttributeLeft
+                                                                        relatedBy:NSLayoutRelationEqual
+                                                                           toItem:viewsArr[i-1]
+                                                                        attribute:NSLayoutAttributeRight
+                                                                       multiplier:1.0
+                                                                         constant:127*2]];
+        
     }
     
-    [self.scroll addConstraint:[NSLayoutConstraint constraintWithItem:viewsArr.lastObject
+    [self.potraitConstraints addObject:[NSLayoutConstraint constraintWithItem:viewsArr.lastObject
                                                             attribute:NSLayoutAttributeWidth
                                                             relatedBy:NSLayoutRelationEqual
                                                                toItem:nil
@@ -136,7 +225,15 @@
                                                            multiplier:1.0
                                                              constant:660]];
     
-    [self.scroll addConstraint:[NSLayoutConstraint constraintWithItem:viewsArr.lastObject
+    [self.landscapeConstraints addObject:[NSLayoutConstraint constraintWithItem:viewsArr.lastObject
+                                                                    attribute:NSLayoutAttributeWidth
+                                                                    relatedBy:NSLayoutRelationEqual
+                                                                       toItem:nil
+                                                                    attribute:NSLayoutAttributeNotAnAttribute
+                                                                   multiplier:1.0
+                                                                     constant:769]];
+    
+    [self.potraitConstraints addObject:[NSLayoutConstraint constraintWithItem:viewsArr.lastObject
                                                             attribute:NSLayoutAttributeHeight
                                                             relatedBy:NSLayoutRelationEqual
                                                                toItem:nil
@@ -144,8 +241,16 @@
                                                            multiplier:1.0
                                                              constant:392]];
     
+    [self.landscapeConstraints addObject:[NSLayoutConstraint constraintWithItem:viewsArr.lastObject
+                                                                    attribute:NSLayoutAttributeHeight
+                                                                    relatedBy:NSLayoutRelationEqual
+                                                                       toItem:nil
+                                                                    attribute:NSLayoutAttributeNotAnAttribute
+                                                                   multiplier:1.0
+                                                                     constant:370]];
     
-    [self.scroll addConstraint:[NSLayoutConstraint constraintWithItem:viewsArr.lastObject
+    
+    [self.potraitConstraints addObject:[NSLayoutConstraint constraintWithItem:viewsArr.lastObject
                                                             attribute:NSLayoutAttributeLeft
                                                             relatedBy:NSLayoutRelationEqual
                                                                toItem:viewsArr[viewsArr.count-2]
@@ -153,7 +258,15 @@
                                                            multiplier:1.0
                                                              constant:106]];
     
-    [self.scroll addConstraint:[NSLayoutConstraint constraintWithItem:viewsArr.lastObject
+    [self.landscapeConstraints addObject:[NSLayoutConstraint constraintWithItem:viewsArr.lastObject
+                                                                    attribute:NSLayoutAttributeLeft
+                                                                    relatedBy:NSLayoutRelationEqual
+                                                                       toItem:viewsArr[viewsArr.count-2]
+                                                                    attribute:NSLayoutAttributeRight
+                                                                   multiplier:1.0
+                                                                     constant:127*2]];
+    
+    [self.potraitConstraints addObject:[NSLayoutConstraint constraintWithItem:viewsArr.lastObject
                                                             attribute:NSLayoutAttributeRight
                                                             relatedBy:NSLayoutRelationEqual
                                                                toItem:self.scroll
@@ -161,13 +274,48 @@
                                                            multiplier:1.0
                                                              constant:-53]];
     
-    [self.scroll addConstraint:[NSLayoutConstraint constraintWithItem:viewsArr.lastObject
+    [self.landscapeConstraints addObject:[NSLayoutConstraint constraintWithItem:viewsArr.lastObject
+                                                                    attribute:NSLayoutAttributeRight
+                                                                    relatedBy:NSLayoutRelationEqual
+                                                                       toItem:self.scroll
+                                                                    attribute:NSLayoutAttributeRight
+                                                                   multiplier:1.0
+                                                                     constant:-127]];
+    
+    [self.potraitConstraints addObject:[NSLayoutConstraint constraintWithItem:viewsArr.lastObject
                                                             attribute:NSLayoutAttributeTop
                                                             relatedBy:NSLayoutRelationEqual
                                                                toItem:self.scroll
                                                             attribute:NSLayoutAttributeTop
                                                            multiplier:1.0
                                                              constant:0]];
+    
+    [self.landscapeConstraints addObject:[NSLayoutConstraint constraintWithItem:viewsArr.lastObject
+                                                                    attribute:NSLayoutAttributeTop
+                                                                    relatedBy:NSLayoutRelationEqual
+                                                                       toItem:self.scroll
+                                                                    attribute:NSLayoutAttributeTop
+                                                                   multiplier:1.0
+                                                                     constant:0]];
+    
+    [self.scroll addConstraints:self.potraitConstraints];
+    [self.scroll addConstraints:self.landscapeConstraints];
+    
+    [self.potraitConstraints addObjectsFromArray:self.portraitIBConstraints];
+    [self.landscapeConstraints addObjectsFromArray:self.landscapeIBConstraints];
+    
+    [self.animator animateConstraintsChangingToOrientation: self.isInLandscape? Landscape: Portrait
+                                         ForViewController:self];
+    
+}
+
+- (void)configureBGImage
+{
+    if (self.isInLandscape) {
+        self.backgroundImageView.image = [UIImage imageNamed:@"collectionViewBackgroundLandscape"];
+    } else {
+        self.backgroundImageView.image = [UIImage imageNamed:@"detailedCaseStudyBG"];
+    }
 }
 
 #pragma mark - ScrollView
@@ -196,9 +344,16 @@
     
     self.isInLandscape = (size.width > size.height);
     
-    
+    [coordinator animateAlongsideTransition:^(id<UIViewControllerTransitionCoordinatorContext> context) {
+        
+        [self.animator animateConstraintsChangingToOrientation: self.isInLandscape? Landscape: Portrait
+                                             ForViewController:self];
+        [self configureBGImage];
+        
+    } completion:^(id<UIViewControllerTransitionCoordinatorContext> context) {
+        
+    }];
 }
-
 /*
 #pragma mark - Navigation
 

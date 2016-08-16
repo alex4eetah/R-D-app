@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Protocols.h"
 
-@interface DetailedCaseStudies : UIViewController
+@interface DetailedCaseStudies : UIViewController <Rotatable>
 
 
 @end
