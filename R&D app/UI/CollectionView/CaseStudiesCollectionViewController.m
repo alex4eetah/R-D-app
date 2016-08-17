@@ -231,7 +231,18 @@
         return CGSizeMake(self.view.frame.size.width, 65);
 }
 
-#pragma mark - Fetched results controller
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    CaseStudy *object = (CaseStudy *)self.caseStudies[indexPath.row];
+    
+    NSString * storyboardName = @"Main";
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:storyboardName bundle: nil];
+    UIViewController * vc = [storyboard instantiateViewControllerWithIdentifier:@"PagedScrollCaseStudies"];
+    
+    [vc setValue:object.name forKey:@"caseStudyToPresentName"];
+    
+    [self.navigationController pushViewController:vc animated:YES];
+}
 
 
 

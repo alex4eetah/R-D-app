@@ -10,6 +10,7 @@
 		E708391A1D62FD1C00E39743 /* SmartIdentityVerifImage.png in Resources */ = {isa = PBXBuildFile; fileRef = E70839191D62FD1C00E39743 /* SmartIdentityVerifImage.png */; };
 		E708391C1D62FD3B00E39743 /* VoiceMyBotImage.png in Resources */ = {isa = PBXBuildFile; fileRef = E708391B1D62FD3B00E39743 /* VoiceMyBotImage.png */; };
 		E708391E1D62FD5E00E39743 /* BaristaImage.png in Resources */ = {isa = PBXBuildFile; fileRef = E708391D1D62FD5E00E39743 /* BaristaImage.png */; };
+		E7C3E4D51D6491BD00ECB3BB /* PopoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7C3E4D41D6491BD00ECB3BB /* PopoverViewController.m */; };
 		E7D813611D5E005900A240D9 /* DetailedCaseStudies.m in Sources */ = {isa = PBXBuildFile; fileRef = E7D813601D5E005900A240D9 /* DetailedCaseStudies.m */; };
 		E7F48D351D61F964008F08C9 /* CaseStudy+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = E7F48D321D61F964008F08C9 /* CaseStudy+CoreDataProperties.m */; };
 		E7F48D361D61F964008F08C9 /* CaseStudy.m in Sources */ = {isa = PBXBuildFile; fileRef = E7F48D341D61F964008F08C9 /* CaseStudy.m */; };
@@ -68,6 +69,8 @@
 		E70839191D62FD1C00E39743 /* SmartIdentityVerifImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SmartIdentityVerifImage.png; sourceTree = "<group>"; };
 		E708391B1D62FD3B00E39743 /* VoiceMyBotImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = VoiceMyBotImage.png; sourceTree = "<group>"; };
 		E708391D1D62FD5E00E39743 /* BaristaImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BaristaImage.png; sourceTree = "<group>"; };
+		E7C3E4D31D6491BD00ECB3BB /* PopoverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PopoverViewController.h; path = UI/PopoverViewController.h; sourceTree = "<group>"; };
+		E7C3E4D41D6491BD00ECB3BB /* PopoverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PopoverViewController.m; path = UI/PopoverViewController.m; sourceTree = "<group>"; };
 		E7D8135F1D5E005900A240D9 /* DetailedCaseStudies.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DetailedCaseStudies.h; path = UI/PagedScroll/DetailedCaseStudies.h; sourceTree = "<group>"; };
 		E7D813601D5E005900A240D9 /* DetailedCaseStudies.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DetailedCaseStudies.m; path = UI/PagedScroll/DetailedCaseStudies.m; sourceTree = "<group>"; };
 		E7F48D311D61F964008F08C9 /* CaseStudy+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "CaseStudy+CoreDataProperties.h"; path = "Model/CaseStudy+CoreDataProperties.h"; sourceTree = "<group>"; };
@@ -253,6 +256,8 @@
 				FAC7DA9F1D5B2D990043B4DF /* Protocols.h */,
 				FA4293491D5CAA9300AAADBC /* UINavigationBar+Helper.h */,
 				FA42934A1D5CAA9300AAADBC /* UINavigationBar+Helper.m */,
+				E7C3E4D31D6491BD00ECB3BB /* PopoverViewController.h */,
+				E7C3E4D41D6491BD00ECB3BB /* PopoverViewController.m */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -486,6 +491,7 @@
 				FA3A38CB1D59F8E400DA056A /* LoginViewController.m in Sources */,
 				E7D813611D5E005900A240D9 /* DetailedCaseStudies.m in Sources */,
 				FAC7DAA31D5B66250043B4DF /* CaseStudiesCell.m in Sources */,
+				E7C3E4D51D6491BD00ECB3BB /* PopoverViewController.m in Sources */,
 				E7F48D3A1D61FD47008F08C9 /* CoreDataManager.m in Sources */,
 				FABE10B01D5F33810096F965 /* DetailedCaseStudyView.m in Sources */,
 				FA42934E1D5CC6AE00AAADBC /* CaseStudiesFlowLayout.m in Sources */,

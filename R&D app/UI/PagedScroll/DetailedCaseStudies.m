@@ -12,8 +12,9 @@
 #import "CaseStudy.h"
 #import "UiUtil.h"
 #import "UINavigationBar+Helper.h"
+#import "PopoverViewController.h"
 
-@interface DetailedCaseStudies () <UIScrollViewDelegate>
+@interface DetailedCaseStudies () <UIScrollViewDelegate, UIPopoverPresentationControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
 @property(strong, nonatomic) NSArray *caseStudies;
@@ -32,6 +33,8 @@
 
 @property (assign, nonatomic) BOOL scrollProgressFlag;
 
+@property(nonatomic,strong) UIPopoverController *morePopover;
+
 @end
 
 @implementation DetailedCaseStudies
@@ -43,6 +46,41 @@
     
     [self configureBGImage];
     
+    [self configureNavigationBar];
+}
+
+- (void)viewDidLayoutSubviews
+{
+    if (self.caseStudyToPresentName) {
+        for (CaseStudy *s in self.caseStudies) {
+            if (s.name == self.caseStudyToPresentName) {
+                NSInteger i = [self.caseStudies indexOfObject:s];
+                CGFloat x = i * self.scroll.frame.size.width;
+                [self.scroll setContentOffset:CGPointMake(x, 0) animated:YES];
+            }
+        }
+    }
+}
+
+- (void)more:(UIButton *)sender
+{
+    UIStoryboard *storyboard = self.storyboard;
+    PopoverViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"popoverVC"];
+    self.morePopover = [[UIPopoverController alloc] initWithContentViewController:vc];
+    self.morePopover.popoverContentSize = CGSizeMake(213, 104);
+    vc.popoverPresentationController.delegate = self;
+    [self.morePopover presentPopoverFromRect:sender.frame inView:self.view permittedArrowDirections:UIPopoverArrowDirectionDown animated:YES];
+}
+
+- (void)back
+{
+    [self.scroll.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+    [self.scroll removeFromSuperview];
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)configureNavigationBar
+{
     self.navigationController.navigationBar.topItem.title = @"Case Studies";
     [self.navigationController.navigationBar setTitleTextAttributes:
      @{NSForegroundColorAttributeName:[UIColor whiteColor],
@@ -56,18 +94,21 @@
                                                   forBarMetrics:UIBarMetricsDefault];
     [self.navigationController.navigationBar setBottomBorderColor:[UIColor colorWithRed:17/255.0 green:163/255.0 blue:224/255.0 alpha:1] height:1];
     
-    
     [self.animator addNavigationButtonForTarget:self
-                              Selector:@selector(changeView)
-                         ImageWithName:@"changeViewToGeneral"
-                                  Size:CGSizeMake(20, 20)
-                                  Left:NO];
+                                       Selector:@selector(back)
+                                  ImageWithName:@"backNavButton"
+                                           Size:CGSizeMake(20, 20)
+                                           Left:YES];
     [self.animator addNavigationButtonForTarget:self
-                              Selector:@selector(more)
-                         ImageWithName:@"moreNavBarIcon"
-                                  Size:CGSizeMake(20, 20)
-                                  Left:NO];
-    
+                                       Selector:@selector(changeView)
+                                  ImageWithName:@"changeViewToGeneral"
+                                           Size:CGSizeMake(20, 20)
+                                           Left:NO];
+    [self.animator addNavigationButtonForTarget:self
+                                       Selector:@selector(more:)
+                                  ImageWithName:@"moreNavBarIcon"
+                                           Size:CGSizeMake(20, 20)
+                                           Left:NO];
 }
 
 - (void)configureSelf
@@ -442,6 +483,11 @@
     } completion:^(id<UIViewControllerTransitionCoordinatorContext> context) {
         
     }];
+}
+
+- (UIModalPresentationStyle)adaptivePresentationStyleForPresentationController:(UIPresentationController *)controller {
+    
+    return UIModalPresentationNone;
 }
 /*
 #pragma mark - Navigation

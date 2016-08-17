@@ -11,5 +11,6 @@
 
 @interface DetailedCaseStudies : UIViewController <Rotatable>
 
+@property (strong, nonatomic) NSString *caseStudyToPresentName;
 
 @end
