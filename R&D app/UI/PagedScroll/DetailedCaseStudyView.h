@@ -7,10 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "UiUtil.h"
+
 @class CaseStudy;
 
 @interface DetailedCaseStudyView : UIView
 
 - (id)initWithCaseStudy:(CaseStudy *)caseStudy;
+
+- (void)updateConstraintsForOrientation:(Orientation)orientation;
 
 @end

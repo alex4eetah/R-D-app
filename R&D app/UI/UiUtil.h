@@ -35,4 +35,10 @@ typedef enum {
                             ToValue:(CGRect)value
                        WithDuration:(double)duration;
 
+- (void)addNavigationButtonForTarget:(UIViewController *)obj
+                            Selector:(SEL)selector
+                       ImageWithName:(NSString *)img
+                                Size:(CGSize)size
+                                Left:(BOOL)isLeft;
+
 @end

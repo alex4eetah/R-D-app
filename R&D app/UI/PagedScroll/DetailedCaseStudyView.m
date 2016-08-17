@@ -97,24 +97,39 @@
     
 }
 
-- (void)setupConstraints {
+- (void)updateConstraintsForOrientation:(Orientation)orientation
+{
+    /*[self removeAllConstraints];
+    self.hasSetupConstraints = NO;
+    [self setNeedsUpdateConstraints];*/
+}
+
+- (void)removeAllConstraints
+{
+    for (NSLayoutConstraint *constr in self.constraints) {
+        [self removeConstraint:constr];
+    }
+}
+
+- (void)setupConstraints
+{
     
     // border
     [self addConstraint:[NSLayoutConstraint constraintWithItem:self.border
                                                      attribute:NSLayoutAttributeWidth
                                                      relatedBy:NSLayoutRelationEqual
-                                                        toItem:nil
-                                                     attribute:NSLayoutAttributeNotAnAttribute
+                                                        toItem:self
+                                                     attribute:NSLayoutAttributeWidth
                                                     multiplier:1.0
-                                                      constant:656]];
+                                                      constant:-4]];
     
     [self addConstraint:[NSLayoutConstraint constraintWithItem:self.border
                                                      attribute:NSLayoutAttributeHeight
                                                      relatedBy:NSLayoutRelationEqual
-                                                        toItem:nil
-                                                     attribute:NSLayoutAttributeNotAnAttribute
+                                                        toItem:self
+                                                     attribute:NSLayoutAttributeHeight
                                                     multiplier:1.0
-                                                      constant:388]];
+                                                      constant:-4]];
     
     [self addConstraint:[NSLayoutConstraint constraintWithItem:self.border
                                                      attribute:NSLayoutAttributeLeading

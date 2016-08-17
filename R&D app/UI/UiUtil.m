@@ -23,6 +23,41 @@
     return instance;
 }
 
+- (void)addNavigationButtonForTarget:(UIViewController *)obj
+                            Selector:(SEL)selector
+                       ImageWithName:(NSString *)img
+                                Size:(CGSize)size
+                                Left:(BOOL)isLeft
+{
+    UIImage* image = [UIImage imageNamed:img];
+    CGRect frameimg = CGRectMake(0, 0, size.width, size.height);
+    UIButton *someButton = [[UIButton alloc] initWithFrame:frameimg];
+    [someButton setBackgroundImage:image forState:UIControlStateNormal];
+    [someButton addTarget:obj action:selector forControlEvents:UIControlEventTouchUpInside];
+    [someButton setShowsTouchWhenHighlighted:YES];
+    
+    UIBarButtonItem *BarButton =[[UIBarButtonItem alloc] initWithCustomView:someButton];
+    if (isLeft) {
+        NSMutableArray *arr = [[NSMutableArray alloc] init];
+        [arr addObject:BarButton];
+        for (UIBarButtonItem *item in obj.navigationItem.leftBarButtonItems)
+        {
+            [arr addObject:item];
+        }
+        
+        obj.navigationItem.leftBarButtonItems = arr;
+    } else {
+        NSMutableArray *arr = [[NSMutableArray alloc] init];
+        [arr addObject:BarButton];
+        for (UIBarButtonItem *item in obj.navigationItem.rightBarButtonItems)
+        {
+            [arr addObject:item];
+        }
+        
+        obj.navigationItem.rightBarButtonItems = arr;
+    }
+}
+
 /*
 **** Rotating stuff
 */

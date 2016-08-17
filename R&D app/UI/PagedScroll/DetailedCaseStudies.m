@@ -11,6 +11,7 @@
 #import "CoreDataManager.h"
 #import "CaseStudy.h"
 #import "UiUtil.h"
+#import "UINavigationBar+Helper.h"
 
 @interface DetailedCaseStudies () <UIScrollViewDelegate>
 
@@ -22,11 +23,14 @@
 
 @property (strong, nonatomic) IBOutletCollection(NSLayoutConstraint) NSArray *portraitIBConstraints;
 @property (strong, nonatomic) IBOutletCollection(NSLayoutConstraint) NSArray *landscapeIBConstraints;
+@property (strong, nonatomic) IBOutletCollection(UIImageView) NSArray *LandscapeSeparators;
 
 @property (assign, nonatomic) BOOL isInLandscape;
 @property (strong, nonatomic) UiUtil *animator;
 @property (strong, nonatomic) NSMutableArray *potraitConstraints;
 @property (strong, nonatomic) NSMutableArray *landscapeConstraints;
+
+@property (assign, nonatomic) BOOL scrollProgressFlag;
 
 @end
 
@@ -38,6 +42,32 @@
     [self configureSelf];
     
     [self configureBGImage];
+    
+    self.navigationController.navigationBar.topItem.title = @"Case Studies";
+    [self.navigationController.navigationBar setTitleTextAttributes:
+     @{NSForegroundColorAttributeName:[UIColor whiteColor],
+       NSFontAttributeName:[UIFont fontWithName:@"Helvetica-Bold" size:16]}];
+    
+    self.navigationController.navigationBar.translucent = YES;
+    self.navigationController.view.backgroundColor = [UIColor clearColor];
+    self.navigationController.navigationBar.backgroundColor = [UIColor clearColor];
+    
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"footerGradient"]
+                                                  forBarMetrics:UIBarMetricsDefault];
+    [self.navigationController.navigationBar setBottomBorderColor:[UIColor colorWithRed:17/255.0 green:163/255.0 blue:224/255.0 alpha:1] height:1];
+    
+    
+    [self.animator addNavigationButtonForTarget:self
+                              Selector:@selector(changeView)
+                         ImageWithName:@"changeViewToGeneral"
+                                  Size:CGSizeMake(20, 20)
+                                  Left:NO];
+    [self.animator addNavigationButtonForTarget:self
+                              Selector:@selector(more)
+                         ImageWithName:@"moreNavBarIcon"
+                                  Size:CGSizeMake(20, 20)
+                                  Left:NO];
+    
 }
 
 - (void)configureSelf
@@ -59,6 +89,14 @@
     self.isInLandscape = (self.view.frame.size.width > self.view.frame.size.height);
     
     [self createScrollViewLayoutFromArray:self.caseStudies];
+    
+    if (!self.isInLandscape) {
+        for (UIImageView *im in self.LandscapeSeparators) {
+            im.hidden = YES;
+        }
+    }
+    
+    self.scrollProgressFlag = YES;
 }
 
 - (void)createScrollViewLayoutFromArray:(NSArray *)arr
@@ -75,6 +113,12 @@
         [self.scroll addSubview:viewToAdd];
         [viewsArr addObject:viewToAdd];
     }
+   /* for (int i = 1; i < arr.count; i++){
+        UIImageView *separator = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"scrollViewLandscapeSeparator"] highlightedImage:@"scrollViewLandscapeSeparator"];
+        separator.tag = 55555;
+        separator.translatesAutoresizingMaskIntoConstraints = NO;
+        [self.scroll addSubview:separator];
+    }*/
     
 /*
  *      Constraints:
@@ -321,6 +365,20 @@
 #pragma mark - ScrollView
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    
+    if (self.scrollProgressFlag) {
+        for (UIImageView *im in self.LandscapeSeparators) {
+            [UIView transitionWithView:im
+                              duration:0.2
+                               options:UIViewAnimationOptionTransitionCrossDissolve
+                            animations:^{
+                                im.hidden = YES;
+                                self.scrollProgressFlag = NO;
+                            }
+                            completion:NULL];
+        }
+    }
+    
     static NSInteger previousPage = 0;
     CGFloat pageWidth = scrollView.frame.size.width;
     float fractionalPage = scrollView.contentOffset.x / pageWidth;
@@ -329,6 +387,24 @@
         self.pageIndicator.currentPage = page;
         previousPage = page;
     }
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
+{
+    for (UIImageView *im in self.LandscapeSeparators) {
+        [UIView transitionWithView:im
+                          duration:0.4
+                           options:UIViewAnimationOptionTransitionCrossDissolve
+                        animations:^{
+                            im.hidden = NO;
+                        }
+                        completion:NULL];
+    }
+}
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+    self.scrollProgressFlag = YES;
 }
 
 - (void)PageControllDidChangePage:(UIPageControl *)sender {
@@ -346,9 +422,22 @@
     
     [coordinator animateAlongsideTransition:^(id<UIViewControllerTransitionCoordinatorContext> context) {
         
-        [self.animator animateConstraintsChangingToOrientation: self.isInLandscape? Landscape: Portrait
+        Orientation orient = self.isInLandscape? Landscape: Portrait;
+        
+        [self.animator animateConstraintsChangingToOrientation: orient
                                              ForViewController:self];
         [self configureBGImage];
+        
+        if (!self.isInLandscape) {
+            for (UIImageView *im in self.LandscapeSeparators) {
+                im.hidden = YES;
+            }
+        }
+        else {
+            for (UIImageView *im in self.LandscapeSeparators) {
+                im.hidden = NO;
+            }
+        }
         
     } completion:^(id<UIViewControllerTransitionCoordinatorContext> context) {
         

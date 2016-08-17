@@ -11,6 +11,7 @@
 #import "UINavigationBar+Helper.h"
 #import "CoreDataManager.h"
 #import "CaseStudy.h"
+#import "UiUtil.h"
 
 @interface CaseStudiesCollectionViewController()
 
@@ -18,6 +19,7 @@
 @property(strong, nonatomic) NSArray *caseStudies;
 @property (weak, nonatomic) IBOutlet UIImageView *backGroundImageView;
 @property(assign, nonatomic) BOOL isInLandscape;
+@property (strong, nonatomic) UiUtil *animator;
 
 @end
 
@@ -26,10 +28,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.manager = [CoreDataManager sharedManager];
+    [self configureSelf];
+    
+    [self configureBGImage];
+    
+    [self configureNavigationBar];
     
     //TEST DATA
-  /*  [self.manager fakeFromArray:[NSArray arrayWithObjects:
+   /* [self.manager fakeFromArray:[NSArray arrayWithObjects:
                                  @{
                                    @"name":@"BioLock",
                                    @"image":[UIImage imageNamed:@"SmartIdentityVerifImage.png"],
@@ -49,32 +55,37 @@
                                    @"fullDesc":@"SVoiceMyBotVoiceMyBotVoiceMyBotVoiceMyBotVoiceMyBot",
                                    @"link":@"google.com"},
                                  @{
-                                   @"name":@"LAalaLA",
+                                   @"name":@"SecondAlexa",
                                    @"image":[UIImage imageNamed:@"VoiceMyBotImage.png"],
-                                   @"shortDesc":@"VoiceLALA",
-                                   @"fullDesc":@"SLALALALALLAMyBotVoiceMyBotVoiceMyBot",
+                                   @"shortDesc":@"VoiceSecond",
+                                   @"fullDesc":@"SecondMyBotVoiceMyBotVoiceMyBotSecondSecondSecondSecondSecondSecondSecondSecondSecondSecond",
                                    @"link":@"google.com"},
                                  @{
-                                   @"name":@"BaristaLALA",
+                                   @"name":@"BaristaTwo",
                                    @"image":[UIImage imageNamed:@"BaristaImage.png"],
                                    @"shortDesc":@"Smart Coffee Machine",
                                    @"fullDesc":@"Smart Coffee MachineSmart Coffee MachineSmart Coffee MachineSmart Coffee MachineSmart Coffee MachineSmart Coffee MachineSmart Coffee MachineSmart Coffee Machine",
                                    @"link":@"google.com"},
                                  @{
-                                   @"name":@"BioLockALAL",
+                                   @"name":@"BioLockTwo",
                                    @"image":[UIImage imageNamed:@"SmartIdentityVerifImage.png"],
                                    @"shortDesc":@"Smart Identity Verification",
                                    @"fullDesc":@"Smart Identity VerificationSmart Identity VerificationSmart Identity VerificationSmart Identity VerificationSmart Identity VerificationSmart Identity VerificationSmart Identity Verification",
                                    @"link":@"google.com"}, nil]];
     
  */
+    
+}
+
+- (void)configureSelf
+{
+    self.manager = [CoreDataManager sharedManager];
+    
     self.caseStudies = [self.manager getArrayOfCaseStudies];
     
     self.isInLandscape = (self.view.frame.size.width > self.view.frame.size.height);
     
-    [self configureBGImage];
-
-    [self configureNavigationBar];
+    self.animator = [UiUtil sharedUtil];
 }
 
 - (void)configureBGImage
@@ -100,56 +111,21 @@
     self.navigationController.view.backgroundColor = [UIColor clearColor];
     self.navigationController.navigationBar.backgroundColor = [UIColor clearColor];
     
-    [self addNavigationButtonForTarget:self
+    [self.animator addNavigationButtonForTarget:self
                               Selector:@selector(search)
                          ImageWithName:@"searchNavBarIcon"
-                                  Size:CGSizeMake(18, 18)
+                                  Size:CGSizeMake(20, 20)
                                   Left:YES];
-    [self addNavigationButtonForTarget:self
+    [self.animator addNavigationButtonForTarget:self
                               Selector:@selector(changeView)
                          ImageWithName:@"changeVIewNavBarIcon"
                                   Size:CGSizeMake(28, 20)
                                   Left:NO];
-    [self addNavigationButtonForTarget:self
+    [self.animator addNavigationButtonForTarget:self
                               Selector:@selector(more)
                          ImageWithName:@"moreNavBarIcon"
-                                  Size:CGSizeMake(5, 17)
+                                  Size:CGSizeMake(20, 20)
                                   Left:NO];
-}
-
-- (void)addNavigationButtonForTarget:(id)obj
-                            Selector:(SEL)selector
-                         ImageWithName:(NSString *)img
-                                Size:(CGSize)size
-                                  Left:(BOOL)isLeft
-{
-    UIImage* image = [UIImage imageNamed:img];
-    CGRect frameimg = CGRectMake(0, 0, size.width, size.height);
-    UIButton *someButton = [[UIButton alloc] initWithFrame:frameimg];
-    [someButton setBackgroundImage:image forState:UIControlStateNormal];
-    [someButton addTarget:obj action:selector forControlEvents:UIControlEventTouchUpInside];
-    [someButton setShowsTouchWhenHighlighted:YES];
-    
-    UIBarButtonItem *BarButton =[[UIBarButtonItem alloc] initWithCustomView:someButton];
-    if (isLeft) {
-        NSMutableArray *arr = [[NSMutableArray alloc] init];
-        [arr addObject:BarButton];
-        for (UIBarButtonItem *item in self.navigationItem.leftBarButtonItems)
-        {
-            [arr addObject:item];
-        }
-        
-        self.navigationItem.leftBarButtonItems = arr;
-    } else {
-        NSMutableArray *arr = [[NSMutableArray alloc] init];
-        [arr addObject:BarButton];
-        for (UIBarButtonItem *item in self.navigationItem.rightBarButtonItems)
-        {
-            [arr addObject:item];
-        }
-        
-        self.navigationItem.rightBarButtonItems = arr;
-    }
 }
 
 - (void)search
@@ -174,16 +150,21 @@
 {
     [super viewWillTransitionToSize:size withTransitionCoordinator:coordinator];
     
-    [self.navigationController.navigationBar setBottomBorderColor:[UIColor colorWithRed:17/255.0 green:163/255.0 blue:224/255.0 alpha:1] height:1];
-    
     self.isInLandscape = (size.width > size.height);
     
-    [self configureBGImage];
-    
-    UICollectionViewFlowLayout *flowLayout = self.collectionView.collectionViewLayout;
-    
-    
-    [flowLayout invalidateLayout];
+    [coordinator animateAlongsideTransition:^(id<UIViewControllerTransitionCoordinatorContext> context) {
+        
+        [self configureBGImage];
+        
+        UICollectionViewFlowLayout *flowLayout = self.collectionView.collectionViewLayout;
+        
+        [flowLayout invalidateLayout];
+        
+    } completion:^(id<UIViewControllerTransitionCoordinatorContext> context) {
+        
+        [self.navigationController.navigationBar setBottomBorderColor:[UIColor colorWithRed:17/255.0 green:163/255.0 blue:224/255.0 alpha:1] height:1];
+        
+    }];
 }
 
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
