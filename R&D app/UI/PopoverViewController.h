@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Protocols.h"
 
 @interface PopoverViewController : UIViewController
+
+@property (weak, nonatomic) id<PopoverDelegate> delegate;
 
 @end

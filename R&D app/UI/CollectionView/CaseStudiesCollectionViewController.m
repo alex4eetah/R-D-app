@@ -104,7 +104,7 @@
      @{NSForegroundColorAttributeName:[UIColor whiteColor],
        NSFontAttributeName:[UIFont fontWithName:@"Helvetica-Bold" size:16]}];
     
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"footerGradient"]
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"navigationGradient"]
                                                   forBarMetrics:UIBarMetricsDefault];
     [self.navigationController.navigationBar setBottomBorderColor:[UIColor colorWithRed:17/255.0 green:163/255.0 blue:224/255.0 alpha:1] height:1];
     self.navigationController.navigationBar.translucent = YES;

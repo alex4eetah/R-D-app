@@ -14,7 +14,7 @@
 #import "UINavigationBar+Helper.h"
 #import "PopoverViewController.h"
 
-@interface DetailedCaseStudies () <UIScrollViewDelegate, UIPopoverPresentationControllerDelegate>
+@interface DetailedCaseStudies () <UIScrollViewDelegate, UIPopoverPresentationControllerDelegate, PopoverDelegate>
 
 @property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
 @property(strong, nonatomic) NSArray *caseStudies;
@@ -62,14 +62,23 @@
     }
 }
 
-- (void)more:(UIButton *)sender
+- (void)more
 {
     UIStoryboard *storyboard = self.storyboard;
     PopoverViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"popoverVC"];
-    self.morePopover = [[UIPopoverController alloc] initWithContentViewController:vc];
+    UIPopoverController* aPopover = [[UIPopoverController alloc]
+                                     initWithContentViewController:vc];
+    aPopover.delegate = self;
+    
+    aPopover.popoverContentSize = CGSizeMake(213, 104);
+    vc.delegate = self;
+    self.morePopover = aPopover;
+    
+    [self.morePopover presentPopoverFromRect:CGRectMake(self.view.frame.size.width-30, 0, 20, 60)  inView:self.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+    /*self.morePopover = [[UIPopoverController alloc] initWithContentViewController:vc];
     self.morePopover.popoverContentSize = CGSizeMake(213, 104);
     vc.popoverPresentationController.delegate = self;
-    [self.morePopover presentPopoverFromRect:sender.frame inView:self.view permittedArrowDirections:UIPopoverArrowDirectionDown animated:YES];
+    [self.morePopover presentPopoverFromRect:CGRectMake(self.view.frame.size.width-20, 0, 20, 20) inView:self.view permittedArrowDirections:UIPopoverArrowDirectionDown animated:YES];*/
 }
 
 - (void)back
@@ -90,7 +99,7 @@
     self.navigationController.view.backgroundColor = [UIColor clearColor];
     self.navigationController.navigationBar.backgroundColor = [UIColor clearColor];
     
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"footerGradient"]
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"navigationGradient"]
                                                   forBarMetrics:UIBarMetricsDefault];
     [self.navigationController.navigationBar setBottomBorderColor:[UIColor colorWithRed:17/255.0 green:163/255.0 blue:224/255.0 alpha:1] height:1];
     
@@ -100,12 +109,12 @@
                                            Size:CGSizeMake(20, 20)
                                            Left:YES];
     [self.animator addNavigationButtonForTarget:self
-                                       Selector:@selector(changeView)
+                                       Selector:@selector(back)
                                   ImageWithName:@"changeViewToGeneral"
                                            Size:CGSizeMake(20, 20)
                                            Left:NO];
     [self.animator addNavigationButtonForTarget:self
-                                       Selector:@selector(more:)
+                                       Selector:@selector(more)
                                   ImageWithName:@"moreNavBarIcon"
                                            Size:CGSizeMake(20, 20)
                                            Left:NO];
@@ -407,7 +416,7 @@
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     
-    if (self.scrollProgressFlag) {
+    if (self.scrollProgressFlag && self.isInLandscape) {
         for (UIImageView *im in self.LandscapeSeparators) {
             [UIView transitionWithView:im
                               duration:0.2
@@ -432,20 +441,24 @@
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
 {
-    for (UIImageView *im in self.LandscapeSeparators) {
-        [UIView transitionWithView:im
-                          duration:0.4
-                           options:UIViewAnimationOptionTransitionCrossDissolve
-                        animations:^{
-                            im.hidden = NO;
-                        }
-                        completion:NULL];
+    if (self.isInLandscape) {
+        for (UIImageView *im in self.LandscapeSeparators) {
+            [UIView transitionWithView:im
+                              duration:0.4
+                               options:UIViewAnimationOptionTransitionCrossDissolve
+                            animations:^{
+                                im.hidden = NO;
+                            }
+                            completion:NULL];
+        }
     }
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
-    self.scrollProgressFlag = YES;
+    if (self.isInLandscape) {
+        self.scrollProgressFlag = YES;  
+    }
 }
 
 - (void)PageControllDidChangePage:(UIPageControl *)sender {
@@ -481,13 +494,24 @@
         }
         
     } completion:^(id<UIViewControllerTransitionCoordinatorContext> context) {
-        
+        CGFloat x = self.pageIndicator.currentPage * self.scroll.frame.size.width;
+        [self.scroll setContentOffset:CGPointMake(x, 0) animated:YES];
     }];
 }
 
 - (UIModalPresentationStyle)adaptivePresentationStyleForPresentationController:(UIPresentationController *)controller {
     
     return UIModalPresentationNone;
+}
+
+- (void)dismissToRoot
+{
+    UIViewController *vc = self;
+    while (vc.presentingViewController) {
+        vc = vc.presentingViewController;
+    }
+    [vc dismissViewControllerAnimated:YES completion:nil];
+
 }
 /*
 #pragma mark - Navigation

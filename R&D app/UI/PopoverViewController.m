@@ -22,13 +22,15 @@
     
     self.logOutButt = [[UIButton alloc] initWithFrame:CGRectMake(8, 8, self.view.frame.size.width-16, 30)];
     [self.logOutButt addTarget:self action:@selector(logOut:) forControlEvents:UIControlEventTouchUpInside];
+    self.logOutButt.backgroundColor = [UIColor blackColor];
     [self.logOutButt setTitle:@"Log out" forState:UIControlStateNormal];
-    [self.logOutButt.titleLabel setFont:[UIFont fontWithName:@"MuseoSansCyrl-700" size:16]];
-    [self.logOutButt.titleLabel setTextColor:[UIColor colorWithRed:155/255 green:155/255 blue:155/255 alpha:1]];
+    //[self.logOutButt.titleLabel setFont:[UIFont fontWithName:@"MuseoSansCyrl-700" size:16]];
+    //[self.logOutButt.titleLabel setTextColor:[UIColor greenColor]];//[UIColor colorWithRed:155/255 green:155/255 blue:155/255 alpha:1]];
     [self.view addSubview:self.logOutButt];
     
     self.changePassButt = [[UIButton alloc] initWithFrame:CGRectMake(8, 8 + 8 + 30, self.view.frame.size.width-16, 30)];
     [self.changePassButt addTarget:self action:@selector(changePass:) forControlEvents:UIControlEventTouchUpInside];
+    self.changePassButt.backgroundColor = [UIColor greenColor];
     [self.changePassButt setTitle:@"Change password" forState:UIControlStateNormal];
     [self.changePassButt.titleLabel setFont:[UIFont fontWithName:@"MuseoSansCyrl-700" size:16]];
     [self.changePassButt.titleLabel setTextColor:[UIColor blackColor]];
@@ -51,11 +53,15 @@
 }
 */
 - (void)logOut:(UIButton *)sender {
-
+//LOGOUT
+    [self dismissViewControllerAnimated:NO completion:nil];
+    [self.delegate dismissToRoot];
 }
 
 - (void)changePass:(UIButton *)sender {
 
+    
+    
 }
 
 @end

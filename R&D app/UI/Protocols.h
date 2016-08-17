@@ -20,4 +20,10 @@
 
 @end
 
+@protocol PopoverDelegate
+
+- (void)dismissToRoot;
+
+@end
+
 #endif /* Protocols_h */
