@@ -10,6 +10,7 @@
 		E708391A1D62FD1C00E39743 /* SmartIdentityVerifImage.png in Resources */ = {isa = PBXBuildFile; fileRef = E70839191D62FD1C00E39743 /* SmartIdentityVerifImage.png */; };
 		E708391C1D62FD3B00E39743 /* VoiceMyBotImage.png in Resources */ = {isa = PBXBuildFile; fileRef = E708391B1D62FD3B00E39743 /* VoiceMyBotImage.png */; };
 		E708391E1D62FD5E00E39743 /* BaristaImage.png in Resources */ = {isa = PBXBuildFile; fileRef = E708391D1D62FD5E00E39743 /* BaristaImage.png */; };
+		E7B22EB51D659A3700509F52 /* RDServerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E7B22EB41D659A3700509F52 /* RDServerManager.m */; };
 		E7C3E4D51D6491BD00ECB3BB /* PopoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7C3E4D41D6491BD00ECB3BB /* PopoverViewController.m */; };
 		E7D813611D5E005900A240D9 /* DetailedCaseStudies.m in Sources */ = {isa = PBXBuildFile; fileRef = E7D813601D5E005900A240D9 /* DetailedCaseStudies.m */; };
 		E7F48D351D61F964008F08C9 /* CaseStudy+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = E7F48D321D61F964008F08C9 /* CaseStudy+CoreDataProperties.m */; };
@@ -69,6 +70,8 @@
 		E70839191D62FD1C00E39743 /* SmartIdentityVerifImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SmartIdentityVerifImage.png; sourceTree = "<group>"; };
 		E708391B1D62FD3B00E39743 /* VoiceMyBotImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = VoiceMyBotImage.png; sourceTree = "<group>"; };
 		E708391D1D62FD5E00E39743 /* BaristaImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BaristaImage.png; sourceTree = "<group>"; };
+		E7B22EB31D659A3700509F52 /* RDServerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RDServerManager.h; path = Model/RDServerManager.h; sourceTree = "<group>"; };
+		E7B22EB41D659A3700509F52 /* RDServerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RDServerManager.m; path = Model/RDServerManager.m; sourceTree = "<group>"; };
 		E7C3E4D31D6491BD00ECB3BB /* PopoverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PopoverViewController.h; path = UI/PopoverViewController.h; sourceTree = "<group>"; };
 		E7C3E4D41D6491BD00ECB3BB /* PopoverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PopoverViewController.m; path = UI/PopoverViewController.m; sourceTree = "<group>"; };
 		E7D8135F1D5E005900A240D9 /* DetailedCaseStudies.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DetailedCaseStudies.h; path = UI/PagedScroll/DetailedCaseStudies.h; sourceTree = "<group>"; };
@@ -314,6 +317,8 @@
 				E7F48D371D61FD0F008F08C9 /* CoreData */,
 				FA3A38951D59F23C00DA056A /* AppDelegate.h */,
 				FA3A38961D59F23C00DA056A /* AppDelegate.m */,
+				E7B22EB31D659A3700509F52 /* RDServerManager.h */,
+				E7B22EB41D659A3700509F52 /* RDServerManager.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -493,6 +498,7 @@
 				FAC7DAA31D5B66250043B4DF /* CaseStudiesCell.m in Sources */,
 				E7C3E4D51D6491BD00ECB3BB /* PopoverViewController.m in Sources */,
 				E7F48D3A1D61FD47008F08C9 /* CoreDataManager.m in Sources */,
+				E7B22EB51D659A3700509F52 /* RDServerManager.m in Sources */,
 				FABE10B01D5F33810096F965 /* DetailedCaseStudyView.m in Sources */,
 				FA42934E1D5CC6AE00AAADBC /* CaseStudiesFlowLayout.m in Sources */,
 			);

@@ -23,6 +23,19 @@
     return instance;
 }
 
+- (void)animateWrongInputOnLayer:(CALayer *)layer
+{
+    CABasicAnimation *anim = [CABasicAnimation animationWithKeyPath:@"transform.translation.x"];
+    anim.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+    anim.duration = 0.1;
+    anim.repeatCount = 4;
+    anim.autoreverses = YES;
+    anim.removedOnCompletion = YES;
+    anim.fromValue = [NSNumber numberWithFloat:-5.f];
+    anim.toValue = [NSNumber numberWithFloat:5.f];
+    [layer addAnimation:anim forKey:nil];
+}
+
 - (void)addNavigationButtonForTarget:(UIViewController *)obj
                             Selector:(SEL)selector
                        ImageWithName:(NSString *)img

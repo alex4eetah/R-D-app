@@ -8,6 +8,7 @@
 
 #import "UiUtil.h"
 #import "LoginViewController.h"
+#import "RDServerManager.h"
 
 @interface LoginViewController ()
 
@@ -15,7 +16,13 @@
 
 @property (strong, nonatomic) IBOutletCollection(NSLayoutConstraint) NSArray *landscapeConstraints;
 
+@property (weak, nonatomic) IBOutlet UITextField *emailTextField;
+
+@property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
+
 @property (strong, nonatomic) UiUtil *animator;
+
+@property (strong, nonatomic) RDServerManager *serverManager;
 
 @property (assign, nonatomic) BOOL isInLandscape;
 
@@ -26,6 +33,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self configureSelf];
+}
+
+- (void)configureSelf
+{
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(keyboardWillChange:)
                                                  name:UIKeyboardDidShowNotification
@@ -38,11 +50,13 @@
     self.animator = [UiUtil sharedUtil];
     self.isInLandscape = (self.view.frame.size.width > self.view.frame.size.height);;
     [self.animator animateConstraintsChangingToOrientation: self.isInLandscape? Landscape: Portrait
-                                        ForViewController:self];
+                                         ForViewController:self];
     
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self
                                                                           action:@selector(dismissKeyboard)];
     [self.view addGestureRecognizer:tap];
+    
+    self.serverManager = [RDServerManager sharedManager];
 }
 
 /*
@@ -104,7 +118,22 @@
 
 - (IBAction)SignInButtonBeenPressed:(UIButton *)sender
 {
-    [self performSegueWithIdentifier:@"LoggedInSegue" sender:self];
+    NSString *email = self.emailTextField.text;
+    NSString *pass = self.passwordTextField.text;
+    if ([email isEqualToString: @""] || [email isEqualToString:@" "]) {
+        [self.animator animateWrongInputOnLayer:self.emailTextField.layer];
+    } else if ([pass isEqualToString: @""] || [pass isEqualToString:@" "]) {
+        [self.animator animateWrongInputOnLayer:self.passwordTextField.layer];
+    } else {
+        [self.serverManager authorizeUserWithCredentials:@{@"Login":email, @"Password":pass} Completion:^(BOOL done) {
+            if (done == YES) {
+                [self performSegueWithIdentifier:@"LoggedInSegue" sender:self];
+            } else {
+                [self.animator animateWrongInputOnLayer:self.emailTextField.layer];
+                [self.animator animateWrongInputOnLayer:self.passwordTextField.layer];
+            }
+        }];
+    }
 }
 
 

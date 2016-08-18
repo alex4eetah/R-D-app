@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -182,7 +182,8 @@
                                         <exclude reference="U2a-le-rSc"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular-widthClass=regular">
+                                <variation key="heightClass=regular-widthClass=regular" misplaced="YES">
+                                    <rect key="frame" x="125" y="536" width="564" height="159"/>
                                     <mask key="constraints">
                                         <include reference="Hrf-Qz-h87"/>
                                         <include reference="LgQ-9p-6lL"/>
@@ -347,6 +348,8 @@
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="emailTextField" destination="gEU-V6-ste" id="23V-hU-JFx"/>
+                        <outlet property="passwordTextField" destination="CTd-GC-kHV" id="ocR-vy-DS6"/>
                         <outletCollection property="potraitConstraints" destination="Hrf-Qz-h87" id="qmI-y3-F0H"/>
                         <outletCollection property="potraitConstraints" destination="jTA-lu-M1I" id="7bk-ze-BiY"/>
                         <outletCollection property="potraitConstraints" destination="5vH-LB-XDd" id="cpI-qc-0oi"/>

@@ -23,6 +23,8 @@ typedef enum {
 
 + (UiUtil *)sharedUtil;
 
+- (void)animateWrongInputOnLayer:(CALayer *)layer;
+
 - (void)animateConstraintsChangingToOrientation:(Orientation) orientation
                               ForViewController:(id <Rotatable>) VC;
 
