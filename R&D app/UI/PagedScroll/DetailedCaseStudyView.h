@@ -8,12 +8,15 @@
 
 #import <UIKit/UIKit.h>
 #import "UiUtil.h"
+#import "Protocols.h"
 
 @class CaseStudy;
 
 @interface DetailedCaseStudyView : UIView
 
-- (id)initWithCaseStudy:(CaseStudy *)caseStudy;
+@property (weak, nonatomic) UIViewController<DetailedCaseStudyOwner> *owner;
+
+- (id)initWithCaseStudy:(CaseStudy *)caseStudy Tag:(NSInteger)tag;
 
 - (void)updateConstraintsForOrientation:(Orientation)orientation;
 

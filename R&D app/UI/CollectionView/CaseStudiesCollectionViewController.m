@@ -12,14 +12,17 @@
 #import "CoreDataManager.h"
 #import "CaseStudy.h"
 #import "UiUtil.h"
+#import "PopoverViewController.h"
 
-@interface CaseStudiesCollectionViewController()
+@interface CaseStudiesCollectionViewController()<PopoverDelegate>
 
 @property (strong, nonatomic) CoreDataManager *manager;
 @property(strong, nonatomic) NSArray *caseStudies;
 @property (weak, nonatomic) IBOutlet UIImageView *backGroundImageView;
 @property(assign, nonatomic) BOOL isInLandscape;
 @property (strong, nonatomic) UiUtil *animator;
+
+@property(nonatomic,strong) UIPopoverController *morePopover;
 
 @end
 
@@ -134,7 +137,17 @@
 
 -(void)more
 {
+    UIStoryboard *storyboard = self.storyboard;
+    PopoverViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"popoverVC"];
+    UIPopoverController* aPopover = [[UIPopoverController alloc]
+                                     initWithContentViewController:vc];
+    aPopover.delegate = self;
     
+    aPopover.popoverContentSize = CGSizeMake(213, 104);
+    vc.delegate = self;
+    self.morePopover = aPopover;
+    
+    [self.morePopover presentPopoverFromRect:CGRectMake(self.view.frame.size.width-30, 0, 20, 60)  inView:self.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
 }
 
 -(void)changeView
@@ -242,15 +255,29 @@
     
     [self.navigationController pushViewController:vc animated:YES];
 }
-
-
-
-/*- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionView *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
+/*
+#pragma mark - popover deledate
+- (void)dismissToRoot
 {
-    if (self.isInLandscape)
-        return 40;
-    else
-        return 0;
-}*/
+    UIViewController *vc = self;
+    while (vc.presentingViewController) {
+        vc = vc.presentingViewController;
+    }
+    [vc dismissViewControllerAnimated:YES completion:nil];
+    
+}
+
+- (void)showChangePasswordModal
+{
+    [UIView transitionWithView:self.changePasswordModal
+                      duration:0.4
+                       options:UIViewAnimationOptionTransitionCrossDissolve
+                    animations:^{
+                        self.changePasswordModal.hidden = NO;
+                        self.navigationController.navigationBar.layer.zPosition = -1;
+                    }
+                    completion:NULL];
+}
+*/
 
 @end

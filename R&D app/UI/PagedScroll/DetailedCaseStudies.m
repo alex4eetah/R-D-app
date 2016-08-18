@@ -14,8 +14,9 @@
 #import "UINavigationBar+Helper.h"
 #import "PopoverViewController.h"
 #import "RDServerManager.h"
+#import "WebVIewController.h"
 
-@interface DetailedCaseStudies () <UIScrollViewDelegate, UIPopoverPresentationControllerDelegate, PopoverDelegate>
+@interface DetailedCaseStudies () <UIScrollViewDelegate, UIPopoverPresentationControllerDelegate, PopoverDelegate, Rotatable, DetailedCaseStudyOwner>
 
 @property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
 @property(strong, nonatomic) NSArray *caseStudies;
@@ -47,6 +48,8 @@
 @property (strong, nonatomic) RDServerManager *serverManager;
 
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *spinner;
+
+//@property (strong, nonatomic) NSMutableDictionary *buttonTagsAndUrls;
 
 @end
 
@@ -88,10 +91,6 @@
     self.morePopover = aPopover;
     
     [self.morePopover presentPopoverFromRect:CGRectMake(self.view.frame.size.width-30, 0, 20, 60)  inView:self.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
-    /*self.morePopover = [[UIPopoverController alloc] initWithContentViewController:vc];
-    self.morePopover.popoverContentSize = CGSizeMake(213, 104);
-    vc.popoverPresentationController.delegate = self;
-    [self.morePopover presentPopoverFromRect:CGRectMake(self.view.frame.size.width-20, 0, 20, 20) inView:self.view permittedArrowDirections:UIPopoverArrowDirectionDown animated:YES];*/
 }
 
 - (void)back
@@ -164,6 +163,7 @@
     self.scrollProgressFlag = YES;
     
     self.spinner.layer.zPosition = -1;
+    
 }
 
 - (void)createScrollViewLayoutFromArray:(NSArray *)arr
@@ -174,11 +174,17 @@
     
     NSMutableArray *viewsArr = [[NSMutableArray alloc] init];
     
+    int tag = 1;
+    
     for (CaseStudy *obj in arr) {
-        DetailedCaseStudyView *viewToAdd = [[DetailedCaseStudyView alloc] initWithCaseStudy:obj];
+        
+        DetailedCaseStudyView *viewToAdd = [[DetailedCaseStudyView alloc] initWithCaseStudy:obj Tag:tag];
+        viewToAdd.owner = self;
         viewToAdd.translatesAutoresizingMaskIntoConstraints = NO;
         [self.scroll addSubview:viewToAdd];
         [viewsArr addObject:viewToAdd];
+        
+        tag++;
     }
    /* for (int i = 1; i < arr.count; i++){
         UIImageView *separator = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"scrollViewLandscapeSeparator"] highlightedImage:@"scrollViewLandscapeSeparator"];
@@ -521,6 +527,7 @@
     return UIModalPresentationNone;
 }
 
+#pragma mark - popover deledate
 - (void)dismissToRoot
 {
     UIViewController *vc = self;
@@ -599,9 +606,16 @@
                     completion:NULL];
 }
 
-- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
+#pragma mark - DetailedCaseStudyOwnerDelegate
+
+- (void)showWebContentForUrl:(UIButton *) sender
 {
-    return YES;
+    CaseStudy *chosenItem = self.caseStudies[sender.tag-1];
+    NSString * storyboardName = @"Main";
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:storyboardName bundle: nil];
+    WebVIewController * vc = [storyboard instantiateViewControllerWithIdentifier:@"webVC"];
+    vc.url = chosenItem.link;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 /*

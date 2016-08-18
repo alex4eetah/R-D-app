@@ -25,8 +25,9 @@
 
 @implementation DetailedCaseStudyView
 
-- (id)initWithCaseStudy:(CaseStudy *)caseStudy {
+- (id)initWithCaseStudy:(CaseStudy *)caseStudy Tag:(NSInteger)tag{
     
+    self.tag = tag;
     self.hasSetupConstraints = NO;
     
     self = [super initWithFrame:CGRectZero];
@@ -38,6 +39,7 @@
 }
 
 - (void)addSubviewsFromCS:(CaseStudy *) caseStudy {
+    
     self.backgroundColor = [UIColor colorWithRed:46/255.0 green:75/255.0 blue:217/255.0 alpha:1];
     self.border = [[UIView alloc] initWithFrame:CGRectZero];
     self.border.translatesAutoresizingMaskIntoConstraints = NO;
@@ -79,6 +81,8 @@
     [self addSubview:self.fullDescription];
     
     self.viewPageButton = [[UIButton alloc] initWithFrame:CGRectZero];
+    [self.viewPageButton addTarget:self.owner action:@selector(showWebContentForUrl:) forControlEvents:UIControlEventTouchUpInside];
+    self.viewPageButton.tag = self.tag;
     [self.viewPageButton setTitle:@"View" forState:UIControlStateNormal];
     [self.viewPageButton.titleLabel setFont:[UIFont fontWithName:@"MuseoSansCyrl-700" size:16]];
     [self.viewPageButton.titleLabel setTextColor:[UIColor whiteColor]];

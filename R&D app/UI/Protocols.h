@@ -11,6 +11,7 @@
 
 @class NSArray;
 @class UIView;
+@class NSString;
 
 @protocol Rotatable
 
@@ -24,6 +25,12 @@
 
 - (void)dismissToRoot;
 - (void)showChangePasswordModal;
+
+@end
+
+@protocol DetailedCaseStudyOwner
+
+- (void)showWebContentForUrl:(NSString *) url;
 
 @end
 
