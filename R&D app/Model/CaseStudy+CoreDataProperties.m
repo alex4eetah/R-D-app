@@ -2,7 +2,7 @@
 //  CaseStudy+CoreDataProperties.m
 //  R&D app
 //
-//  Created by Oleksandr Chechetkin on 8/15/16.
+//  Created by Oleksandr Chechetkin on 8/18/16.
 //  Copyright © 2016 softserve. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu

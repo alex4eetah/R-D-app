@@ -54,10 +54,16 @@
     
     self.webView = [[UIWebView alloc]initWithFrame:CGRectZero];
     self.webView.translatesAutoresizingMaskIntoConstraints = NO;
-    NSString *urlAddress = caseStudy.link;
-    NSURL *url = [NSURL URLWithString:urlAddress];
-    NSURLRequest *requestObj = [NSURLRequest requestWithURL:url];
-    [self.webView loadRequest:requestObj];
+   /* if (caseStudy.cache) {
+        NSString *urlAddress = caseStudy.link;
+        NSURL *url = [NSURL URLWithString:urlAddress];
+        [self.webView loadHTMLString:caseStudy.cache baseURL:url];
+    } else {*/
+        NSString *urlAddress = caseStudy.link;
+        NSURL *url = [NSURL URLWithString:urlAddress];
+        NSURLRequest *requestObj = [NSURLRequest requestWithURL:url];
+        [self.webView loadRequest:requestObj];
+   // }
     self.webView.backgroundColor = [UIColor clearColor];
     self.webView.opaque = NO;
     [self addSubview:self.webView];

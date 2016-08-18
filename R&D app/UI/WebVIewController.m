@@ -20,10 +20,14 @@
     [super viewDidLoad];
     NSString *urlAddress = self.url;
     NSURL *url = [NSURL URLWithString:urlAddress];
-    NSURLRequest *requestObj = [NSURLRequest requestWithURL:url];
     self.webView.delegate = self;
-    [self.webView loadRequest:requestObj];
-
+    
+    if (self.cache) {
+        [self.webView loadHTMLString:self.cache baseURL:url];
+    } else if (self.url) {
+        NSURLRequest *requestObj = [NSURLRequest requestWithURL:url];
+        [self.webView loadRequest:requestObj];
+    }
 }
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType

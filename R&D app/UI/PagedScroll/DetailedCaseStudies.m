@@ -152,6 +152,8 @@
     self.animator = [UiUtil sharedUtil];
     self.isInLandscape = (self.view.frame.size.width > self.view.frame.size.height);
     
+    [self.manager updateCaseStudies];
+    
     [self createScrollViewLayoutFromArray:self.caseStudies];
     
     if (!self.isInLandscape) {
@@ -611,10 +613,12 @@
 - (void)showWebContentForUrl:(UIButton *) sender
 {
     CaseStudy *chosenItem = self.caseStudies[sender.tag-1];
+    [self.manager updateCaseStudyWithName:chosenItem.name Force:YES];
     NSString * storyboardName = @"Main";
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:storyboardName bundle: nil];
     WebVIewController * vc = [storyboard instantiateViewControllerWithIdentifier:@"webVC"];
     vc.url = chosenItem.link;
+    vc.cache = chosenItem.cache;
     [self.navigationController pushViewController:vc animated:YES];
 }
 

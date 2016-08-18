@@ -38,7 +38,7 @@
     [self configureNavigationBar];
     
     //TEST DATA
-   /* [self.manager fakeFromArray:[NSArray arrayWithObjects:
+ /*   [self.manager fakeFromArray:[NSArray arrayWithObjects:
                                  @{
                                    @"name":@"BioLock",
                                    @"image":[UIImage imageNamed:@"SmartIdentityVerifImage.png"],

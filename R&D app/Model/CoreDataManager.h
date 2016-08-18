@@ -31,6 +31,10 @@
 
 - (NSArray *)getSortedArrayOfCaseStudiesAscending:(BOOL) ascending;
 
+- (void)updateCaseStudies;
+
+- (void)updateCaseStudyWithName:(NSString *)name Force:(BOOL)force;
+
 -(void)fakeFromArray:(NSArray *)arr;
 
 @end

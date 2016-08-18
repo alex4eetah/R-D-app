@@ -46,12 +46,59 @@
     return _context;
 }
 
+- (void)updateCaseStudyWithName:(NSString *)name Force:(BOOL)force
+{
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"CaseStudy" inManagedObjectContext:self.context];
+    [fetchRequest setEntity:entity];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"name == %@", name];
+    [fetchRequest setPredicate:predicate];
+     NSError *error = nil;
+    NSArray *result = [self.context executeFetchRequest:fetchRequest error:&error];
+    
+    if([result count] == 1) {
+        CaseStudy *instance = [result objectAtIndex:0];
+        
+        if (!instance.cache || force) {
+            NSURL *url = [NSURL URLWithString:instance.link];
+            NSError *error;
+            NSString *page = [NSString stringWithContentsOfURL:url
+                                                      encoding:NSASCIIStringEncoding
+                                                         error:&error];
+            if (!error) {
+                instance.cache = page;
+            }
+            
+            [self.context save:nil];
+        }
+    }
+}
+
+- (void)updateCaseStudies
+{
+    NSArray *arr = [self getArrayOfCaseStudies];
+    for (CaseStudy *instance in arr) {
+        if (instance.cache == nil && instance.link) {
+            NSString *urlStr = instance.link;
+            NSURL *url = [NSURL URLWithString:urlStr];
+            NSError *error;
+            NSString *page = [NSString stringWithContentsOfURL:url
+                                                            encoding:NSASCIIStringEncoding
+                                                               error:&error];
+            if (!error) {
+                instance.cache = page;
+            }
+        }
+    }
+}
+
 - (void)saveCaseStudyWithName:(NSString *)name
                          Link:(NSString *)link
              ShortDeskription:(NSString *)shortDesc
                   Description:(NSString *)fullDesc
                         Image:(UIImage *)image
-                        Cache:(NSData *)cache
+                        Cache:(NSString *)cache
                          Save:(BOOL)save
 {
     CaseStudy *coreDataInstance = [NSEntityDescription insertNewObjectForEntityForName:@"CaseStudy" inManagedObjectContext:self.context];
