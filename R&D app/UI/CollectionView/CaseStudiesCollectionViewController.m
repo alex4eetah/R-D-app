@@ -41,40 +41,39 @@
                                    @"image":[UIImage imageNamed:@"SmartIdentityVerifImage.png"],
                                    @"shortDesc":@"Smart Identity Verification",
                                    @"fullDesc":@"Smart Identity VerificationSmart Identity VerificationSmart Identity VerificationSmart Identity VerificationSmart Identity VerificationSmart Identity VerificationSmart Identity Verification",
-                                   @"link":@"google.com"},
+                                   @"link":@""},
                                  @{
                                    @"name":@"Barista",
                                    @"image":[UIImage imageNamed:@"BaristaImage.png"],
                                    @"shortDesc":@"Smart Coffee Machine",
                                    @"fullDesc":@"Smart Coffee MachineSmart Coffee MachineSmart Coffee MachineSmart Coffee MachineSmart Coffee MachineSmart Coffee MachineSmart Coffee MachineSmart Coffee Machine",
-                                   @"link":@"google.com"},
+                                   @"link":@"http://demo.softserveinc.com/barista/"},
                                  @{
                                    @"name":@"Alexa",
                                    @"image":[UIImage imageNamed:@"VoiceMyBotImage.png"],
                                    @"shortDesc":@"VoiceMyBot",
                                    @"fullDesc":@"SVoiceMyBotVoiceMyBotVoiceMyBotVoiceMyBotVoiceMyBot",
-                                   @"link":@"google.com"},
+                                   @"link":@""},
                                  @{
                                    @"name":@"SecondAlexa",
                                    @"image":[UIImage imageNamed:@"VoiceMyBotImage.png"],
                                    @"shortDesc":@"VoiceSecond",
                                    @"fullDesc":@"SecondMyBotVoiceMyBotVoiceMyBotSecondSecondSecondSecondSecondSecondSecondSecondSecondSecond",
-                                   @"link":@"google.com"},
+                                   @"link":@""},
                                  @{
                                    @"name":@"BaristaTwo",
                                    @"image":[UIImage imageNamed:@"BaristaImage.png"],
                                    @"shortDesc":@"Smart Coffee Machine",
                                    @"fullDesc":@"Smart Coffee MachineSmart Coffee MachineSmart Coffee MachineSmart Coffee MachineSmart Coffee MachineSmart Coffee MachineSmart Coffee MachineSmart Coffee Machine",
-                                   @"link":@"google.com"},
+                                   @"link":@"http://demo.softserveinc.com/barista/"},
                                  @{
                                    @"name":@"BioLockTwo",
                                    @"image":[UIImage imageNamed:@"SmartIdentityVerifImage.png"],
                                    @"shortDesc":@"Smart Identity Verification",
                                    @"fullDesc":@"Smart Identity VerificationSmart Identity VerificationSmart Identity VerificationSmart Identity VerificationSmart Identity VerificationSmart Identity VerificationSmart Identity Verification",
-                                   @"link":@"google.com"}, nil]];
+                                   @"link":@""}, nil]];*/
     
- */
-    
+ 
 }
 
 - (void)configureSelf

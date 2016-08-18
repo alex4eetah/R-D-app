@@ -34,4 +34,22 @@
         }
 }
 
+- (void) changePasswordWithCredentials:(NSDictionary *) creds
+                            Completion:(void(^)(BOOL done)) completion
+{
+    /*
+     -----------TODO: request to service,
+     reset password, get result
+     */
+    
+    if (true) {
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            completion(YES);
+        });
+        //completion(YES);
+    } else {
+        completion(NO);
+    }
+}
+
 @end

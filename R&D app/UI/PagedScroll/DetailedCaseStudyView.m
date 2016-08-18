@@ -13,6 +13,7 @@
 
 @property (strong, nonatomic) UIView *border;
 @property (strong, nonatomic) UIImageView *photoImageView;
+@property (strong, nonatomic) UIWebView *webView;
 @property (strong, nonatomic) UILabel *name;
 @property (strong, nonatomic) UILabel *fullDescription;
 @property (strong, nonatomic) UIButton *viewPageButton;
@@ -44,9 +45,20 @@
     [self addSubview:self.border];
     
     self.photoImageView = [[UIImageView alloc] initWithFrame:CGRectZero];
+    self.photoImageView.contentMode = UIViewContentModeScaleAspectFit;
     self.photoImageView.image = [UIImage imageWithData:caseStudy.image];
     self.photoImageView.translatesAutoresizingMaskIntoConstraints = NO;
     [self addSubview:self.photoImageView];
+    
+    self.webView = [[UIWebView alloc]initWithFrame:CGRectZero];
+    self.webView.translatesAutoresizingMaskIntoConstraints = NO;
+    NSString *urlAddress = caseStudy.link;
+    NSURL *url = [NSURL URLWithString:urlAddress];
+    NSURLRequest *requestObj = [NSURLRequest requestWithURL:url];
+    [self.webView loadRequest:requestObj];
+    self.webView.backgroundColor = [UIColor clearColor];
+    self.webView.opaque = NO;
+    [self addSubview:self.webView];
     
     self.name = [[UILabel alloc] initWithFrame:CGRectZero];
     self.name.text = caseStudy.name;
@@ -173,6 +185,39 @@
                                                       constant:62]];
     
     [self addConstraint:[NSLayoutConstraint constraintWithItem:self.photoImageView
+                                                     attribute:NSLayoutAttributeTop
+                                                     relatedBy:NSLayoutRelationEqual
+                                                        toItem:self
+                                                     attribute:NSLayoutAttributeTop
+                                                    multiplier:1.0
+                                                      constant:-32]];
+    
+    // photoImageView
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.webView
+                                                     attribute:NSLayoutAttributeWidth
+                                                     relatedBy:NSLayoutRelationEqual
+                                                        toItem:nil
+                                                     attribute:NSLayoutAttributeNotAnAttribute
+                                                    multiplier:1.0
+                                                      constant:262]];
+    
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.webView
+                                                     attribute:NSLayoutAttributeHeight
+                                                     relatedBy:NSLayoutRelationEqual
+                                                        toItem:nil
+                                                     attribute:NSLayoutAttributeNotAnAttribute
+                                                    multiplier:1.0
+                                                      constant:375]];
+    
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.webView
+                                                     attribute:NSLayoutAttributeLeading
+                                                     relatedBy:NSLayoutRelationEqual
+                                                        toItem:self
+                                                     attribute:NSLayoutAttributeLeading
+                                                    multiplier:1.0
+                                                      constant:62]];
+    
+    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.webView
                                                      attribute:NSLayoutAttributeTop
                                                      relatedBy:NSLayoutRelationEqual
                                                         toItem:self
@@ -344,4 +389,5 @@
                                                     multiplier:1.0
                                                       constant:0.0]];
 }
+
 @end

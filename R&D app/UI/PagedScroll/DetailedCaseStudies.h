@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "Protocols.h"
 
-@interface DetailedCaseStudies : UIViewController <Rotatable>
+@interface DetailedCaseStudies : UIViewController <Rotatable, UIWebViewDelegate>
 
 @property (strong, nonatomic) NSString *caseStudyToPresentName;
 

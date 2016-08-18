@@ -23,6 +23,7 @@
 @protocol PopoverDelegate
 
 - (void)dismissToRoot;
+- (void)showChangePasswordModal;
 
 @end
 

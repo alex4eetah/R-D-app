@@ -13,6 +13,7 @@
 #import "UiUtil.h"
 #import "UINavigationBar+Helper.h"
 #import "PopoverViewController.h"
+#import "RDServerManager.h"
 
 @interface DetailedCaseStudies () <UIScrollViewDelegate, UIPopoverPresentationControllerDelegate, PopoverDelegate>
 
@@ -34,6 +35,18 @@
 @property (assign, nonatomic) BOOL scrollProgressFlag;
 
 @property(nonatomic,strong) UIPopoverController *morePopover;
+@property (weak, nonatomic) IBOutlet UIView *changePasswordModal;
+@property (weak, nonatomic) IBOutlet UIView *modalWaitForeground;
+@property (weak, nonatomic) IBOutlet UITextField *currentPasswordField;
+@property (weak, nonatomic) IBOutlet UITextField *passwordToSetField;
+@property (weak, nonatomic) IBOutlet UITextField *confirmPasswordField;
+@property (weak, nonatomic) IBOutlet UILabel *currentPassLabel;
+@property (weak, nonatomic) IBOutlet UILabel *passToSetLabel;
+@property (weak, nonatomic) IBOutlet UILabel *confirmPassLabel;
+
+@property (strong, nonatomic) RDServerManager *serverManager;
+
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *spinner;
 
 @end
 
@@ -122,6 +135,8 @@
 
 - (void)configureSelf
 {
+    self.serverManager = [RDServerManager sharedManager];
+    
     self.manager = [CoreDataManager sharedManager];
     self.caseStudies = [self.manager getArrayOfCaseStudies];
     
@@ -147,6 +162,8 @@
     }
     
     self.scrollProgressFlag = YES;
+    
+    self.spinner.layer.zPosition = -1;
 }
 
 - (void)createScrollViewLayoutFromArray:(NSArray *)arr
@@ -513,6 +530,80 @@
     [vc dismissViewControllerAnimated:YES completion:nil];
 
 }
+
+- (void)showChangePasswordModal
+{
+    [UIView transitionWithView:self.changePasswordModal
+                      duration:0.4
+                       options:UIViewAnimationOptionTransitionCrossDissolve
+                    animations:^{
+                        self.changePasswordModal.hidden = NO;
+                        self.navigationController.navigationBar.layer.zPosition = -1;
+                    }
+                    completion:NULL];
+}
+
+#pragma mark password changing delegate
+- (IBAction)changePassword:(id)sender
+{
+    NSString *oldPass = self.currentPasswordField.text;
+    NSString *newPass = self.passwordToSetField.text;
+    NSString *confirmPass = self.confirmPasswordField.text;
+    if ([oldPass isEqualToString: @""] || [oldPass isEqualToString:@" "]) {
+        
+        [self.animator animateWrongInputOnLayer:self.currentPassLabel.layer];
+        
+    } else if ([newPass isEqualToString: @""] || [newPass isEqualToString:@" "]) {
+        
+        [self.animator animateWrongInputOnLayer:self.passToSetLabel.layer];
+        
+    } else if ([confirmPass isEqualToString: @""] || [confirmPass isEqualToString:@" "] || ![confirmPass isEqualToString:newPass]) {
+        
+        [self.animator animateWrongInputOnLayer:self.confirmPassLabel.layer];
+        
+    } else {
+        self.modalWaitForeground.hidden = NO;
+        self.spinner.layer.zPosition = 20;
+        
+        [self.spinner startAnimating];
+        [self.serverManager changePasswordWithCredentials:@{@"oldPass":oldPass,@"newPass":newPass} Completion:^(BOOL done) {
+            self.modalWaitForeground.hidden = YES;
+            [self.spinner stopAnimating];
+            self.spinner.layer.zPosition = -1;
+            
+            if (done == YES) {
+                [UIView transitionWithView:self.changePasswordModal
+                                  duration:0.4
+                                   options:UIViewAnimationOptionTransitionCrossDissolve
+                                animations:^{
+                                    self.changePasswordModal.hidden = YES;
+                                    self.navigationController.navigationBar.layer.zPosition = 0;
+                                }
+                                completion:NULL];
+            } else {
+                [self.animator animateWrongInputOnLayer:self.currentPasswordField.layer];
+            }
+        }];
+    }
+}
+
+- (IBAction)dismissChangePasswordModal:(id)sender
+{
+    [UIView transitionWithView:self.changePasswordModal
+                      duration:0.4
+                       options:UIViewAnimationOptionTransitionCrossDissolve
+                    animations:^{
+                        self.changePasswordModal.hidden = YES;
+                        self.navigationController.navigationBar.layer.zPosition = 0;
+                    }
+                    completion:NULL];
+}
+
+- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
+{
+    return YES;
+}
+
 /*
 #pragma mark - Navigation
 

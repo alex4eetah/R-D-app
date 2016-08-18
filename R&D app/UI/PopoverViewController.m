@@ -25,7 +25,7 @@
     self.logOutButt.backgroundColor = [UIColor blackColor];
     [self.logOutButt setTitle:@"Log out" forState:UIControlStateNormal];
     //[self.logOutButt.titleLabel setFont:[UIFont fontWithName:@"MuseoSansCyrl-700" size:16]];
-    //[self.logOutButt.titleLabel setTextColor:[UIColor greenColor]];//[UIColor colorWithRed:155/255 green:155/255 blue:155/255 alpha:1]];
+    [self.logOutButt.titleLabel setTextColor:[UIColor greenColor]];//[UIColor colorWithRed:155/255 green:155/255 blue:155/255 alpha:1]];
     [self.view addSubview:self.logOutButt];
     
     self.changePassButt = [[UIButton alloc] initWithFrame:CGRectMake(8, 8 + 8 + 30, self.view.frame.size.width-16, 30)];
@@ -60,7 +60,8 @@
 
 - (void)changePass:(UIButton *)sender {
 
-    
+    [self dismissViewControllerAnimated:NO completion:nil];
+    [self.delegate showChangePasswordModal];
     
 }
 
