@@ -22,12 +22,12 @@
     NSURL *url = [NSURL URLWithString:urlAddress];
     self.webView.delegate = self;
     
-    if (self.cache) {
+    /*if (self.cache) {
         [self.webView loadHTMLString:self.cache baseURL:url];
-    } else if (self.url) {
+    } else if (self.url) {*/
         NSURLRequest *requestObj = [NSURLRequest requestWithURL:url];
         [self.webView loadRequest:requestObj];
-    }
+    //}
 }
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType

@@ -13,8 +13,12 @@
 #import "CaseStudy.h"
 #import "UiUtil.h"
 #import "PopoverViewController.h"
+#import "UIPopoverController+iPhone.h"
+
+#import "FPPopoverController.h"
 
 @interface CaseStudiesCollectionViewController()<PopoverDelegate>
+
 
 @property (strong, nonatomic) CoreDataManager *manager;
 @property(strong, nonatomic) NSArray *caseStudies;
@@ -23,6 +27,8 @@
 @property (strong, nonatomic) UiUtil *animator;
 
 @property(nonatomic,strong) UIPopoverController *morePopover;
+
+@property (weak, nonatomic) FPPopoverController *popover;
 
 @end
 
@@ -38,7 +44,7 @@
     [self configureNavigationBar];
     
     //TEST DATA
- /*   [self.manager fakeFromArray:[NSArray arrayWithObjects:
+   /* [self.manager fakeFromArray:[NSArray arrayWithObjects:
                                  @{
                                    @"name":@"BioLock",
                                    @"image":[UIImage imageNamed:@"SmartIdentityVerifImage.png"],
@@ -124,7 +130,7 @@
                                   Size:CGSizeMake(28, 20)
                                   Left:NO];
     [self.animator addNavigationButtonForTarget:self
-                              Selector:@selector(more)
+                                       Selector:@selector(more:)
                          ImageWithName:@"moreNavBarIcon"
                                   Size:CGSizeMake(20, 20)
                                   Left:NO];
@@ -135,9 +141,9 @@
     
 }
 
--(void)more
+-(void)more:(UIButton *) sender
 {
-    UIStoryboard *storyboard = self.storyboard;
+    /*UIStoryboard *storyboard = self.storyboard;
     PopoverViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"popoverVC"];
     UIPopoverController* aPopover = [[UIPopoverController alloc]
                                      initWithContentViewController:vc];
@@ -147,7 +153,21 @@
     vc.delegate = self;
     self.morePopover = aPopover;
     
-    [self.morePopover presentPopoverFromRect:CGRectMake(self.view.frame.size.width-30, 0, 20, 60)  inView:self.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+    [self.morePopover presentPopoverFromRect:CGRectMake(self.view.frame.size.width-30, 0, 20, 60)  inView:self.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];*/
+    
+    UIStoryboard *storyboard = self.storyboard;
+    PopoverViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"popoverVC"];
+    vc.delegate = self;
+    FPPopoverController *popover = [[FPPopoverController alloc] initWithViewController:vc];
+    popover.title = nil;
+    popover.border = NO;
+    popover.tint = FPPopoverWhiteTint;
+    popover.arrowDirection = FPPopoverArrowDirectionUp;
+    popover.contentSize = CGSizeMake(240, 135);
+    self.popover = popover;
+    
+    [popover presentPopoverFromView:sender];
+
 }
 
 -(void)changeView
@@ -205,26 +225,48 @@
                   layout:(UICollectionViewLayout *)collectionViewLayout
   sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (self.isInLandscape)
-    {
-        return CGSizeMake(282.f, 322.f);
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+        if (self.isInLandscape)
+        {
+            return CGSizeMake(282.f, 322.f);
+        }
+        return CGSizeMake(277.f, 277.f);
+    } else {
+        if (self.isInLandscape)
+        {
+            return CGSizeMake(282.f, 256.f);
+        }
+        return CGSizeMake(282.f, 256.f);
     }
-    return CGSizeMake(277.f, 277.f);
 }
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section{
-    if (self.isInLandscape)
-        return UIEdgeInsetsMake(92, 40, 0, 40);
-    else
-        return UIEdgeInsetsMake(98, 72, 0, 72);
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+        if (self.isInLandscape)
+            return UIEdgeInsetsMake(92, 40, 0, 40);
+        else
+            return UIEdgeInsetsMake(98, 72, 0, 72);
+    } else {
+        if (self.isInLandscape)
+            return UIEdgeInsetsMake(52, 47, 0, 46);
+        else
+            return UIEdgeInsetsMake(52, 47, 0, 46);
+    }
 }
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionView *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section
 {
-    if (!self.isInLandscape)
-        return 98;
-    else
-        return 98;
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+        if (!self.isInLandscape)
+            return 98;
+        else
+            return 98;
+    } else {
+        if (!self.isInLandscape)
+            return 52;
+        else
+            return 52;
+    }
 }
 
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
@@ -255,7 +297,9 @@
     
     [self.navigationController pushViewController:vc animated:YES];
 }
-/*
+
+
+
 #pragma mark - popover deledate
 - (void)dismissToRoot
 {
@@ -269,15 +313,17 @@
 
 - (void)showChangePasswordModal
 {
-    [UIView transitionWithView:self.changePasswordModal
-                      duration:0.4
-                       options:UIViewAnimationOptionTransitionCrossDissolve
-                    animations:^{
-                        self.changePasswordModal.hidden = NO;
-                        self.navigationController.navigationBar.layer.zPosition = -1;
-                    }
-                    completion:NULL];
+    NSString * storyboardName = @"Main";
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:storyboardName bundle: nil];
+    UIViewController<PopoverDelegate> *vc = [storyboard instantiateViewControllerWithIdentifier:@"PagedScrollCaseStudies"];
+    [self.navigationController pushViewController:vc animated:YES];
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self.popover dismissPopoverAnimated:YES];
+        [vc showChangePasswordModal];
+        
+    });
 }
-*/
+
 
 @end

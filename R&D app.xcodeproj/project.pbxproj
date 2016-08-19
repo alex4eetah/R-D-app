@@ -15,6 +15,11 @@
 		E7B22EC11D66139300509F52 /* CaseStudy+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = E7B22EC01D66139300509F52 /* CaseStudy+CoreDataProperties.m */; };
 		E7C3E4D51D6491BD00ECB3BB /* PopoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7C3E4D41D6491BD00ECB3BB /* PopoverViewController.m */; };
 		E7D813611D5E005900A240D9 /* DetailedCaseStudies.m in Sources */ = {isa = PBXBuildFile; fileRef = E7D813601D5E005900A240D9 /* DetailedCaseStudies.m */; };
+		E7E9E4E71D6723DA00B5C78D /* UIPopoverController+iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = E7E9E4E61D6723DA00B5C78D /* UIPopoverController+iPhone.m */; };
+		E7E9E4ED1D675C8500B5C78D /* FPPopoverController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7E9E4EC1D675C8500B5C78D /* FPPopoverController.m */; };
+		E7E9E4F21D675C9900B5C78D /* FPPopoverView.m in Sources */ = {isa = PBXBuildFile; fileRef = E7E9E4EF1D675C9900B5C78D /* FPPopoverView.m */; };
+		E7E9E4F31D675C9900B5C78D /* FPTouchView.m in Sources */ = {isa = PBXBuildFile; fileRef = E7E9E4F11D675C9900B5C78D /* FPTouchView.m */; };
+		E7E9E4F51D675E7500B5C78D /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = E7E9E4F41D675E7500B5C78D /* LICENSE */; };
 		E7F48D361D61F964008F08C9 /* CaseStudy.m in Sources */ = {isa = PBXBuildFile; fileRef = E7F48D341D61F964008F08C9 /* CaseStudy.m */; };
 		E7F48D3A1D61FD47008F08C9 /* CoreDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E7F48D391D61FD47008F08C9 /* CoreDataManager.m */; };
 		FA3A38941D59F23C00DA056A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FA3A38931D59F23C00DA056A /* main.m */; };
@@ -81,6 +86,16 @@
 		E7C3E4D41D6491BD00ECB3BB /* PopoverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PopoverViewController.m; path = UI/PopoverViewController.m; sourceTree = "<group>"; };
 		E7D8135F1D5E005900A240D9 /* DetailedCaseStudies.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DetailedCaseStudies.h; path = UI/PagedScroll/DetailedCaseStudies.h; sourceTree = "<group>"; };
 		E7D813601D5E005900A240D9 /* DetailedCaseStudies.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DetailedCaseStudies.m; path = UI/PagedScroll/DetailedCaseStudies.m; sourceTree = "<group>"; };
+		E7E9E4E51D6723DA00B5C78D /* UIPopoverController+iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIPopoverController+iPhone.h"; path = "UI/UIPopoverController+iPhone.h"; sourceTree = "<group>"; };
+		E7E9E4E61D6723DA00B5C78D /* UIPopoverController+iPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIPopoverController+iPhone.m"; path = "UI/UIPopoverController+iPhone.m"; sourceTree = "<group>"; };
+		E7E9E4EA1D675C6F00B5C78D /* ARCMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARCMacros.h; sourceTree = "<group>"; };
+		E7E9E4EB1D675C8500B5C78D /* FPPopoverController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FPPopoverController.h; sourceTree = "<group>"; };
+		E7E9E4EC1D675C8500B5C78D /* FPPopoverController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FPPopoverController.m; sourceTree = "<group>"; };
+		E7E9E4EE1D675C9900B5C78D /* FPPopoverView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FPPopoverView.h; sourceTree = "<group>"; };
+		E7E9E4EF1D675C9900B5C78D /* FPPopoverView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FPPopoverView.m; sourceTree = "<group>"; };
+		E7E9E4F01D675C9900B5C78D /* FPTouchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FPTouchView.h; sourceTree = "<group>"; };
+		E7E9E4F11D675C9900B5C78D /* FPTouchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FPTouchView.m; sourceTree = "<group>"; };
+		E7E9E4F41D675E7500B5C78D /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		E7F48D331D61F964008F08C9 /* CaseStudy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CaseStudy.h; path = Model/CaseStudy.h; sourceTree = "<group>"; };
 		E7F48D341D61F964008F08C9 /* CaseStudy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CaseStudy.m; path = Model/CaseStudy.m; sourceTree = "<group>"; };
 		E7F48D381D61FD47008F08C9 /* CoreDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CoreDataManager.h; path = Model/CoreDataManager.h; sourceTree = "<group>"; };
@@ -170,6 +185,29 @@
 			name = PagedScrollDetailedCaseStudy;
 			sourceTree = "<group>";
 		};
+		E7E9E4E81D675C5000B5C78D /* Libs */ = {
+			isa = PBXGroup;
+			children = (
+				E7E9E4E91D675C5900B5C78D /* popover */,
+			);
+			name = Libs;
+			sourceTree = "<group>";
+		};
+		E7E9E4E91D675C5900B5C78D /* popover */ = {
+			isa = PBXGroup;
+			children = (
+				E7E9E4EA1D675C6F00B5C78D /* ARCMacros.h */,
+				E7E9E4EB1D675C8500B5C78D /* FPPopoverController.h */,
+				E7E9E4EC1D675C8500B5C78D /* FPPopoverController.m */,
+				E7E9E4EE1D675C9900B5C78D /* FPPopoverView.h */,
+				E7E9E4EF1D675C9900B5C78D /* FPPopoverView.m */,
+				E7E9E4F01D675C9900B5C78D /* FPTouchView.h */,
+				E7E9E4F11D675C9900B5C78D /* FPTouchView.m */,
+				E7E9E4F41D675E7500B5C78D /* LICENSE */,
+			);
+			name = popover;
+			sourceTree = "<group>";
+		};
 		E7F48D371D61FD0F008F08C9 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
@@ -207,6 +245,7 @@
 		FA3A38911D59F23C00DA056A /* R&D app */ = {
 			isa = PBXGroup;
 			children = (
+				E7E9E4E81D675C5000B5C78D /* Libs */,
 				FA42933C1D5C79B300AAADBC /* Model */,
 				FA3A38CC1D59FEF600DA056A /* Resources */,
 				FA3A38C81D59F85700DA056A /* UI */,
@@ -266,6 +305,8 @@
 				E7C3E4D41D6491BD00ECB3BB /* PopoverViewController.m */,
 				E7B22EB91D66015D00509F52 /* WebVIewController.h */,
 				E7B22EBA1D66015D00509F52 /* WebVIewController.m */,
+				E7E9E4E51D6723DA00B5C78D /* UIPopoverController+iPhone.h */,
+				E7E9E4E61D6723DA00B5C78D /* UIPopoverController+iPhone.m */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -408,6 +449,7 @@
 				TargetAttributes = {
 					FA3A388E1D59F23C00DA056A = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = 6ESF8SB6VZ;
 					};
 					FA3A38AA1D59F23C00DA056A = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -460,6 +502,7 @@
 				FA4293351D5C6DA500AAADBC /* OpenSans-ExtraBoldItalic.ttf in Resources */,
 				FA4293321D5C6DA500AAADBC /* OpenSans-Bold.ttf in Resources */,
 				FA3A38A51D59F23C00DA056A /* LaunchScreen.storyboard in Resources */,
+				E7E9E4F51D675E7500B5C78D /* LICENSE in Resources */,
 				FA3A38A21D59F23C00DA056A /* Assets.xcassets in Resources */,
 				FA3A389D1D59F23C00DA056A /* Main.storyboard in Resources */,
 				FA4293381D5C6DA500AAADBC /* OpenSans-LightItalic.ttf in Resources */,
@@ -498,13 +541,17 @@
 				FA3A38A01D59F23C00DA056A /* R_D_app.xcdatamodeld in Sources */,
 				FA3A38971D59F23C00DA056A /* AppDelegate.m in Sources */,
 				FA3A38941D59F23C00DA056A /* main.m in Sources */,
+				E7E9E4F21D675C9900B5C78D /* FPPopoverView.m in Sources */,
 				FA3A38CB1D59F8E400DA056A /* LoginViewController.m in Sources */,
+				E7E9E4E71D6723DA00B5C78D /* UIPopoverController+iPhone.m in Sources */,
+				E7E9E4F31D675C9900B5C78D /* FPTouchView.m in Sources */,
 				E7D813611D5E005900A240D9 /* DetailedCaseStudies.m in Sources */,
 				FAC7DAA31D5B66250043B4DF /* CaseStudiesCell.m in Sources */,
 				E7C3E4D51D6491BD00ECB3BB /* PopoverViewController.m in Sources */,
 				E7F48D3A1D61FD47008F08C9 /* CoreDataManager.m in Sources */,
 				E7B22EB51D659A3700509F52 /* RDServerManager.m in Sources */,
 				FABE10B01D5F33810096F965 /* DetailedCaseStudyView.m in Sources */,
+				E7E9E4ED1D675C8500B5C78D /* FPPopoverController.m in Sources */,
 				FA42934E1D5CC6AE00AAADBC /* CaseStudiesFlowLayout.m in Sources */,
 				E7B22EBB1D66015D00509F52 /* WebVIewController.m in Sources */,
 			);
@@ -649,10 +696,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "R&D app/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.softserve.inc.R-D-app";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -660,10 +710,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "R&D app/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.softserve.inc.R-D-app";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

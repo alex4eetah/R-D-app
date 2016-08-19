@@ -20,7 +20,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.logOutButt = [[UIButton alloc] initWithFrame:CGRectMake(8, 8, self.view.frame.size.width-16, 30)];
+    /*self.logOutButt = [[UIButton alloc] initWithFrame:CGRectMake(8, 8, self.view.frame.size.width-16, 30)];
     [self.logOutButt addTarget:self action:@selector(logOut:) forControlEvents:UIControlEventTouchUpInside];
     self.logOutButt.backgroundColor = [UIColor blackColor];
     [self.logOutButt setTitle:@"Log out" forState:UIControlStateNormal];
@@ -34,13 +34,21 @@
     [self.changePassButt setTitle:@"Change password" forState:UIControlStateNormal];
     [self.changePassButt.titleLabel setFont:[UIFont fontWithName:@"MuseoSansCyrl-700" size:16]];
     [self.changePassButt.titleLabel setTextColor:[UIColor blackColor]];
-    [self.view addSubview:self.changePassButt];
+    [self.view addSubview:self.changePassButt];*/
     // Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+- (IBAction)logOut:(id)sender {
+    [self dismissViewControllerAnimated:NO completion:nil];
+    [self.delegate dismissToRoot];
+}
+- (IBAction)changePass:(id)sender {
+    [self dismissViewControllerAnimated:NO completion:nil];
+    [self.delegate showChangePasswordModal];
 }
 
 /*
@@ -51,8 +59,8 @@
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
 }
-*/
-- (void)logOut:(UIButton *)sender {
+*//*
+- (ction)logOut:(UIButton *)sender {
 //LOGOUT
     [self dismissViewControllerAnimated:NO completion:nil];
     [self.delegate dismissToRoot];
@@ -63,6 +71,6 @@
     [self dismissViewControllerAnimated:NO completion:nil];
     [self.delegate showChangePasswordModal];
     
-}
+}*/
 
 @end

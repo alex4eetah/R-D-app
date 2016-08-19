@@ -71,7 +71,12 @@
     self.name = [[UILabel alloc] initWithFrame:CGRectZero];
     self.name.text = caseStudy.name;
     [self.name setFont:[UIFont fontWithName:@"RobotoSlab-Bold" size:32]];
-    [self.name setTextColor:[UIColor whiteColor]];
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+        [self.name setTextColor:[UIColor whiteColor]];
+    } else {
+        [self.name setTextColor:[UIColor redColor]];
+        self.name.textAlignment = NSTextAlignmentCenter;
+    }
     self.name.translatesAutoresizingMaskIntoConstraints = NO;
     [self addSubview:self.name];
     
@@ -81,7 +86,11 @@
     [self.fullDescription setTextColor:[UIColor whiteColor]];
     self.fullDescription.lineBreakMode = NSLineBreakByWordWrapping;
     self.fullDescription.numberOfLines = 0;
-    self.fullDescription.textAlignment = NSTextAlignmentLeft;
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+        self.fullDescription.textAlignment = NSTextAlignmentLeft;
+    } else {
+        self.fullDescription.textAlignment = NSTextAlignmentCenter;
+    }
     [self.fullDescription sizeToFit];
     self.fullDescription.translatesAutoresizingMaskIntoConstraints = NO;
     [self addSubview:self.fullDescription];
@@ -135,269 +144,535 @@
 
 - (void)setupConstraints
 {
-    
-    // border
-    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.border
-                                                     attribute:NSLayoutAttributeWidth
-                                                     relatedBy:NSLayoutRelationEqual
-                                                        toItem:self
-                                                     attribute:NSLayoutAttributeWidth
-                                                    multiplier:1.0
-                                                      constant:-4]];
-    
-    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.border
-                                                     attribute:NSLayoutAttributeHeight
-                                                     relatedBy:NSLayoutRelationEqual
-                                                        toItem:self
-                                                     attribute:NSLayoutAttributeHeight
-                                                    multiplier:1.0
-                                                      constant:-4]];
-    
-    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.border
-                                                     attribute:NSLayoutAttributeLeading
-                                                     relatedBy:NSLayoutRelationEqual
-                                                        toItem:self
-                                                     attribute:NSLayoutAttributeLeading
-                                                    multiplier:1.0
-                                                      constant:2]];
-    
-    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.border
-                                                     attribute:NSLayoutAttributeTop
-                                                     relatedBy:NSLayoutRelationEqual
-                                                        toItem:self
-                                                     attribute:NSLayoutAttributeTop
-                                                    multiplier:1.0
-                                                      constant:2]];
-    
-    // photoImageView
-    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.photoImageView
-                                                     attribute:NSLayoutAttributeWidth
-                                                     relatedBy:NSLayoutRelationEqual
-                                                        toItem:nil
-                                                     attribute:NSLayoutAttributeNotAnAttribute 
-                                                    multiplier:1.0 
-                                                      constant:262]];
-    
-    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.photoImageView
-                                                     attribute:NSLayoutAttributeHeight
-                                                     relatedBy:NSLayoutRelationEqual
-                                                        toItem:nil
-                                                     attribute:NSLayoutAttributeNotAnAttribute
-                                                    multiplier:1.0
-                                                      constant:375]];
-    
-    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.photoImageView
-                                                     attribute:NSLayoutAttributeLeading
-                                                     relatedBy:NSLayoutRelationEqual
-                                                        toItem:self
-                                                     attribute:NSLayoutAttributeLeading
-                                                    multiplier:1.0
-                                                      constant:62]];
-    
-    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.photoImageView
-                                                     attribute:NSLayoutAttributeTop
-                                                     relatedBy:NSLayoutRelationEqual
-                                                        toItem:self
-                                                     attribute:NSLayoutAttributeTop
-                                                    multiplier:1.0
-                                                      constant:-32]];
-    
-    // photoImageView
-    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.webView
-                                                     attribute:NSLayoutAttributeWidth
-                                                     relatedBy:NSLayoutRelationEqual
-                                                        toItem:nil
-                                                     attribute:NSLayoutAttributeNotAnAttribute
-                                                    multiplier:1.0
-                                                      constant:262]];
-    
-    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.webView
-                                                     attribute:NSLayoutAttributeHeight
-                                                     relatedBy:NSLayoutRelationEqual
-                                                        toItem:nil
-                                                     attribute:NSLayoutAttributeNotAnAttribute
-                                                    multiplier:1.0
-                                                      constant:375]];
-    
-    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.webView
-                                                     attribute:NSLayoutAttributeLeading
-                                                     relatedBy:NSLayoutRelationEqual
-                                                        toItem:self
-                                                     attribute:NSLayoutAttributeLeading
-                                                    multiplier:1.0
-                                                      constant:62]];
-    
-    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.webView
-                                                     attribute:NSLayoutAttributeTop
-                                                     relatedBy:NSLayoutRelationEqual
-                                                        toItem:self
-                                                     attribute:NSLayoutAttributeTop
-                                                    multiplier:1.0
-                                                      constant:-32]];
-    
-    // nameLabel
-    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.name
-                                                     attribute:NSLayoutAttributeHeight
-                                                     relatedBy:NSLayoutRelationEqual
-                                                        toItem:nil
-                                                     attribute:NSLayoutAttributeNotAnAttribute
-                                                    multiplier:1.0
-                                                      constant:43]];
-    
-    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.name
-                                                     attribute:NSLayoutAttributeLeading
-                                                     relatedBy:NSLayoutRelationEqual
-                                                        toItem:self.photoImageView
-                                                     attribute:NSLayoutAttributeTrailing
-                                                    multiplier:1.0
-                                                      constant:37]];
-    
-    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.name
-                                                     attribute:NSLayoutAttributeTop
-                                                     relatedBy:NSLayoutRelationEqual
-                                                        toItem:self
-                                                     attribute:NSLayoutAttributeTop
-                                                    multiplier:1.0
-                                                      constant:49]];
-    
-    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.name
-                                                     attribute:NSLayoutAttributeTrailing
-                                                     relatedBy:NSLayoutRelationEqual
-                                                        toItem:self
-                                                     attribute:NSLayoutAttributeTrailing
-                                                    multiplier:1.0
-                                                      constant:0.0]];
-    // descriptionLabel
-    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.fullDescription
-                                                     attribute:NSLayoutAttributeHeight
-                                                     relatedBy:NSLayoutRelationEqual
-                                                        toItem:nil
-                                                     attribute:NSLayoutAttributeNotAnAttribute
-                                                    multiplier:1.0
-                                                      constant:152]];
-    
-    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.fullDescription
-                                                     attribute:NSLayoutAttributeLeading
-                                                     relatedBy:NSLayoutRelationEqual
-                                                        toItem:self.photoImageView
-                                                     attribute:NSLayoutAttributeTrailing
-                                                    multiplier:1.0
-                                                      constant:37]];
-    
-    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.fullDescription
-                                                     attribute:NSLayoutAttributeTop
-                                                     relatedBy:NSLayoutRelationEqual
-                                                        toItem:self.name
-                                                     attribute:NSLayoutAttributeBottom
-                                                    multiplier:1.0
-                                                      constant:11]];
-    
-    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.fullDescription
-                                                     attribute:NSLayoutAttributeTrailing
-                                                     relatedBy:NSLayoutRelationEqual
-                                                        toItem:self
-                                                     attribute:NSLayoutAttributeTrailing
-                                                    multiplier:1.0
-                                                      constant:-70]];
-    
-    // viewPageButton
-    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.viewPageButton
-                                                     attribute:NSLayoutAttributeWidth
-                                                     relatedBy:NSLayoutRelationEqual
-                                                        toItem:nil
-                                                     attribute:NSLayoutAttributeNotAnAttribute
-                                                    multiplier:1.0
-                                                      constant:115]];
-    
-    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.viewPageButton
-                                                     attribute:NSLayoutAttributeHeight
-                                                     relatedBy:NSLayoutRelationEqual
-                                                        toItem:nil
-                                                     attribute:NSLayoutAttributeNotAnAttribute
-                                                    multiplier:1.0
-                                                      constant:42]];
-    
-    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.viewPageButton
-                                                     attribute:NSLayoutAttributeLeading
-                                                     relatedBy:NSLayoutRelationEqual
-                                                        toItem:self.photoImageView
-                                                     attribute:NSLayoutAttributeTrailing
-                                                    multiplier:1.0
-                                                      constant:37]];
-    
-    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.viewPageButton
-                                                     attribute:NSLayoutAttributeTop
-                                                     relatedBy:NSLayoutRelationEqual
-                                                        toItem:self.fullDescription
-                                                     attribute:NSLayoutAttributeBottom
-                                                    multiplier:1.0
-                                                      constant:28]];
-    
-    // rightArrow
-    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.rightArrow
-                                                     attribute:NSLayoutAttributeWidth
-                                                     relatedBy:NSLayoutRelationEqual
-                                                        toItem:nil
-                                                     attribute:NSLayoutAttributeNotAnAttribute
-                                                    multiplier:1.0
-                                                      constant:47]];
-    
-    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.rightArrow
-                                                     attribute:NSLayoutAttributeHeight
-                                                     relatedBy:NSLayoutRelationEqual
-                                                        toItem:nil
-                                                     attribute:NSLayoutAttributeNotAnAttribute
-                                                    multiplier:1.0
-                                                      constant:50]];
-    
-    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.rightArrow
-                                                     attribute:NSLayoutAttributeLeading
-                                                     relatedBy:NSLayoutRelationEqual
-                                                        toItem:self
-                                                     attribute:NSLayoutAttributeTrailing
-                                                    multiplier:1.0
-                                                      constant:-28]];
-    
-    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.rightArrow
-                                                     attribute:NSLayoutAttributeCenterY
-                                                     relatedBy:NSLayoutRelationEqual
-                                                        toItem:self
-                                                     attribute:NSLayoutAttributeCenterY
-                                                    multiplier:1.0
-                                                      constant:0.0]];
-    
-    // leftArrow
-    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.leftArrow
-                                                     attribute:NSLayoutAttributeWidth
-                                                     relatedBy:NSLayoutRelationEqual
-                                                        toItem:nil
-                                                     attribute:NSLayoutAttributeNotAnAttribute
-                                                    multiplier:1.0
-                                                      constant:47]];
-    
-    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.leftArrow
-                                                     attribute:NSLayoutAttributeHeight
-                                                     relatedBy:NSLayoutRelationEqual
-                                                        toItem:nil
-                                                     attribute:NSLayoutAttributeNotAnAttribute
-                                                    multiplier:1.0
-                                                      constant:50]];
-    
-    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.leftArrow
-                                                     attribute:NSLayoutAttributeTrailing
-                                                     relatedBy:NSLayoutRelationEqual
-                                                        toItem:self
-                                                     attribute:NSLayoutAttributeLeading
-                                                    multiplier:1.0
-                                                      constant:28]];
-    
-    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.leftArrow
-                                                     attribute:NSLayoutAttributeCenterY
-                                                     relatedBy:NSLayoutRelationEqual
-                                                        toItem:self
-                                                     attribute:NSLayoutAttributeCenterY
-                                                    multiplier:1.0
-                                                      constant:0.0]];
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+        // border
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.border
+                                                         attribute:NSLayoutAttributeWidth
+                                                         relatedBy:NSLayoutRelationEqual
+                                                            toItem:self
+                                                         attribute:NSLayoutAttributeWidth
+                                                        multiplier:1.0
+                                                          constant:-4]];
+        
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.border
+                                                         attribute:NSLayoutAttributeHeight
+                                                         relatedBy:NSLayoutRelationEqual
+                                                            toItem:self
+                                                         attribute:NSLayoutAttributeHeight
+                                                        multiplier:1.0
+                                                          constant:-4]];
+        
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.border
+                                                         attribute:NSLayoutAttributeLeading
+                                                         relatedBy:NSLayoutRelationEqual
+                                                            toItem:self
+                                                         attribute:NSLayoutAttributeLeading
+                                                        multiplier:1.0
+                                                          constant:2]];
+        
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.border
+                                                         attribute:NSLayoutAttributeTop
+                                                         relatedBy:NSLayoutRelationEqual
+                                                            toItem:self
+                                                         attribute:NSLayoutAttributeTop
+                                                        multiplier:1.0
+                                                          constant:2]];
+        
+        // photoImageView
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.photoImageView
+                                                         attribute:NSLayoutAttributeWidth
+                                                         relatedBy:NSLayoutRelationEqual
+                                                            toItem:nil
+                                                         attribute:NSLayoutAttributeNotAnAttribute
+                                                        multiplier:1.0
+                                                          constant:262]];
+        
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.photoImageView
+                                                         attribute:NSLayoutAttributeHeight
+                                                         relatedBy:NSLayoutRelationEqual
+                                                            toItem:nil
+                                                         attribute:NSLayoutAttributeNotAnAttribute
+                                                        multiplier:1.0
+                                                          constant:375]];
+        
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.photoImageView
+                                                         attribute:NSLayoutAttributeLeading
+                                                         relatedBy:NSLayoutRelationEqual
+                                                            toItem:self
+                                                         attribute:NSLayoutAttributeLeading
+                                                        multiplier:1.0
+                                                          constant:62]];
+        
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.photoImageView
+                                                         attribute:NSLayoutAttributeTop
+                                                         relatedBy:NSLayoutRelationEqual
+                                                            toItem:self
+                                                         attribute:NSLayoutAttributeTop
+                                                        multiplier:1.0
+                                                          constant:-32]];
+        
+        // webView
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.webView
+                                                         attribute:NSLayoutAttributeWidth
+                                                         relatedBy:NSLayoutRelationEqual
+                                                            toItem:nil
+                                                         attribute:NSLayoutAttributeNotAnAttribute
+                                                        multiplier:1.0
+                                                          constant:262]];
+        
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.webView
+                                                         attribute:NSLayoutAttributeHeight
+                                                         relatedBy:NSLayoutRelationEqual
+                                                            toItem:nil
+                                                         attribute:NSLayoutAttributeNotAnAttribute
+                                                        multiplier:1.0
+                                                          constant:375]];
+        
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.webView
+                                                         attribute:NSLayoutAttributeLeading
+                                                         relatedBy:NSLayoutRelationEqual
+                                                            toItem:self
+                                                         attribute:NSLayoutAttributeLeading
+                                                        multiplier:1.0
+                                                          constant:62]];
+        
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.webView
+                                                         attribute:NSLayoutAttributeTop
+                                                         relatedBy:NSLayoutRelationEqual
+                                                            toItem:self
+                                                         attribute:NSLayoutAttributeTop
+                                                        multiplier:1.0
+                                                          constant:-32]];
+        
+        // nameLabel
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.name
+                                                         attribute:NSLayoutAttributeHeight
+                                                         relatedBy:NSLayoutRelationEqual
+                                                            toItem:nil
+                                                         attribute:NSLayoutAttributeNotAnAttribute
+                                                        multiplier:1.0
+                                                          constant:43]];
+        
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.name
+                                                         attribute:NSLayoutAttributeLeading
+                                                         relatedBy:NSLayoutRelationEqual
+                                                            toItem:self.photoImageView
+                                                         attribute:NSLayoutAttributeTrailing
+                                                        multiplier:1.0
+                                                          constant:37]];
+        
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.name
+                                                         attribute:NSLayoutAttributeTop
+                                                         relatedBy:NSLayoutRelationEqual
+                                                            toItem:self
+                                                         attribute:NSLayoutAttributeTop
+                                                        multiplier:1.0
+                                                          constant:49]];
+        
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.name
+                                                         attribute:NSLayoutAttributeTrailing
+                                                         relatedBy:NSLayoutRelationEqual
+                                                            toItem:self
+                                                         attribute:NSLayoutAttributeTrailing
+                                                        multiplier:1.0
+                                                          constant:0.0]];
+        // descriptionLabel
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.fullDescription
+                                                         attribute:NSLayoutAttributeHeight
+                                                         relatedBy:NSLayoutRelationEqual
+                                                            toItem:nil
+                                                         attribute:NSLayoutAttributeNotAnAttribute
+                                                        multiplier:1.0
+                                                          constant:152]];
+        
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.fullDescription
+                                                         attribute:NSLayoutAttributeLeading
+                                                         relatedBy:NSLayoutRelationEqual
+                                                            toItem:self.photoImageView
+                                                         attribute:NSLayoutAttributeTrailing
+                                                        multiplier:1.0
+                                                          constant:37]];
+        
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.fullDescription
+                                                         attribute:NSLayoutAttributeTop
+                                                         relatedBy:NSLayoutRelationEqual
+                                                            toItem:self.name
+                                                         attribute:NSLayoutAttributeBottom
+                                                        multiplier:1.0
+                                                          constant:11]];
+        
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.fullDescription
+                                                         attribute:NSLayoutAttributeTrailing
+                                                         relatedBy:NSLayoutRelationEqual
+                                                            toItem:self
+                                                         attribute:NSLayoutAttributeTrailing
+                                                        multiplier:1.0
+                                                          constant:-70]];
+        
+        // viewPageButton
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.viewPageButton
+                                                         attribute:NSLayoutAttributeWidth
+                                                         relatedBy:NSLayoutRelationEqual
+                                                            toItem:nil
+                                                         attribute:NSLayoutAttributeNotAnAttribute
+                                                        multiplier:1.0
+                                                          constant:115]];
+        
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.viewPageButton
+                                                         attribute:NSLayoutAttributeHeight
+                                                         relatedBy:NSLayoutRelationEqual
+                                                            toItem:nil
+                                                         attribute:NSLayoutAttributeNotAnAttribute
+                                                        multiplier:1.0
+                                                          constant:42]];
+        
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.viewPageButton
+                                                         attribute:NSLayoutAttributeLeading
+                                                         relatedBy:NSLayoutRelationEqual
+                                                            toItem:self.photoImageView
+                                                         attribute:NSLayoutAttributeTrailing
+                                                        multiplier:1.0
+                                                          constant:37]];
+        
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.viewPageButton
+                                                         attribute:NSLayoutAttributeTop
+                                                         relatedBy:NSLayoutRelationEqual
+                                                            toItem:self.fullDescription
+                                                         attribute:NSLayoutAttributeBottom
+                                                        multiplier:1.0
+                                                          constant:28]];
+        
+        // rightArrow
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.rightArrow
+                                                         attribute:NSLayoutAttributeWidth
+                                                         relatedBy:NSLayoutRelationEqual
+                                                            toItem:nil
+                                                         attribute:NSLayoutAttributeNotAnAttribute
+                                                        multiplier:1.0
+                                                          constant:47]];
+        
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.rightArrow
+                                                         attribute:NSLayoutAttributeHeight
+                                                         relatedBy:NSLayoutRelationEqual
+                                                            toItem:nil
+                                                         attribute:NSLayoutAttributeNotAnAttribute
+                                                        multiplier:1.0
+                                                          constant:50]];
+        
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.rightArrow
+                                                         attribute:NSLayoutAttributeLeading
+                                                         relatedBy:NSLayoutRelationEqual
+                                                            toItem:self
+                                                         attribute:NSLayoutAttributeTrailing
+                                                        multiplier:1.0
+                                                          constant:-28]];
+        
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.rightArrow
+                                                         attribute:NSLayoutAttributeCenterY
+                                                         relatedBy:NSLayoutRelationEqual
+                                                            toItem:self
+                                                         attribute:NSLayoutAttributeCenterY
+                                                        multiplier:1.0
+                                                          constant:0.0]];
+        
+        // leftArrow
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.leftArrow
+                                                         attribute:NSLayoutAttributeWidth
+                                                         relatedBy:NSLayoutRelationEqual
+                                                            toItem:nil
+                                                         attribute:NSLayoutAttributeNotAnAttribute
+                                                        multiplier:1.0
+                                                          constant:47]];
+        
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.leftArrow
+                                                         attribute:NSLayoutAttributeHeight
+                                                         relatedBy:NSLayoutRelationEqual
+                                                            toItem:nil
+                                                         attribute:NSLayoutAttributeNotAnAttribute
+                                                        multiplier:1.0
+                                                          constant:50]];
+        
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.leftArrow
+                                                         attribute:NSLayoutAttributeTrailing
+                                                         relatedBy:NSLayoutRelationEqual
+                                                            toItem:self
+                                                         attribute:NSLayoutAttributeLeading
+                                                        multiplier:1.0
+                                                          constant:28]];
+        
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.leftArrow
+                                                         attribute:NSLayoutAttributeCenterY
+                                                         relatedBy:NSLayoutRelationEqual
+                                                            toItem:self
+                                                         attribute:NSLayoutAttributeCenterY
+                                                        multiplier:1.0
+                                                          constant:0.0]];
+    }
+    else {
+        // border
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.border
+                                                         attribute:NSLayoutAttributeWidth
+                                                         relatedBy:NSLayoutRelationEqual
+                                                            toItem:self
+                                                         attribute:NSLayoutAttributeWidth
+                                                        multiplier:1.0
+                                                          constant:-4]];
+        
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.border
+                                                         attribute:NSLayoutAttributeHeight
+                                                         relatedBy:NSLayoutRelationEqual
+                                                            toItem:self
+                                                         attribute:NSLayoutAttributeHeight
+                                                        multiplier:1.0
+                                                          constant:-4]];
+        
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.border
+                                                         attribute:NSLayoutAttributeLeading
+                                                         relatedBy:NSLayoutRelationEqual
+                                                            toItem:self
+                                                         attribute:NSLayoutAttributeLeading
+                                                        multiplier:1.0
+                                                          constant:2]];
+        
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.border
+                                                         attribute:NSLayoutAttributeTop
+                                                         relatedBy:NSLayoutRelationEqual
+                                                            toItem:self
+                                                         attribute:NSLayoutAttributeTop
+                                                        multiplier:1.0
+                                                          constant:2]];
+        
+        // photoImageView
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.photoImageView
+                                                         attribute:NSLayoutAttributeWidth
+                                                         relatedBy:NSLayoutRelationEqual
+                                                            toItem:nil
+                                                         attribute:NSLayoutAttributeNotAnAttribute
+                                                        multiplier:1.0
+                                                          constant:228]];
+        
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.photoImageView
+                                                         attribute:NSLayoutAttributeHeight
+                                                         relatedBy:NSLayoutRelationEqual
+                                                            toItem:nil
+                                                         attribute:NSLayoutAttributeNotAnAttribute
+                                                        multiplier:1.0
+                                                          constant:195]];
+        
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.photoImageView
+                                                         attribute:NSLayoutAttributeLeading
+                                                         relatedBy:NSLayoutRelationEqual
+                                                            toItem:self
+                                                         attribute:NSLayoutAttributeLeading
+                                                        multiplier:1.0
+                                                          constant:38]];
+        
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.photoImageView
+                                                         attribute:NSLayoutAttributeTop
+                                                         relatedBy:NSLayoutRelationEqual
+                                                            toItem:self
+                                                         attribute:NSLayoutAttributeTop
+                                                        multiplier:1.0
+                                                          constant:-43]];
+        
+        // webView
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.webView
+                                                         attribute:NSLayoutAttributeWidth
+                                                         relatedBy:NSLayoutRelationEqual
+                                                            toItem:nil
+                                                         attribute:NSLayoutAttributeNotAnAttribute
+                                                        multiplier:1.0
+                                                          constant:228]];
+        
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.webView
+                                                         attribute:NSLayoutAttributeHeight
+                                                         relatedBy:NSLayoutRelationEqual
+                                                            toItem:nil
+                                                         attribute:NSLayoutAttributeNotAnAttribute
+                                                        multiplier:1.0
+                                                          constant:195]];
+        
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.webView
+                                                         attribute:NSLayoutAttributeLeading
+                                                         relatedBy:NSLayoutRelationEqual
+                                                            toItem:self
+                                                         attribute:NSLayoutAttributeLeading
+                                                        multiplier:1.0
+                                                          constant:38]];
+        
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.webView
+                                                         attribute:NSLayoutAttributeTop
+                                                         relatedBy:NSLayoutRelationEqual
+                                                            toItem:self
+                                                         attribute:NSLayoutAttributeTop
+                                                        multiplier:1.0
+                                                          constant:-43]];
+        
+        // nameLabel
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.name
+                                                         attribute:NSLayoutAttributeHeight
+                                                         relatedBy:NSLayoutRelationEqual
+                                                            toItem:nil
+                                                         attribute:NSLayoutAttributeNotAnAttribute
+                                                        multiplier:1.0
+                                                          constant:32]];
+        
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.name
+                                                         attribute:NSLayoutAttributeLeading
+                                                         relatedBy:NSLayoutRelationEqual
+                                                            toItem:self
+                                                         attribute:NSLayoutAttributeLeading
+                                                        multiplier:1.0
+                                                          constant:30]];
+        
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.name
+                                                         attribute:NSLayoutAttributeTrailing
+                                                         relatedBy:NSLayoutRelationEqual
+                                                            toItem:self
+                                                         attribute:NSLayoutAttributeTrailing
+                                                        multiplier:1.0
+                                                          constant:30]];
+        
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.name
+                                                         attribute:NSLayoutAttributeTop
+                                                         relatedBy:NSLayoutRelationEqual
+                                                            toItem:self.photoImageView
+                                                         attribute:NSLayoutAttributeBottom
+                                                        multiplier:1.0
+                                                          constant:10]];
+        
+        // descriptionLabel
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.fullDescription
+                                                         attribute:NSLayoutAttributeHeight
+                                                         relatedBy:NSLayoutRelationEqual
+                                                            toItem:nil
+                                                         attribute:NSLayoutAttributeNotAnAttribute
+                                                        multiplier:1.0
+                                                          constant:133]];
+        
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.fullDescription
+                                                         attribute:NSLayoutAttributeLeading
+                                                         relatedBy:NSLayoutRelationEqual
+                                                            toItem:self
+                                                         attribute:NSLayoutAttributeLeading
+                                                        multiplier:1.0
+                                                          constant:20]];
+        
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.fullDescription
+                                                         attribute:NSLayoutAttributeTop
+                                                         relatedBy:NSLayoutRelationEqual
+                                                            toItem:self.name
+                                                         attribute:NSLayoutAttributeBottom
+                                                        multiplier:1.0
+                                                          constant:16]];
+        
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.fullDescription
+                                                         attribute:NSLayoutAttributeTrailing
+                                                         relatedBy:NSLayoutRelationEqual
+                                                            toItem:self
+                                                         attribute:NSLayoutAttributeTrailing
+                                                        multiplier:1.0
+                                                          constant:-20]];
+        
+        // viewPageButton
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.viewPageButton
+                                                         attribute:NSLayoutAttributeWidth
+                                                         relatedBy:NSLayoutRelationEqual
+                                                            toItem:nil
+                                                         attribute:NSLayoutAttributeNotAnAttribute
+                                                        multiplier:1.0
+                                                          constant:154]];
+        
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.viewPageButton
+                                                         attribute:NSLayoutAttributeHeight
+                                                         relatedBy:NSLayoutRelationEqual
+                                                            toItem:nil
+                                                         attribute:NSLayoutAttributeNotAnAttribute
+                                                        multiplier:1.0
+                                                          constant:44]];
+        
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.viewPageButton
+                                                         attribute:NSLayoutAttributeCenterX
+                                                         relatedBy:NSLayoutRelationEqual
+                                                            toItem:self
+                                                         attribute:NSLayoutAttributeCenterX
+                                                        multiplier:1.0
+                                                          constant:0]];
+        
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.viewPageButton
+                                                         attribute:NSLayoutAttributeTop
+                                                         relatedBy:NSLayoutRelationEqual
+                                                            toItem:self.fullDescription
+                                                         attribute:NSLayoutAttributeBottom
+                                                        multiplier:1.0
+                                                          constant:32]];
+        
+        // rightArrow
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.rightArrow
+                                                         attribute:NSLayoutAttributeWidth
+                                                         relatedBy:NSLayoutRelationEqual
+                                                            toItem:nil
+                                                         attribute:NSLayoutAttributeNotAnAttribute
+                                                        multiplier:1.0
+                                                          constant:41]];
+        
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.rightArrow
+                                                         attribute:NSLayoutAttributeHeight
+                                                         relatedBy:NSLayoutRelationEqual
+                                                            toItem:nil
+                                                         attribute:NSLayoutAttributeNotAnAttribute
+                                                        multiplier:1.0
+                                                          constant:43]];
+        
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.rightArrow
+                                                         attribute:NSLayoutAttributeLeading
+                                                         relatedBy:NSLayoutRelationEqual
+                                                            toItem:self
+                                                         attribute:NSLayoutAttributeTrailing
+                                                        multiplier:1.0
+                                                          constant:-20]];
+        
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.rightArrow
+                                                         attribute:NSLayoutAttributeCenterY
+                                                         relatedBy:NSLayoutRelationEqual
+                                                            toItem:self
+                                                         attribute:NSLayoutAttributeCenterY
+                                                        multiplier:1.0
+                                                          constant:0.0]];
+        
+        // leftArrow
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.leftArrow
+                                                         attribute:NSLayoutAttributeWidth
+                                                         relatedBy:NSLayoutRelationEqual
+                                                            toItem:nil
+                                                         attribute:NSLayoutAttributeNotAnAttribute
+                                                        multiplier:1.0
+                                                          constant:41]];
+        
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.leftArrow
+                                                         attribute:NSLayoutAttributeHeight
+                                                         relatedBy:NSLayoutRelationEqual
+                                                            toItem:nil
+                                                         attribute:NSLayoutAttributeNotAnAttribute
+                                                        multiplier:1.0
+                                                          constant:43]];
+        
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.leftArrow
+                                                         attribute:NSLayoutAttributeTrailing
+                                                         relatedBy:NSLayoutRelationEqual
+                                                            toItem:self
+                                                         attribute:NSLayoutAttributeLeading
+                                                        multiplier:1.0
+                                                          constant:20]];
+        
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.leftArrow
+                                                         attribute:NSLayoutAttributeCenterY
+                                                         relatedBy:NSLayoutRelationEqual
+                                                            toItem:self
+                                                         attribute:NSLayoutAttributeCenterY
+                                                        multiplier:1.0
+                                                          constant:0.0]];
+    }
 }
 
 @end

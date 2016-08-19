@@ -78,7 +78,7 @@
 - (void)animateConstraintsChangingToOrientation:(Orientation) orientation
                               ForViewController:(id <Rotatable>) VC
 {
-    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad ) {
+    if (/*UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad*/true ) {
         __weak UiUtil *weakSelf = self;
         [UIView animateWithDuration:0.25 animations:^{
             if (orientation == Portrait) {
