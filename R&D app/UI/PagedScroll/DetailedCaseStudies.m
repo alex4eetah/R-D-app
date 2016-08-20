@@ -38,7 +38,7 @@
 
 @property (assign, nonatomic) BOOL scrollProgressFlag;
 
-@property(nonatomic,strong) UIPopoverController *morePopover;
+//@property(nonatomic,strong) UIPopoverController *morePopover;
 @property (weak, nonatomic) IBOutlet UIView *changePasswordModal;
 @property (weak, nonatomic) IBOutlet UIView *modalWaitForeground;
 @property (weak, nonatomic) IBOutlet UITextField *currentPasswordField;
@@ -64,10 +64,6 @@
     [super viewDidLoad];
     
     [self configureSelf];
-    
-    [self configureBGImage];
-    
-    [self configureNavigationBar];
 }
 
 - (void)viewDidLayoutSubviews
@@ -81,41 +77,45 @@
             }
         }
     }
+    if (self.isInLandscape) {
+        [self showLandscapeSeparators];
+    } else {
+        [self hideLandscapeSeparators];
+    }
 }
 
-- (void)more:(UIButton *)sender
+- (void)configureSelf
 {
-    /*UIStoryboard *storyboard = self.storyboard;
-    PopoverViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"popoverVC"];
-    UIPopoverController* aPopover = [[UIPopoverController alloc]
-                                     initWithContentViewController:vc];
-    aPopover.delegate = self;
+    self.serverManager = [RDServerManager sharedManager];
     
-    aPopover.popoverContentSize = CGSizeMake(213, 104);
-    vc.delegate = self;
-    self.morePopover = aPopover;
+    self.manager = [CoreDataManager sharedManager];
+    self.caseStudies = [self.manager getArrayOfCaseStudies];
     
-    [self.morePopover presentPopoverFromRect:CGRectMake(self.view.frame.size.width-30, 0, 20, 60)  inView:self.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];*/
+    self.scroll.delegate = self;
+    self.scroll.scrollEnabled = YES;
     
-    UIStoryboard *storyboard = self.storyboard;
-    PopoverViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"popoverVC"];
-    vc.delegate = self;
-    FPPopoverController *popover = [[FPPopoverController alloc] initWithViewController:vc];
-    popover.title = nil;
-    popover.border = NO;
-    popover.tint = FPPopoverWhiteTint;
-    popover.arrowDirection = FPPopoverArrowDirectionUp;
-    popover.contentSize = CGSizeMake(240, 135);
-    self.popover = popover;
+    self.scroll.pagingEnabled = YES;
+    self.pageIndicator.numberOfPages = self.caseStudies.count;
+    [self.pageIndicator addTarget:self action:@selector(PageControllDidChangePage:) forControlEvents:UIControlEventValueChanged];
     
-    [popover presentPopoverFromView:sender];
-}
-
-- (void)back
-{
-    [self.scroll.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
-    [self.scroll removeFromSuperview];
-    [self.navigationController popViewControllerAnimated:YES];
+    self.potraitConstraints = [[NSMutableArray alloc] init];
+    self.landscapeConstraints = [[NSMutableArray alloc] init];
+    
+    self.animator = [UiUtil sharedUtil];
+    self.isInLandscape = (self.view.frame.size.width > self.view.frame.size.height);
+    
+    [self.manager updateCaseStudies];
+    
+    [self createScrollViewLayoutFromArray:self.caseStudies];
+    
+    self.scrollProgressFlag = YES;
+    
+    self.spinner.layer.zPosition = -1;
+    
+    [self configureBGImage];
+    
+    [self configureNavigationBar];
+    
 }
 
 - (void)configureNavigationBar
@@ -150,40 +150,42 @@
                                            Left:NO];
 }
 
-- (void)configureSelf
+- (void)configureBGImage
 {
-    self.serverManager = [RDServerManager sharedManager];
-    
-    self.manager = [CoreDataManager sharedManager];
-    self.caseStudies = [self.manager getArrayOfCaseStudies];
-    
-    self.scroll.delegate = self;
-    self.scroll.scrollEnabled = YES;
-    
-    self.scroll.pagingEnabled = YES;
-    self.pageIndicator.numberOfPages = self.caseStudies.count;
-    [self.pageIndicator addTarget:self action:@selector(PageControllDidChangePage:) forControlEvents:UIControlEventValueChanged];
-    
-    self.potraitConstraints = [[NSMutableArray alloc] init];
-    self.landscapeConstraints = [[NSMutableArray alloc] init];
-    
-    self.animator = [UiUtil sharedUtil];
-    self.isInLandscape = (self.view.frame.size.width > self.view.frame.size.height);
-    
-    [self.manager updateCaseStudies];
-    
-    [self createScrollViewLayoutFromArray:self.caseStudies];
-    
-    if (!self.isInLandscape) {
-        for (UIImageView *im in self.LandscapeSeparators) {
-            im.hidden = YES;
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+        if (self.isInLandscape) {
+            self.backgroundImageView.image = [UIImage imageNamed:@"collectionViewBackgroundLandscape"];
+        } else {
+            self.backgroundImageView.image = [UIImage imageNamed:@"detailedCaseStudyBG"];
         }
     }
-    
-    self.scrollProgressFlag = YES;
-    
-    self.spinner.layer.zPosition = -1;
-    
+}
+
+- (void)showLandscapeSeparators
+{
+    for (UIImageView *im in self.LandscapeSeparators) {
+        [UIView transitionWithView:im
+                          duration:0.4
+                           options:UIViewAnimationOptionTransitionCrossDissolve
+                        animations:^{
+                            im.hidden = NO;
+                        }
+                        completion:NULL];
+    }
+}
+
+- (void)hideLandscapeSeparators
+{
+    for (UIImageView *im in self.LandscapeSeparators) {
+        [UIView transitionWithView:im
+                          duration:0.2
+                           options:UIViewAnimationOptionTransitionCrossDissolve
+                        animations:^{
+                            im.hidden = YES;
+                            self.scrollProgressFlag = NO;
+                        }
+                        completion:NULL];
+    }
 }
 
 - (void)createScrollViewLayoutFromArray:(NSArray *)arr
@@ -205,17 +207,19 @@
         [viewsArr addObject:viewToAdd];
         tag++;
     }
-
-    [self addConstraintsForViewsArr:viewsArr];
     
-    [self.scroll addConstraints:self.potraitConstraints];
-    [self.scroll addConstraints:self.landscapeConstraints];
-    
-    [self.potraitConstraints addObjectsFromArray:self.portraitIBConstraints];
-    [self.landscapeConstraints addObjectsFromArray:self.landscapeIBConstraints];
-    
-    [self.animator animateConstraintsChangingToOrientation: self.isInLandscape? Landscape: Portrait
-                                         ForViewController:self];
+    if (viewsArr.count) {
+        [self addConstraintsForViewsArr:viewsArr];
+        
+        [self.scroll addConstraints:self.potraitConstraints];
+        [self.scroll addConstraints:self.landscapeConstraints];
+        
+        [self.potraitConstraints addObjectsFromArray:self.portraitIBConstraints];
+        [self.landscapeConstraints addObjectsFromArray:self.landscapeIBConstraints];
+        
+        [self.animator animateConstraintsChangingToOrientation: self.isInLandscape? Landscape: Portrait
+                                             ForViewController:self];
+    }
     
 }
 
@@ -666,42 +670,41 @@
     }
 }
 
-- (void)configureBGImage
+#pragma mark - navigation buttons action
+
+- (void)more:(UIButton *)sender
 {
-    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-        if (self.isInLandscape) {
-            self.backgroundImageView.image = [UIImage imageNamed:@"collectionViewBackgroundLandscape"];
-        } else {
-            self.backgroundImageView.image = [UIImage imageNamed:@"detailedCaseStudyBG"];
-        }
-    }
+    /*UIStoryboard *storyboard = self.storyboard;
+     PopoverViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"popoverVC"];
+     UIPopoverController* aPopover = [[UIPopoverController alloc]
+     initWithContentViewController:vc];
+     aPopover.delegate = self;
+     
+     aPopover.popoverContentSize = CGSizeMake(213, 104);
+     vc.delegate = self;
+     self.morePopover = aPopover;
+     
+     [self.morePopover presentPopoverFromRect:CGRectMake(self.view.frame.size.width-30, 0, 20, 60)  inView:self.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];*/
+    
+    UIStoryboard *storyboard = self.storyboard;
+    PopoverViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"popoverVC"];
+    vc.delegate = self;
+    FPPopoverController *popover = [[FPPopoverController alloc] initWithViewController:vc];
+    popover.title = nil;
+    popover.border = NO;
+    popover.tint = FPPopoverWhiteTint;
+    popover.arrowDirection = FPPopoverArrowDirectionUp;
+    popover.contentSize = CGSizeMake(240, 135);
+    self.popover = popover;
+    
+    [popover presentPopoverFromView:sender];
 }
 
-- (void)showLandscapeSeparators
+- (void)back
 {
-    for (UIImageView *im in self.LandscapeSeparators) {
-        [UIView transitionWithView:im
-                          duration:0.4
-                           options:UIViewAnimationOptionTransitionCrossDissolve
-                        animations:^{
-                            im.hidden = NO;
-                        }
-                        completion:NULL];
-    }
-}
-
-- (void)hideLandscapeSeparators
-{
-    for (UIImageView *im in self.LandscapeSeparators) {
-        [UIView transitionWithView:im
-                          duration:0.2
-                           options:UIViewAnimationOptionTransitionCrossDissolve
-                        animations:^{
-                            im.hidden = YES;
-                            self.scrollProgressFlag = NO;
-                        }
-                        completion:NULL];
-    }
+    [self.scroll.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+    [self.scroll removeFromSuperview];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 #pragma mark - ScrollView
@@ -771,12 +774,12 @@
         }];
     }
 }
-
-#pragma mark - popover
-- (UIModalPresentationStyle)adaptivePresentationStyleForPresentationController:(UIPresentationController *)controller {
-    
-    return UIModalPresentationNone;
-}
+//
+//#pragma mark - popover
+//- (UIModalPresentationStyle)adaptivePresentationStyleForPresentationController:(UIPresentationController *)controller {
+//    
+//    return UIModalPresentationNone;
+//}
 
 #pragma mark - popover deledate
 - (void)dismissToRoot
@@ -808,17 +811,22 @@
     NSString *oldPass = self.currentPasswordField.text;
     NSString *newPass = self.passwordToSetField.text;
     NSString *confirmPass = self.confirmPasswordField.text;
+    
+    CALayer *currentPassAnimatable = (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)? self.currentPassLabel.layer: self.currentPasswordField.layer;
+    CALayer *newPassAnimatable = (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)? self.passToSetLabel.layer: self.passwordToSetField.layer;
+    CALayer *confirmPassAnimatable = (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)? self.confirmPassLabel.layer: self.confirmPasswordField.layer;
+    
     if ([oldPass isEqualToString: @""] || [oldPass isEqualToString:@" "]) {
         
-        [self.animator animateWrongInputOnLayer:self.currentPassLabel.layer];
+        [self.animator animateWrongInputOnLayer:currentPassAnimatable];
         
     } else if ([newPass isEqualToString: @""] || [newPass isEqualToString:@" "]) {
         
-        [self.animator animateWrongInputOnLayer:self.passToSetLabel.layer];
+        [self.animator animateWrongInputOnLayer:newPassAnimatable];
         
     } else if ([confirmPass isEqualToString: @""] || [confirmPass isEqualToString:@" "] || ![confirmPass isEqualToString:newPass]) {
         
-        [self.animator animateWrongInputOnLayer:self.confirmPassLabel.layer];
+        [self.animator animateWrongInputOnLayer:confirmPassAnimatable];
         
     } else {
         self.modalWaitForeground.hidden = NO;

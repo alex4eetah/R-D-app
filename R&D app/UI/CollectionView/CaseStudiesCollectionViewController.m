@@ -79,7 +79,7 @@
                                    @"name":@"BioLockTwo",
                                    @"image":[UIImage imageNamed:@"SmartIdentityVerifImage.png"],
                                    @"shortDesc":@"Smart Identity Verification",
-                                   @"fullDesc":@"Smart Identity VerificationSmart Identity VerificationSmart Identity VerificationSmart Identity VerificationSmart Identity VerificationSmart Identity VerificationSmart Identity Verification",
+                                   @"fullDesc":@"Smart Identity VerificationSmart Identity VerificationSmart Identity VerificationSmart Identity VerificationSmart Identity VerificationSmart Idntity VerificationSmart Identity Verification",
                                    @"link":@""}, nil]];*/
     
  

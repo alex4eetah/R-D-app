@@ -127,6 +127,8 @@
     } else {
         [self.serverManager authorizeUserWithCredentials:@{@"Login":email, @"Password":pass} Completion:^(BOOL done) {
             if (done == YES) {
+                self.emailTextField.text = nil;
+                self.passwordTextField.text = nil;
                 [self performSegueWithIdentifier:@"LoggedInSegue" sender:self];
             } else {
                 [self.animator animateWrongInputOnLayer:self.emailTextField.layer];
