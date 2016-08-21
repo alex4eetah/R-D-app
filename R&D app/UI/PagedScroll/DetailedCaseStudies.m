@@ -13,7 +13,7 @@
 #import "UiUtil.h"
 #import "UINavigationBar+Helper.h"
 #import "PopoverViewController.h"
-#import "UIPopoverController+iPhone.h"
+
 #import "RDServerManager.h"
 #import "WebVIewController.h"
 
@@ -104,7 +104,7 @@
     self.animator = [UiUtil sharedUtil];
     self.isInLandscape = (self.view.frame.size.width > self.view.frame.size.height);
     
-    [self.manager updateCaseStudies];
+    //[self.manager updateCaseStudies];
     
     [self createScrollViewLayoutFromArray:self.caseStudies];
     
@@ -878,6 +878,24 @@
     vc.url = chosenItem.link;
     vc.cache = chosenItem.cache;
     [self.navigationController pushViewController:vc animated:YES];
+}
+
+- (void)next
+{
+    NSInteger toGo = self.pageIndicator.currentPage + 1;
+    if (self.pageIndicator.numberOfPages > toGo) {
+        CGFloat x = toGo * self.scroll.frame.size.width;
+        [self.scroll setContentOffset:CGPointMake(x, 0) animated:YES];
+    }
+}
+
+- (void)prev
+{
+    NSInteger toGo = self.pageIndicator.currentPage - 1;
+    if (toGo > 0) {
+        CGFloat x = toGo * self.scroll.frame.size.width;
+        [self.scroll setContentOffset:CGPointMake(x, 0) animated:YES];
+    }
 }
 
 /*

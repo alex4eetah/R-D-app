@@ -31,6 +31,8 @@
 @protocol DetailedCaseStudyOwner
 
 - (void)showWebContentForUrl:(NSString *) url;
+- (void)next;
+- (void)prev;
 
 @end
 

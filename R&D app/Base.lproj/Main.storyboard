@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="SFD-1f-a3p">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -21,7 +21,6 @@
             <string>RobotoSlab-Bold</string>
         </mutableArray>
         <mutableArray key="RobotoSlab-Regular.ttf">
-            <string>RobotoSlab-Regular</string>
             <string>RobotoSlab-Regular</string>
             <string>RobotoSlab-Regular</string>
         </mutableArray>
@@ -86,9 +85,6 @@
                                 <color key="textColor" red="0.066666666669999999" green="0.63921568630000003" blue="0.87843137250000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="73" y="237" width="255" height="19"/>
-                                </variation>
                             </textField>
                             <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Yue-Io-M9c">
                                 <rect key="frame" x="180" y="394" width="255" height="1"/>
@@ -199,49 +195,6 @@
                                     <constraint firstAttribute="height" priority="999" constant="18" id="fgU-iF-6x1"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Showcase &amp; Discover Creative Work" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rXz-hW-VUd">
-                                <rect key="frame" x="144" y="238" width="326" height="86"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" priority="999" constant="326" id="5vH-LB-XDd"/>
-                                    <constraint firstAttribute="height" priority="1" constant="86" id="F2U-5U-qlv">
-                                        <variation key="heightClass=regular-widthClass=regular" constant="108"/>
-                                    </constraint>
-                                    <constraint firstAttribute="width" constant="326" id="eGS-ik-QL6"/>
-                                    <constraint firstAttribute="width" priority="1" constant="326" id="eNp-2a-sEJ">
-                                        <variation key="heightClass=regular-widthClass=regular" constant="418"/>
-                                    </constraint>
-                                    <constraint firstAttribute="height" constant="64" id="enl-1M-HhN"/>
-                                    <constraint firstAttribute="height" priority="999" constant="86" id="hcQ-82-UWy"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="RobotoSlab-Bold" family="Roboto Slab" pointSize="32"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="5vH-LB-XDd"/>
-                                        <exclude reference="F2U-5U-qlv"/>
-                                        <exclude reference="eGS-ik-QL6"/>
-                                        <exclude reference="eNp-2a-sEJ"/>
-                                        <exclude reference="enl-1M-HhN"/>
-                                        <exclude reference="hcQ-82-UWy"/>
-                                    </mask>
-                                </variation>
-                                <variation key="heightClass=regular-widthClass=compact">
-                                    <fontDescription key="fontDescription" name="RobotoSlab-Bold" family="Roboto Slab" pointSize="24"/>
-                                    <mask key="constraints">
-                                        <include reference="eGS-ik-QL6"/>
-                                        <include reference="enl-1M-HhN"/>
-                                    </mask>
-                                </variation>
-                                <variation key="heightClass=regular-widthClass=regular">
-                                    <mask key="constraints">
-                                        <include reference="5vH-LB-XDd"/>
-                                        <include reference="F2U-5U-qlv"/>
-                                        <include reference="eNp-2a-sEJ"/>
-                                        <include reference="hcQ-82-UWy"/>
-                                    </mask>
-                                </variation>
-                            </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="einstein" translatesAutoresizingMaskIntoConstraints="NO" id="uRn-AP-SI3">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <constraints>
@@ -290,10 +243,51 @@
                                 <color key="textColor" red="0.066666666669999999" green="0.63921568630000003" blue="0.87843137250000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="73" y="290" width="255" height="19"/>
-                                </variation>
                             </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Showcase &amp; Discover Creative Work" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rXz-hW-VUd">
+                                <rect key="frame" x="144" y="238" width="326" height="86"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" priority="999" constant="326" id="5vH-LB-XDd"/>
+                                    <constraint firstAttribute="height" priority="1" constant="86" id="F2U-5U-qlv">
+                                        <variation key="heightClass=regular-widthClass=regular" constant="108"/>
+                                    </constraint>
+                                    <constraint firstAttribute="width" constant="326" id="eGS-ik-QL6"/>
+                                    <constraint firstAttribute="width" priority="1" constant="326" id="eNp-2a-sEJ">
+                                        <variation key="heightClass=regular-widthClass=regular" constant="418"/>
+                                    </constraint>
+                                    <constraint firstAttribute="height" constant="64" id="enl-1M-HhN"/>
+                                    <constraint firstAttribute="height" priority="999" constant="86" id="hcQ-82-UWy"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="RobotoSlab-Bold" family="Roboto Slab" pointSize="32"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="5vH-LB-XDd"/>
+                                        <exclude reference="F2U-5U-qlv"/>
+                                        <exclude reference="eGS-ik-QL6"/>
+                                        <exclude reference="eNp-2a-sEJ"/>
+                                        <exclude reference="enl-1M-HhN"/>
+                                        <exclude reference="hcQ-82-UWy"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <fontDescription key="fontDescription" name="RobotoSlab-Bold" family="Roboto Slab" pointSize="24"/>
+                                    <mask key="constraints">
+                                        <include reference="eGS-ik-QL6"/>
+                                        <include reference="enl-1M-HhN"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=regular">
+                                    <fontDescription key="fontDescription" name="RobotoSlab-Bold" family="Roboto Slab" pointSize="32"/>
+                                    <mask key="constraints">
+                                        <include reference="5vH-LB-XDd"/>
+                                        <include reference="F2U-5U-qlv"/>
+                                        <include reference="eNp-2a-sEJ"/>
+                                        <include reference="hcQ-82-UWy"/>
+                                    </mask>
+                                </variation>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -1420,13 +1414,14 @@
                                                     </mask>
                                                 </variation>
                                                 <variation key="heightClass=regular-widthClass=compact">
-                                                    <fontDescription key="fontDescription" name="MuseoSansCyrl-700" family="Museo Sans Cyrl" pointSize="9"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="9"/>
                                                     <mask key="constraints">
                                                         <include reference="Kgj-bN-sDD"/>
                                                         <include reference="uZt-3N-zl0"/>
                                                     </mask>
                                                 </variation>
                                                 <variation key="heightClass=regular-widthClass=regular">
+                                                    <fontDescription key="fontDescription" name="MuseoSansCyrl-700" family="Museo Sans Cyrl" pointSize="16"/>
                                                     <mask key="constraints">
                                                         <include reference="8JA-ri-gUs"/>
                                                         <include reference="gJL-dZ-P4j"/>
@@ -1727,9 +1722,6 @@
                                     <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cak-Rb-3Xu">
                                         <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
-                                        <variation key="heightClass=regular-widthClass=regular" misplaced="YES">
-                                            <rect key="frame" x="358" y="363" width="84" height="75"/>
-                                        </variation>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>

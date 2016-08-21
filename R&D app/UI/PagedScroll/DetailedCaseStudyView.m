@@ -108,11 +108,19 @@
     
     self.rightArrow = [[UIImageView alloc] initWithFrame:CGRectZero];
     self.rightArrow.image = [UIImage imageNamed:@"rightArrow"];
+    self.rightArrow.userInteractionEnabled = YES;
+    UITapGestureRecognizer *rightTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(next)];
+    rightTap.numberOfTapsRequired = 1;
+    [self.rightArrow addGestureRecognizer:rightTap];
     self.rightArrow.translatesAutoresizingMaskIntoConstraints = NO;
     [self addSubview:self.rightArrow];
     
     self.leftArrow = [[UIImageView alloc] initWithFrame:CGRectZero];
     self.leftArrow.image = [UIImage imageNamed:@"leftArrow"];
+    self.leftArrow.userInteractionEnabled = YES;
+    UITapGestureRecognizer *leftTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(prev)];
+    leftTap.numberOfTapsRequired = 1;
+    [self.leftArrow addGestureRecognizer:leftTap];
     self.leftArrow.translatesAutoresizingMaskIntoConstraints = NO;
     [self addSubview:self.leftArrow];
     
@@ -673,6 +681,19 @@
                                                         multiplier:1.0
                                                           constant:0.0]];
     }
+
+}
+
+#pragma mark - Tap gestures
+
+-(void)next
+{
+    [self.owner next];
+}
+
+-(void)prev
+{
+    [self.owner prev];
 }
 
 @end

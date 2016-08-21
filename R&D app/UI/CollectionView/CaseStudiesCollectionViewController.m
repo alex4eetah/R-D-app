@@ -13,7 +13,6 @@
 #import "CaseStudy.h"
 #import "UiUtil.h"
 #import "PopoverViewController.h"
-#import "UIPopoverController+iPhone.h"
 
 #import "FPPopoverController.h"
 
@@ -25,9 +24,6 @@
 @property (weak, nonatomic) IBOutlet UIImageView *backGroundImageView;
 @property(assign, nonatomic) BOOL isInLandscape;
 @property (strong, nonatomic) UiUtil *animator;
-
-@property(nonatomic,strong) UIPopoverController *morePopover;
-
 @property (weak, nonatomic) FPPopoverController *popover;
 
 @end
@@ -188,7 +184,7 @@
         
         [self configureBGImage];
         
-        UICollectionViewFlowLayout *flowLayout = self.collectionView.collectionViewLayout;
+        UICollectionViewFlowLayout *flowLayout = (UICollectionViewFlowLayout *)self.collectionView.collectionViewLayout;
         
         [flowLayout invalidateLayout];
         
