@@ -10,8 +10,9 @@
 
 @interface PopoverViewController ()
 
-@property (strong, nonatomic) UIButton *logOutButt;
-@property (strong, nonatomic) UIButton *changePassButt;
+@property (weak, nonatomic) IBOutlet UIButton *logOutButt;
+@property (weak, nonatomic) IBOutlet UIButton *changePassButt;
+
 
 @end
 
@@ -19,6 +20,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+  /*  [self.logOutButt setTitleColor:[UIColor colorWithRed:150.0/256.0 green:150.0/256.0 blue:150.0/256.0 alpha:1.0] forState:UIControlStateNormal];*/
+    self.logOutButt.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+    
+   /* [self.changePassButt setTitleColor:[UIColor colorWithRed:150.0/256.0 green:150.0/256.0 blue:150.0/256.0 alpha:1.0] forState:UIControlStateNormal];*/
+    self.changePassButt.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
     
     /*self.logOutButt = [[UIButton alloc] initWithFrame:CGRectMake(8, 8, self.view.frame.size.width-16, 30)];
     [self.logOutButt addTarget:self action:@selector(logOut:) forControlEvents:UIControlEventTouchUpInside];

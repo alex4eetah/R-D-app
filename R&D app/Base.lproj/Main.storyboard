@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -272,14 +272,12 @@
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=compact">
-                                    <fontDescription key="fontDescription" name="RobotoSlab-Bold" family="Roboto Slab" pointSize="24"/>
                                     <mask key="constraints">
                                         <include reference="eGS-ik-QL6"/>
                                         <include reference="enl-1M-HhN"/>
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=regular">
-                                    <fontDescription key="fontDescription" name="RobotoSlab-Bold" family="Roboto Slab" pointSize="32"/>
                                     <mask key="constraints">
                                         <include reference="5vH-LB-XDd"/>
                                         <include reference="F2U-5U-qlv"/>
@@ -531,6 +529,7 @@
                     <connections>
                         <outlet property="emailTextField" destination="gEU-V6-ste" id="23V-hU-JFx"/>
                         <outlet property="passwordTextField" destination="CTd-GC-kHV" id="ocR-vy-DS6"/>
+                        <outlet property="titleLabel" destination="rXz-hW-VUd" id="1p1-fd-uvy"/>
                         <outletCollection property="potraitConstraints" destination="Hrf-Qz-h87" id="qmI-y3-F0H"/>
                         <outletCollection property="potraitConstraints" destination="jTA-lu-M1I" id="7bk-ze-BiY"/>
                         <outletCollection property="potraitConstraints" destination="5vH-LB-XDd" id="cpI-qc-0oi"/>
@@ -588,7 +587,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="259.5" y="209.25"/>
+            <point key="canvasLocation" x="259.5" y="215.25"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Xah-32-WKc">
@@ -948,39 +947,27 @@
                         <rect key="frame" x="0.0" y="0.0" width="213" height="113"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7uG-KU-1wS">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7uG-KU-1wS">
                                 <rect key="frame" x="76" y="20" width="46" height="29"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="NgT-hF-tGR"/>
                                 </constraints>
-                                <state key="normal">
-                                    <attributedString key="attributedTitle">
-                                        <fragment content="Log out">
-                                            <attributes>
-                                                <font key="NSFont" size="15" name="HelveticaNeue"/>
-                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                            </attributes>
-                                        </fragment>
-                                    </attributedString>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                <state key="normal" title="Log out">
+                                    <color key="titleColor" red="0.60784313729999995" green="0.60784313729999995" blue="0.60784313729999995" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="logOut:" destination="bqd-PR-crv" eventType="touchUpInside" id="Pzo-Q2-6X0"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cP6-jK-vWx">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cP6-jK-vWx">
                                 <rect key="frame" x="15" y="75" width="186" height="18"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="I8G-a5-vuc"/>
                                 </constraints>
-                                <state key="normal">
-                                    <attributedString key="attributedTitle">
-                                        <fragment content="Change password">
-                                            <attributes>
-                                                <font key="NSFont" size="15" name="HelveticaNeue"/>
-                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                            </attributes>
-                                        </fragment>
-                                    </attributedString>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                <state key="normal" title="Change password">
+                                    <color key="titleColor" red="0.60784313729999995" green="0.60784313729999995" blue="0.60784313729999995" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="changePass:" destination="bqd-PR-crv" eventType="touchUpInside" id="lo6-PO-yEZ"/>
@@ -988,7 +975,7 @@
                             </button>
                             <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aIk-0r-kKJ">
                                 <rect key="frame" x="15" y="65" width="186" height="1"/>
-                                <color key="backgroundColor" red="0.066666666669999999" green="0.63921568630000003" blue="0.87843137250000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.60784313725490191" green="0.60784313725490191" blue="0.60784313725490191" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" priority="999" constant="1" id="ye5-hx-Ses"/>
                                 </constraints>
@@ -1014,6 +1001,10 @@
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="213" height="113"/>
+                    <connections>
+                        <outlet property="changePassButt" destination="cP6-jK-vWx" id="2vn-bH-OOU"/>
+                        <outlet property="logOutButt" destination="7uG-KU-1wS" id="YZq-X3-fnI"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OpB-ag-4Ib" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1034,6 +1025,9 @@
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P03-u3-VjY">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
+                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="20" y="82" width="240" height="128"/>
+                                </variation>
                                 <connections>
                                     <outlet property="delegate" destination="AK2-Cm-pSB" id="OSR-wP-Od1"/>
                                 </connections>
@@ -1043,26 +1037,37 @@
                         <constraints>
                             <constraint firstItem="P03-u3-VjY" firstAttribute="leading" secondItem="Fm4-f1-0di" secondAttribute="leading" id="Bhs-pK-Dvm"/>
                             <constraint firstAttribute="trailing" secondItem="P03-u3-VjY" secondAttribute="trailing" id="HKt-nC-5Xv"/>
-                            <constraint firstItem="P03-u3-VjY" firstAttribute="leading" secondItem="Fm4-f1-0di" secondAttribute="leading" constant="228" id="OWW-mu-Yo4"/>
                             <constraint firstItem="P03-u3-VjY" firstAttribute="top" secondItem="G9i-nb-1Fh" secondAttribute="bottom" id="Pdo-Y1-tcr"/>
+                            <constraint firstItem="P03-u3-VjY" firstAttribute="leading" secondItem="Fm4-f1-0di" secondAttribute="leading" id="TkB-Ib-XSx"/>
+                            <constraint firstItem="P03-u3-VjY" firstAttribute="top" secondItem="G9i-nb-1Fh" secondAttribute="bottom" id="gUL-6i-fSY"/>
                             <constraint firstItem="mcX-b5-M0f" firstAttribute="top" secondItem="P03-u3-VjY" secondAttribute="bottom" id="h8j-NN-0uq"/>
-                            <constraint firstItem="mcX-b5-M0f" firstAttribute="top" secondItem="P03-u3-VjY" secondAttribute="bottom" constant="308" id="hbf-oX-fRm"/>
-                            <constraint firstAttribute="trailing" secondItem="P03-u3-VjY" secondAttribute="trailing" constant="332" id="rbU-r1-jmL"/>
-                            <constraint firstItem="P03-u3-VjY" firstAttribute="top" secondItem="G9i-nb-1Fh" secondAttribute="bottom" constant="344" id="y3b-cI-Ztu"/>
+                            <constraint firstAttribute="trailing" secondItem="P03-u3-VjY" secondAttribute="trailing" id="iRv-Sa-wJc"/>
+                            <constraint firstItem="mcX-b5-M0f" firstAttribute="top" secondItem="P03-u3-VjY" secondAttribute="bottom" id="ruh-MK-1N5"/>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="P03-u3-VjY"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="h8j-NN-0uq"/>
-                                <exclude reference="hbf-oX-fRm"/>
                                 <exclude reference="Bhs-pK-Dvm"/>
                                 <exclude reference="HKt-nC-5Xv"/>
-                                <exclude reference="OWW-mu-Yo4"/>
                                 <exclude reference="Pdo-Y1-tcr"/>
-                                <exclude reference="rbU-r1-jmL"/>
-                                <exclude reference="y3b-cI-Ztu"/>
+                                <exclude reference="TkB-Ib-XSx"/>
+                                <exclude reference="gUL-6i-fSY"/>
+                                <exclude reference="iRv-Sa-wJc"/>
+                                <exclude reference="h8j-NN-0uq"/>
+                                <exclude reference="ruh-MK-1N5"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="P03-u3-VjY"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="TkB-Ib-XSx"/>
+                                <include reference="gUL-6i-fSY"/>
+                                <include reference="iRv-Sa-wJc"/>
+                                <include reference="ruh-MK-1N5"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=regular">
@@ -1070,14 +1075,10 @@
                                 <include reference="P03-u3-VjY"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="h8j-NN-0uq"/>
-                                <exclude reference="hbf-oX-fRm"/>
                                 <include reference="Bhs-pK-Dvm"/>
                                 <include reference="HKt-nC-5Xv"/>
-                                <exclude reference="OWW-mu-Yo4"/>
                                 <include reference="Pdo-Y1-tcr"/>
-                                <exclude reference="rbU-r1-jmL"/>
-                                <exclude reference="y3b-cI-Ztu"/>
+                                <include reference="h8j-NN-0uq"/>
                             </mask>
                         </variation>
                     </view>
@@ -1101,7 +1102,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iPhoneBG" translatesAutoresizingMaskIntoConstraints="NO" id="f4i-Xs-UAr">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iPhoneCollectionBG" translatesAutoresizingMaskIntoConstraints="NO" id="f4i-Xs-UAr">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                             </imageView>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="fyZ-9v-S5S">
@@ -1320,7 +1321,7 @@
                                                     <constraint firstAttribute="width" constant="260" id="G55-tX-JE9"/>
                                                     <constraint firstAttribute="height" constant="19" id="zUV-ED-KE3"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" name="RobotoSlab-Regular" family="Roboto Slab" pointSize="16"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                                 <state key="normal" title="Forgot your password?"/>
                                                 <variation key="default">
                                                     <mask key="constraints">
@@ -1330,13 +1331,11 @@
                                                     </mask>
                                                 </variation>
                                                 <variation key="heightClass=regular-widthClass=compact">
-                                                    <fontDescription key="fontDescription" name="RobotoSlab-Regular" family="Roboto Slab" pointSize="9"/>
                                                     <mask key="constraints">
                                                         <include reference="A7R-4c-zki"/>
                                                     </mask>
                                                 </variation>
                                                 <variation key="heightClass=regular-widthClass=regular">
-                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                                     <mask key="constraints">
                                                         <include reference="G55-tX-JE9"/>
                                                         <include reference="zUV-ED-KE3"/>
@@ -1414,14 +1413,12 @@
                                                     </mask>
                                                 </variation>
                                                 <variation key="heightClass=regular-widthClass=compact">
-                                                    <fontDescription key="fontDescription" type="system" pointSize="9"/>
                                                     <mask key="constraints">
                                                         <include reference="Kgj-bN-sDD"/>
                                                         <include reference="uZt-3N-zl0"/>
                                                     </mask>
                                                 </variation>
                                                 <variation key="heightClass=regular-widthClass=regular">
-                                                    <fontDescription key="fontDescription" name="MuseoSansCyrl-700" family="Museo Sans Cyrl" pointSize="16"/>
                                                     <mask key="constraints">
                                                         <include reference="8JA-ri-gUs"/>
                                                         <include reference="gJL-dZ-P4j"/>
@@ -1969,11 +1966,13 @@
                     </view>
                     <connections>
                         <outlet property="backgroundImageView" destination="B0m-kO-O2D" id="vdE-Oz-0Bi"/>
+                        <outlet property="cancelButt" destination="CLi-tT-eVI" id="6vr-Dg-gdd"/>
                         <outlet property="changePasswordModal" destination="AcV-z9-iX1" id="sFQ-xU-0Px"/>
                         <outlet property="confirmPassLabel" destination="hyX-V2-oOX" id="dHO-Me-7G4"/>
                         <outlet property="confirmPasswordField" destination="cUz-6G-PU3" id="Bnh-Qy-1Vy"/>
                         <outlet property="currentPassLabel" destination="b9G-er-6ZZ" id="iBX-Bi-cz6"/>
                         <outlet property="currentPasswordField" destination="tko-d5-YBy" id="dd7-Pa-Lhe"/>
+                        <outlet property="forgotPasswordButt" destination="TU1-m9-WbH" id="lRn-e1-h0T"/>
                         <outlet property="modalWaitForeground" destination="Cak-Rb-3Xu" id="gg2-ZR-bCY"/>
                         <outlet property="pageIndicator" destination="rHg-Fy-ulb" id="gnm-VL-qQt"/>
                         <outlet property="passToSetLabel" destination="r10-rK-GwH" id="hLH-EX-6Xb"/>
@@ -2016,6 +2015,7 @@
         <image name="einstein" width="564" height="315"/>
         <image name="footerGradient" width="768" height="186"/>
         <image name="iPhoneBG" width="375" height="667"/>
+        <image name="iPhoneCollectionBG" width="375" height="667"/>
         <image name="softserveLogo" width="103" height="18"/>
         <image name="unlock" width="29" height="39"/>
         <image name="welcomeLoginWord" width="92" height="16"/>

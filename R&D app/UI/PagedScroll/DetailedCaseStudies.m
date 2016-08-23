@@ -18,6 +18,7 @@
 #import "WebVIewController.h"
 
 #import "FPPopoverController.h"
+#import "Reachability.h"
 
 @interface DetailedCaseStudies () <UIScrollViewDelegate, UIPopoverPresentationControllerDelegate, PopoverDelegate, Rotatable, DetailedCaseStudyOwner>
 
@@ -47,12 +48,16 @@
 @property (weak, nonatomic) IBOutlet UILabel *currentPassLabel;
 @property (weak, nonatomic) IBOutlet UILabel *passToSetLabel;
 @property (weak, nonatomic) IBOutlet UILabel *confirmPassLabel;
+@property (weak, nonatomic) IBOutlet UIButton *forgotPasswordButt;
+@property (weak, nonatomic) IBOutlet UIButton *cancelButt;
 
 @property (strong, nonatomic) RDServerManager *serverManager;
 
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *spinner;
 
 @property (weak, nonatomic) FPPopoverController *popover;
+
+@property (strong, nonatomic) Reachability *reachabilityManager;
 
 //@property (strong, nonatomic) NSMutableDictionary *buttonTagsAndUrls;
 
@@ -86,6 +91,8 @@
 
 - (void)configureSelf
 {
+    self.reachabilityManager = [Reachability reachabilityForInternetConnection];
+    
     self.serverManager = [RDServerManager sharedManager];
     
     self.manager = [CoreDataManager sharedManager];
@@ -98,13 +105,25 @@
     self.pageIndicator.numberOfPages = self.caseStudies.count;
     [self.pageIndicator addTarget:self action:@selector(PageControllDidChangePage:) forControlEvents:UIControlEventValueChanged];
     
+    self.forgotPasswordButt.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
+        [self.forgotPasswordButt setFont:[UIFont fontWithName:@"RobotoSlab-Regular" size:9]];
+        
+        [self.cancelButt setFont:[UIFont fontWithName:@"RobotoSlab-Regular" size:9]];
+    } else {
+        
+        [self.cancelButt setFont:[UIFont fontWithName:@"RobotoSlab-Bold" size:16]];
+    }
+    
     self.potraitConstraints = [[NSMutableArray alloc] init];
     self.landscapeConstraints = [[NSMutableArray alloc] init];
     
     self.animator = [UiUtil sharedUtil];
     self.isInLandscape = (self.view.frame.size.width > self.view.frame.size.height);
     
-    //[self.manager updateCaseStudies];
+    if (self.reachabilityManager.currentReachabilityStatus != NotReachable) {
+        [self.manager updateCaseStudies];
+    }
     
     [self createScrollViewLayoutFromArray:self.caseStudies];
     
@@ -794,6 +813,12 @@
 
 - (void)showChangePasswordModal
 {
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+        self.currentPasswordField.placeholder = @"";
+        self.passwordToSetField.placeholder = @"";
+        self.confirmPasswordField.placeholder = @"";
+    }
+    
     [UIView transitionWithView:self.changePasswordModal
                       duration:0.4
                        options:UIViewAnimationOptionTransitionCrossDissolve
@@ -871,12 +896,12 @@
 - (void)showWebContentForUrl:(UIButton *) sender
 {
     CaseStudy *chosenItem = self.caseStudies[sender.tag-1];
-    [self.manager updateCaseStudyWithName:chosenItem.name Force:YES];
+    //[self.manager updateCaseStudyWithName:chosenItem.name Force:YES];
     NSString * storyboardName = @"Main";
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:storyboardName bundle: nil];
     WebVIewController * vc = [storyboard instantiateViewControllerWithIdentifier:@"webVC"];
     vc.url = chosenItem.link;
-    vc.cache = chosenItem.cache;
+    vc.cache = [[NSString alloc] initWithData:chosenItem.cache encoding:NSUTF8StringEncoding];
     [self.navigationController pushViewController:vc animated:YES];
 }
 

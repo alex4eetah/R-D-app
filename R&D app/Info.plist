@@ -9,6 +9,7 @@
 	</dict>
 	<key>UIAppFonts</key>
 	<array>
+		<string>RobotoSlab-Regular.ttf</string>
 		<string>OpenSans-Regular.ttf</string>
 		<string>MuseoSansCyrl_2.otf</string>
 		<string>RobotoSlab-Bold.ttf</string>

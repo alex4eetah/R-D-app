@@ -74,7 +74,7 @@
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
         [self.name setTextColor:[UIColor whiteColor]];
     } else {
-        [self.name setTextColor:[UIColor redColor]];
+        [self.name setTextColor:[UIColor colorWithRed:248/255.0 green:84/255.0 blue:81/255.0 alpha:1]];
         self.name.textAlignment = NSTextAlignmentCenter;
     }
     self.name.translatesAutoresizingMaskIntoConstraints = NO;
@@ -82,7 +82,7 @@
     
     self.fullDescription = [[UILabel alloc] initWithFrame:CGRectZero];
     self.fullDescription.text = caseStudy.fullDesc;
-    [self.fullDescription setFont:[UIFont fontWithName:@"OpenSans-Regular" size:14]];
+    [self.fullDescription setFont:[UIFont fontWithName:@"OpenSans" size:14]];
     [self.fullDescription setTextColor:[UIColor whiteColor]];
     self.fullDescription.lineBreakMode = NSLineBreakByWordWrapping;
     self.fullDescription.numberOfLines = 0;
@@ -98,7 +98,7 @@
     self.viewPageButton = [[UIButton alloc] initWithFrame:CGRectZero];
     [self.viewPageButton addTarget:self.owner action:@selector(showWebContentForUrl:) forControlEvents:UIControlEventTouchUpInside];
     self.viewPageButton.tag = self.tag;
-    [self.viewPageButton setTitle:@"View" forState:UIControlStateNormal];
+    [self.viewPageButton setTitle:@"VIEW" forState:UIControlStateNormal];
     [self.viewPageButton.titleLabel setFont:[UIFont fontWithName:@"MuseoSansCyrl-700" size:16]];
     [self.viewPageButton.titleLabel setTextColor:[UIColor whiteColor]];
     self.viewPageButton.layer.cornerRadius = 3;
@@ -539,7 +539,7 @@
                                                             toItem:self
                                                          attribute:NSLayoutAttributeTrailing
                                                         multiplier:1.0
-                                                          constant:30]];
+                                                          constant:-30]];
         
         [self addConstraint:[NSLayoutConstraint constraintWithItem:self.name
                                                          attribute:NSLayoutAttributeTop

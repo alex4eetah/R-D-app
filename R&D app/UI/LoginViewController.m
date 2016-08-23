@@ -20,6 +20,7 @@
 
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
 
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (strong, nonatomic) UiUtil *animator;
 
 @property (strong, nonatomic) RDServerManager *serverManager;
@@ -57,6 +58,10 @@
     [self.view addGestureRecognizer:tap];
     
     self.serverManager = [RDServerManager sharedManager];
+    
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
+        [self.titleLabel setFont:[UIFont fontWithName:@"RobotoSlab-Bold" size:24]];
+    }
 }
 
 /*

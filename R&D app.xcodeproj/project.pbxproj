@@ -10,9 +10,10 @@
 		E708391A1D62FD1C00E39743 /* SmartIdentityVerifImage.png in Resources */ = {isa = PBXBuildFile; fileRef = E70839191D62FD1C00E39743 /* SmartIdentityVerifImage.png */; };
 		E708391C1D62FD3B00E39743 /* VoiceMyBotImage.png in Resources */ = {isa = PBXBuildFile; fileRef = E708391B1D62FD3B00E39743 /* VoiceMyBotImage.png */; };
 		E708391E1D62FD5E00E39743 /* BaristaImage.png in Resources */ = {isa = PBXBuildFile; fileRef = E708391D1D62FD5E00E39743 /* BaristaImage.png */; };
+		E72EFBEA1D6CAA1800F959B7 /* CaseStudy+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = E72EFBE91D6CAA1800F959B7 /* CaseStudy+CoreDataProperties.m */; };
+		E775521C1D6AFB96004E7A53 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = E775521B1D6AFB96004E7A53 /* Reachability.m */; };
 		E7B22EB51D659A3700509F52 /* RDServerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E7B22EB41D659A3700509F52 /* RDServerManager.m */; };
 		E7B22EBB1D66015D00509F52 /* WebVIewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7B22EBA1D66015D00509F52 /* WebVIewController.m */; };
-		E7B22EC11D66139300509F52 /* CaseStudy+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = E7B22EC01D66139300509F52 /* CaseStudy+CoreDataProperties.m */; };
 		E7C3E4D51D6491BD00ECB3BB /* PopoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7C3E4D41D6491BD00ECB3BB /* PopoverViewController.m */; };
 		E7D813611D5E005900A240D9 /* DetailedCaseStudies.m in Sources */ = {isa = PBXBuildFile; fileRef = E7D813601D5E005900A240D9 /* DetailedCaseStudies.m */; };
 		E7E9E4ED1D675C8500B5C78D /* FPPopoverController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7E9E4EC1D675C8500B5C78D /* FPPopoverController.m */; };
@@ -75,12 +76,14 @@
 		E70839191D62FD1C00E39743 /* SmartIdentityVerifImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SmartIdentityVerifImage.png; sourceTree = "<group>"; };
 		E708391B1D62FD3B00E39743 /* VoiceMyBotImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = VoiceMyBotImage.png; sourceTree = "<group>"; };
 		E708391D1D62FD5E00E39743 /* BaristaImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BaristaImage.png; sourceTree = "<group>"; };
+		E72EFBE81D6CAA1800F959B7 /* CaseStudy+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "CaseStudy+CoreDataProperties.h"; path = "Model/CaseStudy+CoreDataProperties.h"; sourceTree = "<group>"; };
+		E72EFBE91D6CAA1800F959B7 /* CaseStudy+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "CaseStudy+CoreDataProperties.m"; path = "Model/CaseStudy+CoreDataProperties.m"; sourceTree = "<group>"; };
+		E775521A1D6AFB96004E7A53 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		E775521B1D6AFB96004E7A53 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		E7B22EB31D659A3700509F52 /* RDServerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RDServerManager.h; path = Model/RDServerManager.h; sourceTree = "<group>"; };
 		E7B22EB41D659A3700509F52 /* RDServerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RDServerManager.m; path = Model/RDServerManager.m; sourceTree = "<group>"; };
 		E7B22EB91D66015D00509F52 /* WebVIewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WebVIewController.h; path = UI/WebVIewController.h; sourceTree = "<group>"; };
 		E7B22EBA1D66015D00509F52 /* WebVIewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WebVIewController.m; path = UI/WebVIewController.m; sourceTree = "<group>"; };
-		E7B22EBF1D66139300509F52 /* CaseStudy+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "CaseStudy+CoreDataProperties.h"; path = "Model/CaseStudy+CoreDataProperties.h"; sourceTree = "<group>"; };
-		E7B22EC01D66139300509F52 /* CaseStudy+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "CaseStudy+CoreDataProperties.m"; path = "Model/CaseStudy+CoreDataProperties.m"; sourceTree = "<group>"; };
 		E7C3E4D31D6491BD00ECB3BB /* PopoverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PopoverViewController.h; path = UI/PopoverViewController.h; sourceTree = "<group>"; };
 		E7C3E4D41D6491BD00ECB3BB /* PopoverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PopoverViewController.m; path = UI/PopoverViewController.m; sourceTree = "<group>"; };
 		E7D8135F1D5E005900A240D9 /* DetailedCaseStudies.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DetailedCaseStudies.h; path = UI/PagedScroll/DetailedCaseStudies.h; sourceTree = "<group>"; };
@@ -171,6 +174,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E77552191D6AFB7D004E7A53 /* reachability */ = {
+			isa = PBXGroup;
+			children = (
+				E775521A1D6AFB96004E7A53 /* Reachability.h */,
+				E775521B1D6AFB96004E7A53 /* Reachability.m */,
+			);
+			name = reachability;
+			sourceTree = "<group>";
+		};
 		E7D8135E1D5DFFEE00A240D9 /* PagedScrollDetailedCaseStudy */ = {
 			isa = PBXGroup;
 			children = (
@@ -185,6 +197,7 @@
 		E7E9E4E81D675C5000B5C78D /* Libs */ = {
 			isa = PBXGroup;
 			children = (
+				E77552191D6AFB7D004E7A53 /* reachability */,
 				E7E9E4E91D675C5900B5C78D /* popover */,
 			);
 			name = Libs;
@@ -208,8 +221,8 @@
 		E7F48D371D61FD0F008F08C9 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
-				E7B22EBF1D66139300509F52 /* CaseStudy+CoreDataProperties.h */,
-				E7B22EC01D66139300509F52 /* CaseStudy+CoreDataProperties.m */,
+				E72EFBE81D6CAA1800F959B7 /* CaseStudy+CoreDataProperties.h */,
+				E72EFBE91D6CAA1800F959B7 /* CaseStudy+CoreDataProperties.m */,
 				E7F48D331D61F964008F08C9 /* CaseStudy.h */,
 				E7F48D341D61F964008F08C9 /* CaseStudy.m */,
 				FA3A389E1D59F23C00DA056A /* R_D_app.xcdatamodeld */,
@@ -532,7 +545,6 @@
 				FA42934B1D5CAA9300AAADBC /* UINavigationBar+Helper.m in Sources */,
 				FA3A389A1D59F23C00DA056A /* ViewController.m in Sources */,
 				FAC7DA9E1D5B2C340043B4DF /* UiUtil.m in Sources */,
-				E7B22EC11D66139300509F52 /* CaseStudy+CoreDataProperties.m in Sources */,
 				FA3A38A01D59F23C00DA056A /* R_D_app.xcdatamodeld in Sources */,
 				FA3A38971D59F23C00DA056A /* AppDelegate.m in Sources */,
 				FA3A38941D59F23C00DA056A /* main.m in Sources */,
@@ -541,6 +553,8 @@
 				E7E9E4F31D675C9900B5C78D /* FPTouchView.m in Sources */,
 				E7D813611D5E005900A240D9 /* DetailedCaseStudies.m in Sources */,
 				FAC7DAA31D5B66250043B4DF /* CaseStudiesCell.m in Sources */,
+				E72EFBEA1D6CAA1800F959B7 /* CaseStudy+CoreDataProperties.m in Sources */,
+				E775521C1D6AFB96004E7A53 /* Reachability.m in Sources */,
 				E7C3E4D51D6491BD00ECB3BB /* PopoverViewController.m in Sources */,
 				E7F48D3A1D61FD47008F08C9 /* CoreDataManager.m in Sources */,
 				E7B22EB51D659A3700509F52 /* RDServerManager.m in Sources */,

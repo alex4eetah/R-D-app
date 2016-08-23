@@ -8,9 +8,13 @@
 
 #import "WebVIewController.h"
 
+#import "Reachability.h"
+
 @interface WebVIewController ()
 
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
+
+@property (strong, nonatomic) Reachability *reachabilityManager;
 
 @end
 
@@ -18,16 +22,22 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.reachabilityManager = [Reachability reachabilityForInternetConnection];
+    
     NSString *urlAddress = self.url;
     NSURL *url = [NSURL URLWithString:urlAddress];
     self.webView.delegate = self;
-    
-    /*if (self.cache) {
-        [self.webView loadHTMLString:self.cache baseURL:url];
-    } else if (self.url) {*/
-        NSURLRequest *requestObj = [NSURLRequest requestWithURL:url];
-        [self.webView loadRequest:requestObj];
-    //}
+    if (!urlAddress || [urlAddress isEqualToString:@""] || [urlAddress isEqualToString:@" "]) {
+        [self.webView loadHTMLString:@"<HTML><h1>Something went wrong...</h1></HTML>" baseURL:[NSURL URLWithString:@"Something went wrong..."]];
+    } else {
+        if (self.reachabilityManager.currentReachabilityStatus == NotReachable) {
+            [self.webView loadHTMLString:self.cache baseURL:url];
+        } else {
+                NSURLRequest *requestObj = [NSURLRequest requestWithURL:url];
+                [self.webView loadRequest:requestObj];
+        }
+    }
 }
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType

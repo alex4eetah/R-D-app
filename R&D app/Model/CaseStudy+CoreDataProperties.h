@@ -2,7 +2,7 @@
 //  CaseStudy+CoreDataProperties.h
 //  R&D app
 //
-//  Created by Oleksandr Chechetkin on 8/18/16.
+//  Created by Oleksandr Chechetkin on 8/23/16.
 //  Copyright © 2016 softserve. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -15,9 +15,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface CaseStudy (CoreDataProperties)
 
-@property (nullable, nonatomic, retain) NSString *cache;
+@property (nullable, nonatomic, retain) NSData *cache;
 @property (nullable, nonatomic, retain) NSString *fullDesc;
 @property (nullable, nonatomic, retain) NSData *image;
+@property (nullable, nonatomic, retain) NSDate *lastUpdated;
 @property (nullable, nonatomic, retain) NSString *link;
 @property (nullable, nonatomic, retain) NSString *name;
 @property (nullable, nonatomic, retain) NSString *shortDesc;

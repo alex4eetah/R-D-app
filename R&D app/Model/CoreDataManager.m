@@ -24,16 +24,23 @@
 
 -(void)fakeFromArray:(NSArray *)arr
 {
-    for (NSDictionary *dict in arr) {
-        [self saveCaseStudyWithName:dict[@"name"]
-                               Link:dict[@"link"]
-                   ShortDeskription:dict[@"shortDesc"]
-                        Description:dict[@"fullDesc"]
-                              Image:dict[@"image"]
-                              Cache:dict[@"cache"]
-                               Save:NO];
+    NSString *flag = [[NSUserDefaults standardUserDefaults]
+                     stringForKey:@"fakeCoreData"];
+    if (!flag) {
+        for (NSDictionary *dict in arr) {
+            [self saveCaseStudyWithName:dict[@"name"]
+                                   Link:dict[@"link"]
+                       ShortDeskription:dict[@"shortDesc"]
+                            Description:dict[@"fullDesc"]
+                                  Image:dict[@"image"]
+                                  Cache:dict[@"cache"]
+                                   Save:NO];
+        }
+        [self.context save:nil];
+        [[NSUserDefaults standardUserDefaults] setObject:@"YES" forKey:@"fakeCoreData"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
     }
-    [self.context save:nil];
+    
 }
 
 - (NSManagedObjectContext *)context
@@ -63,14 +70,27 @@
         if (!instance.cache || force) {
             NSURL *url = [NSURL URLWithString:instance.link];
             NSError *error;
-            NSString *page = [NSString stringWithContentsOfURL:url
+            /*NSString *page = [NSString stringWithContentsOfURL:url
                                                       encoding:NSASCIIStringEncoding
                                                          error:&error];
             if (!error) {
                 instance.cache = page;
-            }
+            }*/
             
-            [self.context save:nil];
+            NSData *urlData;
+            
+            NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReturnCacheDataElseLoad timeoutInterval: 10.0];
+            
+            NSURLConnection *connection=[[NSURLConnection alloc] initWithRequest:request delegate:nil];
+            
+            if (connection)
+            {
+                urlData = [NSURLConnection sendSynchronousRequest:request returningResponse:NULL error:&error];
+                
+                if (!error) {
+                    instance.cache = urlData;
+                }
+            }
         }
     }
 }
@@ -79,18 +99,37 @@
 {
     NSArray *arr = [self getArrayOfCaseStudies];
     for (CaseStudy *instance in arr) {
-        if (instance.cache == nil && instance.link) {
+        // 86400 seconds == 1 day
+        if (instance.link && [instance.lastUpdated timeIntervalSinceNow]/* >= 86400*/) {
             NSString *urlStr = instance.link;
             NSURL *url = [NSURL URLWithString:urlStr];
             NSError *error;
-            NSString *page = [NSString stringWithContentsOfURL:url
+            /*NSString *page = [NSString stringWithContentsOfURL:url
                                                             encoding:NSASCIIStringEncoding
                                                                error:&error];
             if (!error) {
                 instance.cache = page;
+            } else {
+                instance.cache = @"<HTML><H1>Something went wrong...</H1></HTML>";
+            }*/
+            NSData *urlData;
+            
+            NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReturnCacheDataElseLoad timeoutInterval: 10.0];
+            
+            NSURLConnection *connection=[[NSURLConnection alloc] initWithRequest:request delegate:nil];
+            
+            if (connection)
+            {
+                urlData = [NSURLConnection sendSynchronousRequest:request returningResponse:NULL error:&error];
+                
+                if (!error) {
+                    instance.cache = urlData;
+                }
             }
+
         }
     }
+    [self.context save:nil];
 }
 
 - (void)saveCaseStudyWithName:(NSString *)name
@@ -108,6 +147,7 @@
     coreDataInstance.fullDesc = fullDesc;
     coreDataInstance.image = UIImageJPEGRepresentation(image,1);
     coreDataInstance.cache = cache;
+    coreDataInstance.lastUpdated = [NSDate date];
     if (save) {
         [self.context save:nil];
     }
