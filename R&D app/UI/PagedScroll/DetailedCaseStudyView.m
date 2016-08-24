@@ -32,10 +32,19 @@
     
     self = [super initWithFrame:CGRectZero];
     if (self) {
+        [self setupSelf];
         [self addSubviewsFromCS:caseStudy];
         [self setNeedsUpdateConstraints];
     }
     return self;
+}
+
+- (void)setupSelf
+{
+    [self.layer setShadowColor:[UIColor blackColor].CGColor];
+    [self.layer setShadowOpacity:0.3];
+    [self.layer setShadowRadius:30.0];
+    [self.layer setShadowOffset:CGSizeMake(25.0, 25.0)];
 }
 
 - (void)addSubviewsFromCS:(CaseStudy *) caseStudy {
