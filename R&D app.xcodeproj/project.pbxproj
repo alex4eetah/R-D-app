@@ -54,6 +54,9 @@
 		FAC7DA9E1D5B2C340043B4DF /* UiUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC7DA9D1D5B2C340043B4DF /* UiUtil.m */; };
 		FAC7DAA31D5B66250043B4DF /* CaseStudiesCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC7DAA21D5B66250043B4DF /* CaseStudiesCell.m */; };
 		FAC7DAA61D5B667B0043B4DF /* CaseStudiesCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC7DAA51D5B667B0043B4DF /* CaseStudiesCollectionViewController.m */; };
+		FAD926831D6DF4FD005CF75C /* NSString+Sha1.m in Sources */ = {isa = PBXBuildFile; fileRef = FAD9267F1D6DF4FD005CF75C /* NSString+Sha1.m */; };
+		FAD926841D6DF4FD005CF75C /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = FAD926801D6DF4FD005CF75C /* README.md */; };
+		FAD926851D6DF4FD005CF75C /* RNCachingURLProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = FAD926821D6DF4FD005CF75C /* RNCachingURLProtocol.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -150,6 +153,11 @@
 		FAC7DAA21D5B66250043B4DF /* CaseStudiesCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CaseStudiesCell.m; path = UI/CollectionView/CaseStudiesCell.m; sourceTree = "<group>"; };
 		FAC7DAA41D5B667B0043B4DF /* CaseStudiesCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CaseStudiesCollectionViewController.h; path = UI/CollectionView/CaseStudiesCollectionViewController.h; sourceTree = "<group>"; };
 		FAC7DAA51D5B667B0043B4DF /* CaseStudiesCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CaseStudiesCollectionViewController.m; path = UI/CollectionView/CaseStudiesCollectionViewController.m; sourceTree = "<group>"; };
+		FAD9267E1D6DF4FD005CF75C /* NSString+Sha1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Sha1.h"; sourceTree = "<group>"; };
+		FAD9267F1D6DF4FD005CF75C /* NSString+Sha1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Sha1.m"; sourceTree = "<group>"; };
+		FAD926801D6DF4FD005CF75C /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		FAD926811D6DF4FD005CF75C /* RNCachingURLProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNCachingURLProtocol.h; sourceTree = "<group>"; };
+		FAD926821D6DF4FD005CF75C /* RNCachingURLProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNCachingURLProtocol.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -200,6 +208,7 @@
 		E7E9E4E81D675C5000B5C78D /* Libs */ = {
 			isa = PBXGroup;
 			children = (
+				FAD9267D1D6DF4E6005CF75C /* Caching */,
 				E77552191D6AFB7D004E7A53 /* reachability */,
 				E7E9E4E91D675C5900B5C78D /* popover */,
 			);
@@ -395,6 +404,18 @@
 			name = CollectionView;
 			sourceTree = "<group>";
 		};
+		FAD9267D1D6DF4E6005CF75C /* Caching */ = {
+			isa = PBXGroup;
+			children = (
+				FAD9267E1D6DF4FD005CF75C /* NSString+Sha1.h */,
+				FAD9267F1D6DF4FD005CF75C /* NSString+Sha1.m */,
+				FAD926801D6DF4FD005CF75C /* README.md */,
+				FAD926811D6DF4FD005CF75C /* RNCachingURLProtocol.h */,
+				FAD926821D6DF4FD005CF75C /* RNCachingURLProtocol.m */,
+			);
+			name = Caching;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -555,7 +576,9 @@
 				FA3A38941D59F23C00DA056A /* main.m in Sources */,
 				E7E9E4F21D675C9900B5C78D /* FPPopoverView.m in Sources */,
 				FA3A38CB1D59F8E400DA056A /* LoginViewController.m in Sources */,
+				FAD926831D6DF4FD005CF75C /* NSString+Sha1.m in Sources */,
 				E7E9E4F31D675C9900B5C78D /* FPTouchView.m in Sources */,
+				FAD926841D6DF4FD005CF75C /* README.md in Sources */,
 				E7D813611D5E005900A240D9 /* DetailedCaseStudies.m in Sources */,
 				FAC7DAA31D5B66250043B4DF /* CaseStudiesCell.m in Sources */,
 				E72EFBEA1D6CAA1800F959B7 /* CaseStudy+CoreDataProperties.m in Sources */,
@@ -566,6 +589,7 @@
 				FABE10B01D5F33810096F965 /* DetailedCaseStudyView.m in Sources */,
 				FA587B291D6D9E4E00130C04 /* RotationConfigurableNavigationController.m in Sources */,
 				E7E9E4ED1D675C8500B5C78D /* FPPopoverController.m in Sources */,
+				FAD926851D6DF4FD005CF75C /* RNCachingURLProtocol.m in Sources */,
 				FA42934E1D5CC6AE00AAADBC /* CaseStudiesFlowLayout.m in Sources */,
 				E7B22EBB1D66015D00509F52 /* WebVIewController.m in Sources */,
 			);

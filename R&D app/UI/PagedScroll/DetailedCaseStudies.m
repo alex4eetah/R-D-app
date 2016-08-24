@@ -57,7 +57,7 @@
 
 @property (weak, nonatomic) FPPopoverController *popover;
 
-@property (strong, nonatomic) Reachability *reachabilityManager;
+//@property (strong, nonatomic) Reachability *reachabilityManager;
 
 //@property (strong, nonatomic) NSMutableDictionary *buttonTagsAndUrls;
 
@@ -91,7 +91,7 @@
 
 - (void)configureSelf
 {
-    self.reachabilityManager = [Reachability reachabilityForInternetConnection];
+//    self.reachabilityManager = [Reachability reachabilityForInternetConnection];
     
     self.serverManager = [RDServerManager sharedManager];
     
@@ -121,9 +121,9 @@
     self.animator = [UiUtil sharedUtil];
     self.isInLandscape = (self.view.frame.size.width > self.view.frame.size.height);
     
-    if (self.reachabilityManager.currentReachabilityStatus != NotReachable) {
+  /*  if (self.reachabilityManager.currentReachabilityStatus != NotReachable) {
         [self.manager updateCaseStudies];
-    }
+    }*/
     
     [self createScrollViewLayoutFromArray:self.caseStudies];
     
