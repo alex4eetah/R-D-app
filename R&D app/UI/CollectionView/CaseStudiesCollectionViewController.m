@@ -113,6 +113,8 @@
                                   Left:NO];
 }
 
+#pragma mark - actions
+
 - (void)search
 {
     
@@ -120,18 +122,6 @@
 
 -(void)more:(UIButton *) sender
 {
-    /*UIStoryboard *storyboard = self.storyboard;
-    PopoverViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"popoverVC"];
-    UIPopoverController* aPopover = [[UIPopoverController alloc]
-                                     initWithContentViewController:vc];
-    aPopover.delegate = self;
-    
-    aPopover.popoverContentSize = CGSizeMake(213, 104);
-    vc.delegate = self;
-    self.morePopover = aPopover;
-    
-    [self.morePopover presentPopoverFromRect:CGRectMake(self.view.frame.size.width-30, 0, 20, 60)  inView:self.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];*/
-    
     UIStoryboard *storyboard = self.storyboard;
     PopoverViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"popoverVC"];
     vc.delegate = self;
@@ -155,26 +145,7 @@
     [self.navigationController pushViewController:vc animated:YES];
 }
 
-- (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator
-{
-    [super viewWillTransitionToSize:size withTransitionCoordinator:coordinator];
-    
-    self.isInLandscape = (size.width > size.height);
-    
-    [coordinator animateAlongsideTransition:^(id<UIViewControllerTransitionCoordinatorContext> context) {
-        
-        [self configureBGImage];
-        
-        UICollectionViewFlowLayout *flowLayout = (UICollectionViewFlowLayout *)self.collectionView.collectionViewLayout;
-        
-        [flowLayout invalidateLayout];
-        
-    } completion:^(id<UIViewControllerTransitionCoordinatorContext> context) {
-        
-        [self.navigationController.navigationBar setBottomBorderColor:[UIColor colorWithRed:17/255.0 green:163/255.0 blue:224/255.0 alpha:1] height:1];
-        
-    }];
-}
+#pragma mark - CollectionView
 
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
@@ -275,7 +246,30 @@
     [self.navigationController pushViewController:vc animated:YES];
 }
 
+#pragma mark - rotation
 
+- (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator
+{
+    [super viewWillTransitionToSize:size withTransitionCoordinator:coordinator];
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+        
+        self.isInLandscape = (size.width > size.height);
+        
+        [coordinator animateAlongsideTransition:^(id<UIViewControllerTransitionCoordinatorContext> context) {
+            
+            [self configureBGImage];
+            
+            UICollectionViewFlowLayout *flowLayout = (UICollectionViewFlowLayout *)self.collectionView.collectionViewLayout;
+            
+            [flowLayout invalidateLayout];
+            
+        } completion:^(id<UIViewControllerTransitionCoordinatorContext> context) {
+            
+            [self.navigationController.navigationBar setBottomBorderColor:[UIColor colorWithRed:17/255.0 green:163/255.0 blue:224/255.0 alpha:1] height:1];
+            
+        }];
+    }
+}
 
 #pragma mark - popover deledate
 - (void)dismissToRoot

@@ -768,10 +768,10 @@
 - (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator
 {
     [super viewWillTransitionToSize:size withTransitionCoordinator:coordinator];
-    
-    self.isInLandscape = (size.width > size.height);
-    
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+        
+        self.isInLandscape = (size.width > size.height);
+        
         [coordinator animateAlongsideTransition:^(id<UIViewControllerTransitionCoordinatorContext> context) {
             
             Orientation orient = self.isInLandscape? Landscape: Portrait;
@@ -793,12 +793,6 @@
         }];
     }
 }
-//
-//#pragma mark - popover
-//- (UIModalPresentationStyle)adaptivePresentationStyleForPresentationController:(UIPresentationController *)controller {
-//    
-//    return UIModalPresentationNone;
-//}
 
 #pragma mark - popover deledate
 - (void)dismissToRoot
@@ -917,7 +911,7 @@
 - (void)prev
 {
     NSInteger toGo = self.pageIndicator.currentPage - 1;
-    if (toGo > 0) {
+    if (toGo >= 0) {
         CGFloat x = toGo * self.scroll.frame.size.width;
         [self.scroll setContentOffset:CGPointMake(x, 0) animated:YES];
     }

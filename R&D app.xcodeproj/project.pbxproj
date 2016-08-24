@@ -48,6 +48,7 @@
 		FA42933B1D5C6DA500AAADBC /* OpenSans-SemiboldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FA4293311D5C6DA500AAADBC /* OpenSans-SemiboldItalic.ttf */; };
 		FA42934B1D5CAA9300AAADBC /* UINavigationBar+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = FA42934A1D5CAA9300AAADBC /* UINavigationBar+Helper.m */; };
 		FA42934E1D5CC6AE00AAADBC /* CaseStudiesFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = FA42934D1D5CC6AE00AAADBC /* CaseStudiesFlowLayout.m */; };
+		FA587B291D6D9E4E00130C04 /* RotationConfigurableNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA587B281D6D9E4E00130C04 /* RotationConfigurableNavigationController.m */; };
 		FA71F8A51D5A5F2D001AAF77 /* MuseoSansCyrl_2.otf in Resources */ = {isa = PBXBuildFile; fileRef = FA71F8A41D5A5F2D001AAF77 /* MuseoSansCyrl_2.otf */; };
 		FABE10B01D5F33810096F965 /* DetailedCaseStudyView.m in Sources */ = {isa = PBXBuildFile; fileRef = FABE10AF1D5F33810096F965 /* DetailedCaseStudyView.m */; };
 		FAC7DA9E1D5B2C340043B4DF /* UiUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC7DA9D1D5B2C340043B4DF /* UiUtil.m */; };
@@ -137,6 +138,8 @@
 		FA42934A1D5CAA9300AAADBC /* UINavigationBar+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UINavigationBar+Helper.m"; path = "UI/UINavigationBar+Helper.m"; sourceTree = "<group>"; };
 		FA42934C1D5CC6AE00AAADBC /* CaseStudiesFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CaseStudiesFlowLayout.h; path = UI/CollectionView/CaseStudiesFlowLayout.h; sourceTree = "<group>"; };
 		FA42934D1D5CC6AE00AAADBC /* CaseStudiesFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CaseStudiesFlowLayout.m; path = UI/CollectionView/CaseStudiesFlowLayout.m; sourceTree = "<group>"; };
+		FA587B271D6D9E4E00130C04 /* RotationConfigurableNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RotationConfigurableNavigationController.h; sourceTree = "<group>"; };
+		FA587B281D6D9E4E00130C04 /* RotationConfigurableNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RotationConfigurableNavigationController.m; sourceTree = "<group>"; };
 		FA71F8A41D5A5F2D001AAF77 /* MuseoSansCyrl_2.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MuseoSansCyrl_2.otf; sourceTree = "<group>"; };
 		FABE10AE1D5F33810096F965 /* DetailedCaseStudyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DetailedCaseStudyView.h; path = UI/PagedScroll/DetailedCaseStudyView.h; sourceTree = "<group>"; };
 		FABE10AF1D5F33810096F965 /* DetailedCaseStudyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DetailedCaseStudyView.m; path = UI/PagedScroll/DetailedCaseStudyView.m; sourceTree = "<group>"; };
@@ -315,6 +318,8 @@
 				E7C3E4D41D6491BD00ECB3BB /* PopoverViewController.m */,
 				E7B22EB91D66015D00509F52 /* WebVIewController.h */,
 				E7B22EBA1D66015D00509F52 /* WebVIewController.m */,
+				FA587B271D6D9E4E00130C04 /* RotationConfigurableNavigationController.h */,
+				FA587B281D6D9E4E00130C04 /* RotationConfigurableNavigationController.m */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -559,6 +564,7 @@
 				E7F48D3A1D61FD47008F08C9 /* CoreDataManager.m in Sources */,
 				E7B22EB51D659A3700509F52 /* RDServerManager.m in Sources */,
 				FABE10B01D5F33810096F965 /* DetailedCaseStudyView.m in Sources */,
+				FA587B291D6D9E4E00130C04 /* RotationConfigurableNavigationController.m in Sources */,
 				E7E9E4ED1D675C8500B5C78D /* FPPopoverController.m in Sources */,
 				FA42934E1D5CC6AE00AAADBC /* CaseStudiesFlowLayout.m in Sources */,
 				E7B22EBB1D66015D00509F52 /* WebVIewController.m in Sources */,

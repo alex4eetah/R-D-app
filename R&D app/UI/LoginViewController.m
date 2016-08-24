@@ -68,22 +68,6 @@
 **** Visual configuration
 */
 
-- (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator
-{
-    [super viewWillTransitionToSize:size withTransitionCoordinator:coordinator];
-    
-    self.isInLandscape = (size.width > size.height);
-    
-    [coordinator animateAlongsideTransition:^(id<UIViewControllerTransitionCoordinatorContext> context) {
-
-        [self.animator animateConstraintsChangingToOrientation: self.isInLandscape? Landscape: Portrait
-                                             ForViewController:self];
-        
-    } completion:^(id<UIViewControllerTransitionCoordinatorContext> context) {
-
-    }];
-}
-
 - (void)keyboardWillChange:(NSNotification *)notification
 {
     if (self.view.frame.origin.y == 0 && self.isInLandscape) {
@@ -143,7 +127,34 @@
     }
 }
 
+#pragma  mark - Rotation
 
+- (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator
+{
+    [super viewWillTransitionToSize:size withTransitionCoordinator:coordinator];
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+
+        self.isInLandscape = (size.width > size.height);
+        
+        [coordinator animateAlongsideTransition:^(id<UIViewControllerTransitionCoordinatorContext> context) {
+            
+            [self.animator animateConstraintsChangingToOrientation: self.isInLandscape? Landscape: Portrait
+                                                 ForViewController:self];
+            
+        } completion:^(id<UIViewControllerTransitionCoordinatorContext> context) {
+            
+        }];
+    }
+}
+
+
+- (UIInterfaceOrientationMask) supportedInterfaceOrientations {
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
+        return UIInterfaceOrientationMaskPortrait;
+    } else {
+        return UIInterfaceOrientationMaskAll;
+    }
+}
 
 /*
 #pragma mark - Navigation
