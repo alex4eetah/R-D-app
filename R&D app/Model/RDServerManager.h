@@ -18,4 +18,6 @@
 - (void) changePasswordWithCredentials:(NSDictionary *) creds
                             Completion:(void(^)(BOOL done)) completion;
 
+- (void) logOutWithCompletion:(void(^)(BOOL done)) completion;
+
 @end

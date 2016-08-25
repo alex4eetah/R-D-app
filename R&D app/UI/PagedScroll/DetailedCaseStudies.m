@@ -71,6 +71,10 @@
     [self configureSelf];
 }
 
+- (void)didReceiveMemoryWarning {
+    [[NSURLCache sharedURLCache] removeAllCachedResponses];
+}
+
 - (void)viewDidLayoutSubviews
 {
     if (self.caseStudyToPresentName) {
@@ -906,6 +910,12 @@
         CGFloat x = toGo * self.scroll.frame.size.width;
         [self.scroll setContentOffset:CGPointMake(x, 0) animated:YES];
     }
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        if (self.isInLandscape) {
+            [self showLandscapeSeparators];
+            self.scrollProgressFlag = YES;
+        }
+    });
 }
 
 - (void)prev
@@ -914,6 +924,12 @@
     if (toGo >= 0) {
         CGFloat x = toGo * self.scroll.frame.size.width;
         [self.scroll setContentOffset:CGPointMake(x, 0) animated:YES];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            if (self.isInLandscape) {
+                [self showLandscapeSeparators];
+                self.scrollProgressFlag = YES;
+            }
+        });
     }
 }
 

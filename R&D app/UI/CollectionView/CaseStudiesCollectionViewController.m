@@ -42,19 +42,13 @@
                                    @"image":[UIImage imageNamed:@"SmartIdentityVerifImage.png"],
                                    @"shortDesc":@"Smart Identity Verification",
                                    @"fullDesc":@"A smart system by SoftServe for continuous authentication and monitoring of human well-being, based on electrocardiogram (ECG) analysis with biosensors embedded into a vehicle’s steering wheel and a mobile application working in offline mode",
-                                   @"link":@""},
+                                   @"link":@"https://readymag.com/u34879872/560620/"},
                                  @{
                                    @"name":@"Barista",
                                    @"image":[UIImage imageNamed:@"BaristaImage.png"],
                                    @"shortDesc":@"Smart Coffee Machine",
                                    @"fullDesc":@"SoftServe Barista is a system for combining personal health and fully automated coffee preparation",
-                                   @"link":@"http://demo.softserveinc.com/barista/"},
-                                 @{
-                                   @"name":@"Alexa",
-                                   @"image":[UIImage imageNamed:@"VoiceMyBotImage.png"],
-                                   @"shortDesc":@"VoiceMyBot",
-                                   @"fullDesc":@"VoiceMyBotVoiceMyBotVoiceMyBotVoiceMyBotVoiceMyBot",
-                                   @"link":@""}, nil]];
+                                   @"link":@"http://demo.softserveinc.com/barista/"}, nil]];
     
     [self configureSelf];
     

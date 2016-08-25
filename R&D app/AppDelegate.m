@@ -21,7 +21,7 @@
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    [NSURLProtocol registerClass:[RNCachingURLProtocol class]];
+    //[NSURLProtocol registerClass:[RNCachingURLProtocol class]];
     return YES;
 }
 

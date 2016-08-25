@@ -24,6 +24,7 @@
 
 -(void)fakeFromArray:(NSArray *)arr
 {
+    //Because of flag, adding to DB will be done only once;
     NSString *flag = [[NSUserDefaults standardUserDefaults]
                      stringForKey:@"fakeCoreData"];
     if (!flag) {
@@ -53,7 +54,7 @@
     return _context;
 }
 
-- (void)updateCaseStudyWithName:(NSString *)name Force:(BOOL)force
+- (void)updateCaseStudyWithName:(NSString *)name Force:(BOOL)force // reserver for future use
 {
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     
@@ -95,7 +96,7 @@
     }
 }
 
-- (void)updateCaseStudies
+- (void)updateCaseStudies // reserver for future use
 {
     NSArray *arr = [self getArrayOfCaseStudies];
     for (CaseStudy *instance in arr) {

@@ -34,6 +34,15 @@
         }
 }
 
+- (void) logOutWithCompletion:(void(^)(BOOL done)) completion
+{
+    /*
+     -----------TODO: request to service, logOut
+     */
+    
+    completion(YES);
+}
+
 - (void) changePasswordWithCredentials:(NSDictionary *) creds
                             Completion:(void(^)(BOOL done)) completion
 {
