@@ -27,7 +27,7 @@
          -----------TODO: request to service, autorize, get result
          */
         
-        if ([creds[@"Login"] isEqualToString: @"Root" ] && [creds[@"Password"] isEqualToString: @"Root"]) {
+        if ([creds[@"Login"] isEqualToString: @"Admin" ] && [creds[@"Password"] isEqualToString: @"Admin"]) {
             completion(YES);
         } else {
             completion(NO);
