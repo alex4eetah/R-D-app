@@ -12,8 +12,9 @@
 @interface DetailedCaseStudyView ()
 
 @property (strong, nonatomic) UIView *border;
-@property (strong, nonatomic) UIImageView *photoImageView;
-@property (strong, nonatomic) UIWebView *webView;
+@property (strong, nonatomic) UIImageView *image;
+@property (strong, nonatomic) UIView *photoImageView;
+//@property (strong, nonatomic) UIWebView *webView;
 @property (strong, nonatomic) UILabel *name;
 @property (strong, nonatomic) UILabel *fullDescription;
 @property (strong, nonatomic) UIButton *viewPageButton;
@@ -55,27 +56,32 @@
     self.border.backgroundColor = [UIColor colorWithRed:23/255.0 green:52/255.0 blue:193/255.0 alpha:1];
     [self addSubview:self.border];
     
-    self.photoImageView = [[UIImageView alloc] initWithFrame:CGRectZero];
-    self.photoImageView.contentMode = UIViewContentModeScaleAspectFit;
-    self.photoImageView.image = [UIImage imageWithData:caseStudy.image];
+    self.photoImageView = [[UIView alloc] initWithFrame:CGRectZero];
     self.photoImageView.translatesAutoresizingMaskIntoConstraints = NO;
+    self.photoImageView.backgroundColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:1];
     [self addSubview:self.photoImageView];
     
-    self.webView = [[UIWebView alloc]initWithFrame:CGRectZero];
-    self.webView.translatesAutoresizingMaskIntoConstraints = NO;
-   /* if (caseStudy.cache) {
-        NSString *urlAddress = caseStudy.link;
-        NSURL *url = [NSURL URLWithString:urlAddress];
-        [self.webView loadHTMLString:caseStudy.cache baseURL:url];
-    } else {*/
-        NSString *urlAddress = caseStudy.link;
-        NSURL *url = [NSURL URLWithString:urlAddress];
-        NSURLRequest *requestObj = [NSURLRequest requestWithURL:url];
-        [self.webView loadRequest:requestObj];
-   // }
-    self.webView.backgroundColor = [UIColor clearColor];
-    self.webView.opaque = NO;
-    [self addSubview:self.webView];
+    self.image = [[UIImageView alloc] initWithFrame:CGRectZero];
+    self.image.contentMode = UIViewContentModeScaleAspectFit;
+    self.image.image = [UIImage imageWithData:caseStudy.image];
+    self.image.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.photoImageView addSubview:self.image];
+    
+//    self.webView = [[UIWebView alloc]initWithFrame:CGRectZero];
+//    self.webView.translatesAutoresizingMaskIntoConstraints = NO;
+//   /* if (caseStudy.cache) {
+//        NSString *urlAddress = caseStudy.link;
+//        NSURL *url = [NSURL URLWithString:urlAddress];
+//        [self.webView loadHTMLString:caseStudy.cache baseURL:url];
+//    } else {*/
+//        NSString *urlAddress = caseStudy.link;
+//        NSURL *url = [NSURL URLWithString:urlAddress];
+//        NSURLRequest *requestObj = [NSURLRequest requestWithURL:url];
+//        [self.webView loadRequest:requestObj];
+//   // }
+//    self.webView.backgroundColor = [UIColor clearColor];
+//    self.webView.opaque = NO;
+//    [self addSubview:self.webView];
     
     self.name = [[UILabel alloc] initWithFrame:CGRectZero];
     self.name.text = caseStudy.name;
@@ -210,7 +216,7 @@
                                                             toItem:nil
                                                          attribute:NSLayoutAttributeNotAnAttribute
                                                         multiplier:1.0
-                                                          constant:375]];
+                                                          constant:210]];
         
         [self addConstraint:[NSLayoutConstraint constraintWithItem:self.photoImageView
                                                          attribute:NSLayoutAttributeLeading
@@ -221,45 +227,85 @@
                                                           constant:62]];
         
         [self addConstraint:[NSLayoutConstraint constraintWithItem:self.photoImageView
+                                                         attribute:NSLayoutAttributeCenterY
+                                                         relatedBy:NSLayoutRelationEqual
+                                                            toItem:self
+                                                         attribute:NSLayoutAttributeCenterY
+                                                        multiplier:1.0
+                                                          constant:0]];
+        /*[self addConstraint:[NSLayoutConstraint constraintWithItem:self.photoImageView
                                                          attribute:NSLayoutAttributeTop
                                                          relatedBy:NSLayoutRelationEqual
                                                             toItem:self
                                                          attribute:NSLayoutAttributeTop
                                                         multiplier:1.0
-                                                          constant:-32]];
+                                                          constant:-32]];*/
+        
+        // image
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.image
+                                                         attribute:NSLayoutAttributeTop
+                                                         relatedBy:NSLayoutRelationEqual
+                                                            toItem:self.photoImageView
+                                                         attribute:NSLayoutAttributeTop
+                                                        multiplier:1.0
+                                                          constant:10]];
+        
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.image
+                                                         attribute:NSLayoutAttributeBottom
+                                                         relatedBy:NSLayoutRelationEqual
+                                                            toItem:self.photoImageView
+                                                         attribute:NSLayoutAttributeBottom
+                                                        multiplier:1.0
+                                                          constant:-10]];
+        
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.image
+                                                         attribute:NSLayoutAttributeLeading
+                                                         relatedBy:NSLayoutRelationEqual
+                                                            toItem:self.photoImageView
+                                                         attribute:NSLayoutAttributeLeading
+                                                        multiplier:1.0
+                                                          constant:10]];
+        
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.image
+                                                         attribute:NSLayoutAttributeTrailing
+                                                         relatedBy:NSLayoutRelationEqual
+                                                            toItem:self.photoImageView
+                                                         attribute:NSLayoutAttributeTrailing
+                                                        multiplier:1.0
+                                                          constant:-10]];
         
         // webView
-        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.webView
-                                                         attribute:NSLayoutAttributeWidth
-                                                         relatedBy:NSLayoutRelationEqual
-                                                            toItem:nil
-                                                         attribute:NSLayoutAttributeNotAnAttribute
-                                                        multiplier:1.0
-                                                          constant:262]];
-        
-        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.webView
-                                                         attribute:NSLayoutAttributeHeight
-                                                         relatedBy:NSLayoutRelationEqual
-                                                            toItem:nil
-                                                         attribute:NSLayoutAttributeNotAnAttribute
-                                                        multiplier:1.0
-                                                          constant:375]];
-        
-        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.webView
-                                                         attribute:NSLayoutAttributeLeading
-                                                         relatedBy:NSLayoutRelationEqual
-                                                            toItem:self
-                                                         attribute:NSLayoutAttributeLeading
-                                                        multiplier:1.0
-                                                          constant:62]];
-        
-        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.webView
-                                                         attribute:NSLayoutAttributeTop
-                                                         relatedBy:NSLayoutRelationEqual
-                                                            toItem:self
-                                                         attribute:NSLayoutAttributeTop
-                                                        multiplier:1.0
-                                                          constant:-32]];
+//        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.webView
+//                                                         attribute:NSLayoutAttributeWidth
+//                                                         relatedBy:NSLayoutRelationEqual
+//                                                            toItem:nil
+//                                                         attribute:NSLayoutAttributeNotAnAttribute
+//                                                        multiplier:1.0
+//                                                          constant:262]];
+//        
+//        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.webView
+//                                                         attribute:NSLayoutAttributeHeight
+//                                                         relatedBy:NSLayoutRelationEqual
+//                                                            toItem:nil
+//                                                         attribute:NSLayoutAttributeNotAnAttribute
+//                                                        multiplier:1.0
+//                                                          constant:375]];
+//        
+//        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.webView
+//                                                         attribute:NSLayoutAttributeLeading
+//                                                         relatedBy:NSLayoutRelationEqual
+//                                                            toItem:self
+//                                                         attribute:NSLayoutAttributeLeading
+//                                                        multiplier:1.0
+//                                                          constant:62]];
+//        
+//        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.webView
+//                                                         attribute:NSLayoutAttributeTop
+//                                                         relatedBy:NSLayoutRelationEqual
+//                                                            toItem:self
+//                                                         attribute:NSLayoutAttributeTop
+//                                                        multiplier:1.0
+//                                                          constant:-32]];
         
         // nameLabel
         [self addConstraint:[NSLayoutConstraint constraintWithItem:self.name
@@ -492,38 +538,71 @@
                                                         multiplier:1.0
                                                           constant:-43]];
         
+        // image
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.image
+                                                         attribute:NSLayoutAttributeTop
+                                                         relatedBy:NSLayoutRelationEqual
+                                                            toItem:self.photoImageView
+                                                         attribute:NSLayoutAttributeTop
+                                                        multiplier:1.0
+                                                          constant:10]];
+        
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.image
+                                                         attribute:NSLayoutAttributeBottom
+                                                         relatedBy:NSLayoutRelationEqual
+                                                            toItem:self.photoImageView
+                                                         attribute:NSLayoutAttributeBottom
+                                                        multiplier:1.0
+                                                          constant:-10]];
+        
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.image
+                                                         attribute:NSLayoutAttributeLeading
+                                                         relatedBy:NSLayoutRelationEqual
+                                                            toItem:self.photoImageView
+                                                         attribute:NSLayoutAttributeLeading
+                                                        multiplier:1.0
+                                                          constant:10]];
+        
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.image
+                                                         attribute:NSLayoutAttributeTrailing
+                                                         relatedBy:NSLayoutRelationEqual
+                                                            toItem:self.photoImageView
+                                                         attribute:NSLayoutAttributeTrailing
+                                                        multiplier:1.0
+                                                          constant:-10]];
+        
         // webView
-        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.webView
-                                                         attribute:NSLayoutAttributeWidth
-                                                         relatedBy:NSLayoutRelationEqual
-                                                            toItem:nil
-                                                         attribute:NSLayoutAttributeNotAnAttribute
-                                                        multiplier:1.0
-                                                          constant:228]];
-        
-        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.webView
-                                                         attribute:NSLayoutAttributeHeight
-                                                         relatedBy:NSLayoutRelationEqual
-                                                            toItem:nil
-                                                         attribute:NSLayoutAttributeNotAnAttribute
-                                                        multiplier:1.0
-                                                          constant:195]];
-        
-        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.webView
-                                                         attribute:NSLayoutAttributeLeading
-                                                         relatedBy:NSLayoutRelationEqual
-                                                            toItem:self
-                                                         attribute:NSLayoutAttributeLeading
-                                                        multiplier:1.0
-                                                          constant:38]];
-        
-        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.webView
-                                                         attribute:NSLayoutAttributeTop
-                                                         relatedBy:NSLayoutRelationEqual
-                                                            toItem:self
-                                                         attribute:NSLayoutAttributeTop
-                                                        multiplier:1.0
-                                                          constant:-43]];
+//        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.webView
+//                                                         attribute:NSLayoutAttributeWidth
+//                                                         relatedBy:NSLayoutRelationEqual
+//                                                            toItem:nil
+//                                                         attribute:NSLayoutAttributeNotAnAttribute
+//                                                        multiplier:1.0
+//                                                          constant:228]];
+//        
+//        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.webView
+//                                                         attribute:NSLayoutAttributeHeight
+//                                                         relatedBy:NSLayoutRelationEqual
+//                                                            toItem:nil
+//                                                         attribute:NSLayoutAttributeNotAnAttribute
+//                                                        multiplier:1.0
+//                                                          constant:195]];
+//        
+//        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.webView
+//                                                         attribute:NSLayoutAttributeLeading
+//                                                         relatedBy:NSLayoutRelationEqual
+//                                                            toItem:self
+//                                                         attribute:NSLayoutAttributeLeading
+//                                                        multiplier:1.0
+//                                                          constant:38]];
+//        
+//        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.webView
+//                                                         attribute:NSLayoutAttributeTop
+//                                                         relatedBy:NSLayoutRelationEqual
+//                                                            toItem:self
+//                                                         attribute:NSLayoutAttributeTop
+//                                                        multiplier:1.0
+//                                                          constant:-43]];
         
         // nameLabel
         [self addConstraint:[NSLayoutConstraint constraintWithItem:self.name

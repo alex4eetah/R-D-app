@@ -112,11 +112,6 @@
     self.forgotPasswordButt.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
         [self.forgotPasswordButt setFont:[UIFont fontWithName:@"RobotoSlab-Regular" size:9]];
-        
-        [self.cancelButt setFont:[UIFont fontWithName:@"RobotoSlab-Regular" size:9]];
-    } else {
-        
-        [self.cancelButt setFont:[UIFont fontWithName:@"RobotoSlab-Bold" size:16]];
     }
     
     self.potraitConstraints = [[NSMutableArray alloc] init];
